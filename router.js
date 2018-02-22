@@ -18,6 +18,8 @@ module.exports = (app) => {
 
   /*-------------账户管理开始-----------*/
 
+  // 首页重定向到登录页面
+  router.get('/', AccountController.signin)
   // 跳转到登录页面
   router.get('/signin', AccountController.signin)
   // 跳转到注册页
@@ -32,8 +34,6 @@ module.exports = (app) => {
   /*-------------账户管理结束-----------*/
   /*-------------订单管理开始-----------*/
 
-  // 首页重定向到新订单页面
-  router.get('/', OrdersController.orderNew)
   // 跳转到订单——新订单
   router.get('/orders/new', OrdersController.orderNew)
   // 跳转到订单——配送中
