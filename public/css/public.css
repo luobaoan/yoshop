@@ -1,0 +1,597 @@
+body, button input, select, textarea {
+  font: 14px/1.5 "Microsoft YaHei", sans-serif
+}
+
+body, header, ul, li, p, div, html, span, h3, a {
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+body {
+  background-color: #F2F2F2;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.color-green {
+  color: #44B549;
+}
+
+.color-red {
+  color: red;
+}
+
+.right10 {
+  margin-right: 10px;
+}
+
+.right20 {
+  margin-right: 20px;
+}
+
+.bottom10 {
+  margin-bottom: 10px;
+}
+
+.bottom20 {
+  margin-bottom: 20px;
+}
+
+.bottom40 {
+  margin-bottom: 40px !important;
+}
+
+.form {
+  margin: 20px auto;
+}
+
+.form-item {
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 2px 4px;
+  height: 24px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  vertical-align: middle;
+}
+
+/* border-radius: 4px; */
+
+}
+
+select {
+  padding: 2px 4px;
+  height: 30px;
+  border-radius: 0;
+}
+
+button:focus, input:focus, select:focus, textarea:focus {
+  outline-width: 0
+}
+
+input:focus, textarea:focus {
+  border-color: #009DDA
+}
+
+textarea {
+  width: 100%;
+  height: 200px;
+  padding: 6px;
+  font-size: 14px;
+  /* border-radius: 4px; */
+  border: 1px solid #ccc;
+  resize: none;
+}
+
+/*水平翻转*/
+
+.flipx {
+  -moz-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  transform: scaleX(-1);
+  /*IE*/
+  filter: FlipH;
+}
+
+/*垂直翻转*/
+
+.flipy {
+  -moz-transform: scaleY(-1);
+  -webkit-transform: scaleY(-1);
+  -o-transform: scaleY(-1);
+  transform: scaleY(-1);
+  /*IE*/
+  filter: FlipV;
+}
+
+.btn-submit {
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+  background: #5FB878;
+  border: none;
+  cursor: pointer;
+}
+
+.bar {
+  display: inline-block;
+  margin-left: 8px;
+  margin-right: 8px;
+  width: 2px;
+  height: 20px;
+  vertical-align: middle;
+  background-color: #666;
+}
+
+.icon {
+  position: relative;
+  display: inline-block;
+}
+
+.icon-avator {
+  width: 34px;
+  height: 34px;
+  background-size: 100%;
+  background-image: url('/img/icon-avator.png');
+}
+
+.icon-close {
+  width: 32px;
+  height: 32px;
+  background-size: 100%;
+  background-image: url('/img/icon-close.png');
+}
+
+.icon-down-arrow {
+  width: 20px;
+  height: 20px;
+  background-size: 100%;
+  background-image: url('/img/icon-down-arrow.png');
+}
+
+.avator {
+  display: inline-block;
+  margin-right: 8px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+/* 公共头部开始 */
+
+header {
+  width: 100%;
+  height: 79px;
+  line-height: 79px;
+  border-bottom: 1px solid #ddd;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.center-area {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  display: block;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 28px;
+  color: #797979;
+}
+
+.logo:hover, .logo:active {
+  color: #797979
+}
+
+.user-right a, .user-right span {
+  display: inline-block;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.user-right .icon-avator {
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.user-right .txt-center {
+  position: relative;
+  top: 4px;
+}
+
+/* 公共头部结束 */
+
+/* 中间部分开始 */
+
+.main {
+  margin: 12px auto 12px;
+  width: 1200px;
+  height: 640px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.left-nav {
+  float: left;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 210px;
+  text-align: center;
+  line-height: 36px;
+}
+
+.left-nav ul {
+  display: none;
+}
+
+.left-nav .nav-title {
+  position: relative;
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.left-nav .icon {
+  position: absolute;
+  top: 8px;
+  vertical-align: middle;
+  background-size: 100%;
+}
+
+.left-nav .icon-logo {
+  left: 30px;
+  margin-right: 8px;
+  width: 20px;
+  height: 20px;
+}
+
+.left-nav .icon-down-arrow {
+  right: 32px;
+}
+
+.left-nav li {
+  line-height: 36px;
+}
+
+.icon-order {
+  background-image: url('/img/icon-order.png');
+}
+
+.icon-goods {
+  background-image: url('/img/icon-goods.png');
+}
+
+.icon-warehouse {
+  background-image: url('/img/icon-warehouse.png');
+}
+
+.icon-member {
+  background-image: url('/img/icon-member.png');
+}
+
+.icon-dictionary {
+  background-image: url('/img/icon-dictionary.png');
+}
+
+.icon-setting {
+  background-image: url('/img/icon-setting.png');
+}
+
+.left-nav ul li a:hover, .nav-active a {
+  display: block;
+  width: 100%;
+  height: 36px;
+  color: #fff;
+  background-color: #44B549;
+}
+
+.right-content {
+  margin-left: 210px;
+  height: 100%;
+  border-left: 1px solid #ddd;
+}
+
+.right-content .content-header {
+  height: 60px;
+  line-height: 60px;
+  border-bottom: 1px solid #ddd;
+}
+
+.content-header .page-title {
+  float: left;
+  margin-left: 20px;
+  font-size: 18px;
+}
+
+.content-header .rg-operate {
+  float: right;
+  margin-right: 20px;
+  font-size: 16px;
+}
+
+.rg-operate .icon {
+  display: inline-block;
+  margin-top: -4px;
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
+  margin-right: 10px;
+  border: 1px solid #ddd;
+}
+
+.content-main {
+  margin: 20px 20px;
+}
+
+/* 搜索区域开始 */
+
+.search-area {
+  overflow: hidden;
+}
+
+.search-area .search-key {
+  float: left;
+  margin-right: 16px;
+  margin-bottom: 16px;
+}
+
+.search-area .search-key:last-child {
+  margin-right: 0;
+}
+
+.search-area label {
+  margin-right: 10px;
+}
+
+.btn {
+  width: 120px;
+  height: 30px;
+  font-size: 14px;
+  /* border-radius: 4px; */
+  cursor: pointer;
+}
+
+.btn-search {
+  font-size: 14px;
+  color: #fff;
+  border: 1px solid #44B549;
+  background-color: #44B549;
+}
+
+.search-area input {
+  width: 130px;
+}
+
+.goods-shelf .search-area input, .goods-shelf .search-area select {
+  width: 180px;
+}
+
+/* 搜索区域结束 */
+
+/* 数据列表开始 */
+
+.data-lists {
+  width: 100%;
+  font-size: 14px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+}
+
+.data-lists thead {
+  background-color: #E7E7EB;
+  line-height: 34px;
+}
+
+.data-lists tbody {
+  font-size: 13px;
+}
+
+.data-lists tr {
+  border-bottom: 1px solid #ccc;
+}
+
+.data-lists th, .data-lists td {
+  border-right: 1px solid #ccc;
+}
+
+.data-lists a {
+  color: #0000CC;
+  text-decoration: underline;
+}
+
+.member-avator {
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+}
+
+/* 数据列表结束 */
+
+/* 中间部分结束 */
+
+/* 公共底部开始 */
+
+footer {
+  width: 100%;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  font-size: 16px;
+  color: #fff;
+  background-color: #515151;
+}
+
+/* 公共底部结束 */
+
+/* 登录/注册开始 */
+
+.account input, .account button {
+  height: 40px;
+  width: 100%;
+}
+
+.account label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.account .form-item {
+  margin-bottom: 12px;
+}
+
+.signin, .signup {
+  display: block;
+  position: absolute;
+  margin-top: -105px;
+  left: 50%;
+  margin-left: -160px;
+  width: 320px;
+}
+
+.signin {
+  top: 35%;
+  height: 300px;
+}
+
+.signup {
+  top: 30%;
+  height: 384px;
+}
+
+.form .form-title {
+  margin-bottom: 30px;
+  text-align: center;
+  letter-spacing: 2px
+}
+
+/* 登录/注册结束 */
+
+/* 弹出层提示开始 */
+
+.message {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  padding: 6px 20px;
+  width: 120px;
+  margin-left: -80px;
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+  z-index: 1
+}
+
+.msg-error {
+  background-color: #FF4431;
+}
+
+.msg-success {
+  background-color: #44B549;
+}
+
+/* 弹出层提示结束 */
+
+/* 商品上下架开始 */
+
+.member-lists tbody, .member-address tbody {
+  line-height: 60px;
+}
+
+.goods-shelf tbody tr {
+  height: 80px;
+}
+
+.goods-shelf .search-area label {
+  display: inline-block;
+  width: 60px;
+}
+
+.goods-shelf .addgoods {
+  margin-bottom: 20px;
+  width: 170px;
+  font-size: 14px;
+  color: #fff;
+  border: 1px solid #44B549;
+  background-color: #44B549;
+}
+
+.goods-shelf .goods-num {
+  width: 60px;
+  text-align: center;
+}
+
+.goods-shelf .goods-num input {
+  width: 100%;
+  text-align: center;
+}
+
+.goods-shelf .goods-name {
+  width: 180px;
+}
+
+.goods-shelf .goods-abbr {
+  width: 120px;
+}
+
+.goods-shelf .goods-category {
+  width: 100px;
+}
+
+.goods-shelf .operate {
+  width: 80px;
+  line-height: 40px;
+}
+
+.goods-shelf .operate p {
+  cursor: pointer;
+}
+
+/* 商品上下架结束 */
+
+/* 错误页面开始 */
+
+#error {
+  margin: 20px 40px;
+}
+
+/* 错误页面结束 */
+
+#overlay {
+  background: #383838;
+  filter: alpha(opacity=50);
+  opacity: .5;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100
+}

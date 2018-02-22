@@ -1,0 +1,150 @@
+{% extends "../common/layout.html" %}
+{% block head %}
+  <!-- <link rel="stylesheet" href="/css/dictionary.css"> -->
+{% endblock %}
+{% block body %}
+  <!-- 搜索区域 -->
+  <div class="search-area">
+    <div class="search-key">
+      <label for="name">姓名</label>
+      <input type="text" id="name" name="membername"/>
+    </div>
+    <div class="search-key">
+      <label for="phone">手机号</label>
+      <input type="text" id="phone" name="phone"/>
+    </div>
+    <div class="search-key">
+      <label for="province">省</label>
+      <select id="provinceId" name="provinceId">
+        <option value="">-请选择-</option>
+        <option value="00012">山东省</option>
+        <option value="00022">浙江省</option>
+      </select>
+    </div>
+    <div class="search-key">
+      <label for="province">市</label>
+      <select id="cityId" name="cityId">
+        <option value="">-请选择-</option>
+        <option value="001231">济南市</option>
+        <option value="002341">聊城市</option>
+      </select>
+    </div>
+    <div class="search-key">
+      <label for="province">区/县</label>
+      <select id="areaId" name="areaId">
+        <option value="">-请选择-</option>
+        <option value="001231">东昌府区</option>
+        <option value="002341">冠县</option>
+      </select>
+    </div>
+    <button type="button" class="btn btn-search">查询</button>
+  </div>
+  <!-- 数据列表 -->
+  <table class="data-lists">
+    <thead>
+      <tr>
+        <th>序号</th>
+        <th>姓名</th>
+        <th>手机号</th>
+        <th>省</th>
+        <th>市</th>
+        <th>区/县</th>
+        <th>详细地址</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- <tr> <td>1</td> <td>王洪兴</td> <td>18353364697</td> <td>山东省</td> <td>聊城市</td> <td>冠县</td> <td>梁堂乡前何种村077号</td> </tr> <tr> <td>2</td> <td>王洪兴</td> <td>18353364697</td> <td>山东省</td> <td>聊城市</td> <td>冠县</td> <td>梁堂乡前何种村077号</td> </tr> -->
+    </tbody>
+  </table>
+{% endblock %}
+{% block js %}
+  <script type="text/javascript">
+    $(function () {
+      // 查询全部地址
+      findAllAddress();
+      // 点击查询按钮，筛选
+      $(".btn-search").click(() => {
+        findAddressByParams()
+      })
+    })
+    // 查询全部地址
+    function findAllAddress() {
+      $.ajax({
+        url: '/member/findAllAddress',
+        type: 'GET',
+        cache: false,
+        dataType: 'json',
+        success: function (info) {
+          // console.log(info)
+          if (info.status) {
+            // 成功，铺数据
+            let lists = info.data;
+            listData(lists)
+          } else {
+            $('.msg-error').text(info.msg)
+            fade('.msg-error')
+          }
+        },
+        error: function (e) {
+          console.log(e)
+        }
+      })
+    }
+    // 按照条件查询地址
+    function findAddressByParams() {
+      // 查询条件
+      let name = $("#name").val();
+      let phone = $("#phone").val();
+      let provinceId = $("#provinceId").val();
+      let cityId = $("#cityId").val();
+      let areaId = $("#areaId").val();
+      $.ajax({
+        url: '/member/findAddressByParams',
+        type: 'POST',
+        data: {
+          name: name,
+          phone: phone,
+          provinceId: provinceId,
+          cityId: cityId,
+          areaId: areaId
+        },
+        cache: false,
+        dataType: 'json',
+        success: function (info) {
+          // console.log(info)
+          if (info.status) {
+            // 成功，铺数据
+            let lists = info.data;
+            listData(lists)
+          } else {
+            $('.msg-error').text(info.msg)
+            fade('.msg-error')
+          }
+        },
+        error: function (e) {
+          console.log(e)
+        }
+      })
+    }
+    // 铺数据
+    function listData(lists) {
+      str = '';
+      console.log(lists)
+      for (let i = 0; i < lists.length; i++) {
+        str += '<tr>';
+        str += '<td>' + (
+          i + 1
+        ) + '</td>';
+        str += '<td>' + lists[i].name + '</td>';
+        str += '<td>' + lists[i].phone + '</td>';
+        str += '<td>' + lists[i].province + '</td>';
+        str += '<td>' + lists[i].city + '</td>';
+        str += '<td>' + lists[i].area + '</td>';
+        str += '<td>' + lists[i].address + '</td>';
+        str += '</tr>';
+      }
+      $('.data-lists tbody').empty();
+      $('.data-lists tbody').append(str);
+    }
+  </script>
+{% endblock %}

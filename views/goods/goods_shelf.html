@@ -1,0 +1,98 @@
+{% extends "../common/layout.html" %}
+{% block head %}
+  <!-- <link rel="stylesheet" href="/css/dictionary.css"> -->
+{% endblock %}
+{% block body %}
+  <!-- 搜索区域 -->
+  <div class="search-area">
+    <div class="search-key">
+      <label for="name">商品名称</label>
+      <input type="text" id="name" name="membername"/>
+    </div>
+    <div class="search-key">
+      <label for="sex">商品品牌</label>
+      <select id="sex" name="sex">
+        <option value="male">爱力优</option>
+        <option value="female">爱育聪</option>
+        <option value="secret">爱欣宝</option>
+      </select>
+    </div>
+    <div class="search-key">
+      <label for="sex">商品分类</label>
+      <select id="sex" name="sex">
+        <option value="male">1段</option>
+        <option value="female">2段</option>
+        <option value="secret">3段</option>
+      </select>
+    </div>
+    <div class="search-key">
+      <label for="sex">单位</label>
+      <select id="sex" name="sex">
+        <option value="male">箱</option>
+        <option value="female">罐</option>
+        <option value="secret">盒</option>
+        <option value="secret">袋</option>
+      </select>
+    </div>
+    <div class="search-key">
+      <button type="button" class="btn btn-search">查询</button>
+    </div>
+  </div>
+  <button type="button" class="btn addgoods">
+    + 添加商品</button>
+  <!-- 数据列表 -->
+  <table class="data-lists">
+    <thead>
+      <tr>
+        <th>序号</th>
+        <th>商品编号</th>
+        <th>商品名称</th>
+        <th>简称</th>
+        <th>商品品牌</th>
+        <th>分类</th>
+        <th>单位</th>
+        <th>销售单价(元)</th>
+        <th>数量</th>
+        <th>状态</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>
+          <a href="#" class="goods-url">SP00001</a>
+        </td>
+        <td class="goods-name">爱力优3段12至36个月婴幼儿配方国产牛奶罐装900g湿法工艺清真认证1箱</td>
+        <td class="goods-abbr">爱力优3段 900g罐装一箱</td>
+        <td>爱力优</td>
+        <td class="goods-category">3段（12-36月幼儿）</td>
+        <td>箱</td>
+        <td>1200.00</td>
+        <td class="goods-num">20</td>
+        <td>已发布</td>
+        <td>
+          <p class="down">下架</p>
+        </td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>
+          <a href="#" class="goods-url">SP00001</a>
+        </td>
+        <td class="goods-name">爱力优3段12至36个月婴幼儿配方国产牛奶罐装900g湿法工艺清真认证1箱</td>
+        <td class="goods-abbr">爱力优3段 900g罐装一箱</td>
+        <td>爱力优</td>
+        <td class="goods-category">3段（12-36月幼儿）</td>
+        <td>箱</td>
+        <td>1200.00</td>
+        <td class="goods-num">20</td>
+        <td>已下架</td>
+        <td class="operate">
+          <p class="up">上架</p>
+          <p class="detele color-red">删除</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}

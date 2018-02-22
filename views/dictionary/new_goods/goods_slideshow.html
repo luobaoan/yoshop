@@ -1,0 +1,61 @@
+{% extends "../../common/layout.html" %}
+{% block head %}
+  <link rel="stylesheet" href="/css/dictionary-goods.css">
+{% endblock %}
+{% block operate %}
+  <div class="rg-operate">
+    <a href="/dictionary/goods">
+      <i class="icon icon-check"></i>
+      <span>返回</span>
+    </a>
+  </div>
+{% endblock %}
+{% block body %}
+  <!-- tab 导航 -->
+  <ul class="tab-nav">
+    <li>
+      <a href="/dictionary/goods/base">基本信息</a>
+    </li>
+    <li class="active">
+      <a href="/dictionary/goods/slideshow">轮播图</a>
+    </li>
+    <li>
+      <a href="/dictionary/goods/info">图文介绍</a>
+    </li>
+    <li>
+      <a href="/dictionary/goods/specification">规格参数</a>
+    </li>
+  </ul>
+  <button type="button" class="btn addimgs">
+    + 上传图片</button>
+  <!-- 数据列表 -->
+  <table class="data-lists">
+    <thead>
+      <tr>
+        <td class="order-num">序号</td>
+        <td>图片</td>
+        <td class="sort-num">排序</td>
+        <td class="remark">备注</td>
+        <td>操作</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td class="img-show"><img src="/img/goods.jpg" alt=""></td>
+        <td>1</td>
+        <td></td>
+        <td class="operate">
+          <p class="color-red delete">删除</p>
+          <p class="add-again">重新上传</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+{% endblock %}
+{% block js %}
+  <script type="text/javascript">
+    $(function () {})
+  </script>
+{% endblock %}

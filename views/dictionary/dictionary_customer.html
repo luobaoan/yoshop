@@ -1,0 +1,114 @@
+{% extends "../common/layout.html" %}
+{% block head %}
+  <link rel="stylesheet" href="/css/dictionary.css">
+{% endblock %}
+{% block operate %}
+  <div class="rg-operate">
+    <i class="icon icon-check"></i>
+    <span>新建客户</span>
+  </div>
+{% endblock %}
+{% block body %}
+  <!-- 新建客户 -->
+  <form class="customer-form add-form">
+    <div class="form-title">
+      <span class="title-name">新建客户</span>
+      <i class="icon icon-close customer-quit"></i>
+    </div>
+    <div class="form-content">
+      <div class="form-item">
+        <label for="">客户编号</label>
+        <input type="text" readonly="readonly" disabled="disabled" value="KH0001">
+      </div>
+      <div class="form-item">
+        <label for="">客户名称</label>
+        <input type="text" placeholder="请输入客户名称">
+      </div>
+      <div class="form-item">
+        <label for="">联系人</label>
+        <input type="text" placeholder="请输入联系人">
+      </div>
+      <div class="form-item">
+        <label for="">联系电话</label>
+        <input type="text" placeholder="请输入联系电话">
+      </div>
+      <div class="form-item">
+        <label for="">地址</label>
+        <input type="text" placeholder="请输入地址">
+      </div>
+      <div class="form-item">
+        <label for="">排序</label>
+        <input type="text" placeholder="请输入排序数字">
+      </div>
+      <div class="form-item bottom40">
+        <label for="">备注</label>
+        <input type="text" placeholder="请输入备注">
+      </div>
+      <div class="form-item">
+        <button type="button" class="customer-save btn btn-save">保存</button>
+        <button type="button" class="customer-quit btn btn-quit">取消</button>
+      </div>
+    </div>
+  </form>
+  <!-- 数据列表 -->
+  <table class="data-lists">
+    <thead>
+      <tr>
+        <th>序号</th>
+        <th>客户编号</th>
+        <th>客户名称</th>
+        <th>联系人</th>
+        <th>联系电话</th>
+        <th>地址</th>
+        <th>排序</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>KH0001</td>
+        <td>店子镇商超</td>
+        <td>张三</td>
+        <td>13729182712</td>
+        <td>店子镇</td>
+        <td>1</td>
+        <td class="operate">
+          <p class="edit">编辑</p>
+          <p class="color-red delete">删除</p>
+        </td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>KH0002</td>
+        <td>梁堂乡商超</td>
+        <td>李四</td>
+        <td>13729182712</td>
+        <td>梁堂乡</td>
+        <td>1</td>
+        <td class="operate">
+          <p class="edit">编辑</p>
+          <p class="color-red delete">删除</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}
+{% block js %}
+  <script type="text/javascript">
+    $(function () {
+      // 增加分类
+      $('.rg-operate').click(() => {
+        showOverlay()
+        $('.customer-form').show();
+      })
+      // 关闭【增加分类】弹出层
+      $('.customer-quit').click(() => {
+        hideOverlay()
+        $('.customer-form').hide();
+        $('.customer-form')[0].reset();
+      })
+
+    })
+  </script>
+{% endblock %}

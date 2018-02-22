@@ -1,0 +1,52 @@
+/* 修改密码开始 */
+
+.form-item label {
+  display: inline-block;
+  width: 60px;
+  margin-right: 10px;
+}
+
+.form-item input {
+  width: 390px;
+}
+
+.btn-save {
+  float: left;
+  margin-left: 70px;
+  color: #fff;
+  border: 1px solid #44B549;
+  background-color: #44B549;
+}
+
+.btn-quit {
+  color: #666666;
+  margin-left: 100px;
+  border: 1px solid #999999;
+}
+
+/* 修改密码结束 */
+
+.changeinfo {
+  width: 500px;
+  margin-top: 30px;
+  margin-left: 30px;
+}
+
+.form-item select, .form-item option {
+  display: inline-block;
+  width: 400px;
+  height: 30px;
+}
+
+.user-avator {
+  display: block;
+  text-align: center;
+  margin: 20px auto 40px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+/* 修改个人资料开始 */
+
+/* 修改个人资料结束 */

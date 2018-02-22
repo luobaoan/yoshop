@@ -1,0 +1,61 @@
+{% extends "../common/layout.html" %}
+{% block head %}
+  <link rel="stylesheet" href="/css/storage.css">
+{% endblock %}
+{% block operate %}
+  <div class="rg-operate">
+    <i class="icon icon-check"></i>
+    <span>新建仓库</span>
+  </div>
+{% endblock %}
+{% block body %}
+  <!-- 数据列表 -->
+  <table class="data-lists">
+    <thead>
+      <tr>
+        <th>序号</th>
+        <th>仓库编号</th>
+        <th>仓库名</th>
+        <th>管理员</th>
+        <th>联系电话</th>
+        <th>仓库类别</th>
+        <th>状态</th>
+        <th>排序</th>
+        <th>备注</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Z-001</td>
+        <td class="goods-name">冠县总仓库</td>
+        <td class="goods-abbr">王洪振</td>
+        <td>13729182712</td>
+        <td>一级仓库</td>
+        <td>已初始化</td>
+        <td>1</td>
+        <td>总仓库</td>
+        <td>
+          <p class="edit">编辑</p>
+        </td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>F-001</td>
+        <td class="goods-name">桑阿镇门店仓库</td>
+        <td class="goods-abbr">王洪振</td>
+        <td>13729182712</td>
+        <td>一级仓库</td>
+        <td>未初始化</td>
+        <td>2</td>
+        <td>分仓库</td>
+        <td class="operate">
+          <p class="init">仓库初始化</p>
+          <p class="edit">编辑</p>
+          <p class="delete color-red">删除</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "../common/layout.html" %}
+{% block head %}
+  <link rel="stylesheet" href="/css/storage.css">
+{% endblock %}
+{% block operate %}
+  <div class="rg-operate">
+    <i class="icon icon-check"></i>
+    <span>新增入库</span>
+  </div>
+{% endblock %}
+{% block body %}
+  <!-- 搜索区域 -->
+  <div class="search-area">
+    <div class="search-key">
+      <label for="name">入库单号</label>
+      <input type="text" id="name" name="membername"/>
+    </div>
+    <div class="search-key">
+      <label for="startTime">入库日期</label>
+      <input type="text" id="startTime" name="startTime"/>
+      <span>到</span>
+      <input type="text" id="endTime" name="endTime"/>
+    </div>
+    <div class="search-key">
+      <button type="button" class="btn btn-search">查询</button>
+    </div>
+  </div>
+  <!-- 数据列表 -->
+  <table class="data-lists">
+    <thead>
+      <tr>
+        <th>序号</th>
+        <th>入库单号</th>
+        <th>入库单名</th>
+        <th>入库人</th>
+        <th>入库日期</th>
+        <th>备注</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>
+          <a href="#">RKD20180102001</a>
+        </td>
+        <td>2018年1月02日入库单</td>
+        <td>王洪振</td>
+        <td>2018-01-02</td>
+        <td>新年第一次入库</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>
+          <a href="#">RKD20180102002</a>
+        </td>
+        <td>2018年1月03日入库单</td>
+        <td>王洪振</td>
+        <td>2018-01-03</td>
+        <td>新年第二次入库</td>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}

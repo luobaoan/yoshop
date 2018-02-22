@@ -1,0 +1,78 @@
+{% extends "../../common/layout.html" %}
+{% block head %}
+  <link rel="stylesheet" href="/css/dictionary-goods.css">
+{% endblock %}
+{% block operate %}
+  <div class="rg-operate">
+    <a href="/dictionary/goods">
+      <i class="icon icon-check"></i>
+      <span>返回</span>
+    </a>
+  </div>
+{% endblock %}
+{% block body %}
+  <!-- tab 导航 -->
+  <ul class="tab-nav">
+    <li class="active">
+      <a href="/dictionary/goods/base">基本信息</a>
+    </li>
+    <li>
+      <a href="/dictionary/goods/slideshow">轮播图</a>
+    </li>
+    <li>
+      <a href="/dictionary/goods/info">图文介绍</a>
+    </li>
+    <li>
+      <a href="/dictionary/goods/specification">规格参数</a>
+    </li>
+  </ul>
+  <form class="base-form add-form">
+    <div class="form-item">
+      <label for="">商品编号</label>
+      <input type="text" readonly="readonly" disabled="disabled" value="SP0001">
+    </div>
+    <div class="form-item">
+      <label for="">商品名称</label>
+      <input type="text" placeholder="请输入商品全称（包含品牌、阶段、包装等）">
+    </div>
+    <div class="form-item">
+      <label for="">商品简称</label>
+      <input type="text" placeholder="请输入商品简称方便检索">
+    </div>
+    <div class="form-item">
+      <label for="">销售单价</label>
+      <input type="text" placeholder="请输入商品销售单价（单位：元）">
+    </div>
+    <div class="form-item">
+      <label for="">商品品牌</label>
+      <select name="" id="">
+        <option value="">请选择商品品牌</option>
+      </select>
+    </div>
+    <div class="form-item">
+      <label for="">商品分类</label>
+      <select name="" id="">
+        <option value="">请选择商品分类</option>
+      </select>
+    </div>
+    <div class="form-item">
+      <label for="">商品单位</label>
+      <select name="" id="">
+        <option value="">请选择商品单位</option>
+      </select>
+    </div>
+    <div class="form-item bottom40">
+      <label for="">商品排序</label>
+      <input type="text" placeholder="请输入排序数字">
+    </div>
+    <div class="form-item">
+      <button type="button" class="btn btn-save">保存</button>
+      <button type="button" class="btn btn-quit">取消</button>
+    </div>
+  </form>
+{% endblock %}
+{% block js %}
+  <script type="text/javascript">
+    $(function () {})
+  </script>
+{% endblock %}

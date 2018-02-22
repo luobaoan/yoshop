@@ -1,0 +1,70 @@
+{% extends "../common/layout.html" %}
+{% block head %}
+  <link rel="stylesheet" href="/css/storage.css">
+{% endblock %}
+{% block operate %}
+  <a class="check-lists" href="#">盘盈入库单</a>
+  <a class="check-lists" href="#">盘亏出库单</a>
+  <div class="rg-operate">
+    <i class="icon icon-check"></i>
+    <span>开始盘点</span>
+  </div>
+{% endblock %}
+{% block body %}
+  <!-- 搜索区域 -->
+  <div class="search-area">
+    <div class="search-key">
+      <label for="startTime">盘点日期</label>
+      <input type="date" id="startTime" name="startTime"/>
+      <span>到</span>
+      <input type="date" id="endTime" name="endTime"/>
+    </div>
+    <div class="search-key">
+      <button type="button" class="btn btn-search">查询</button>
+    </div>
+  </div>
+  <!-- 数据列表 -->
+  <table class="data-lists">
+    <thead>
+      <tr>
+        <th>序号</th>
+        <th>盘点单号</th>
+        <th>盘点日期</th>
+        <th>盘点产品数量</th>
+        <th>已盘点产品数量</th>
+        <th>盘点人</th>
+        <th>盘点状态</th>
+        <th>盘盈盘亏</th>
+        <th>备注</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>
+          <a href="#">PDD20180102001</a>
+        </td>
+        <td>2018-01-03</td>
+        <td>2</td>
+        <td>0</td>
+        <td>管理员</td>
+        <td>暂时保存</td>
+        <td>0</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>
+          <a href="#">PDD20180102002</a>
+        </td>
+        <td>2018-01-04</td>
+        <td>1</td>
+        <td>1</td>
+        <td>管理员</td>
+        <td>盘点完成</td>
+        <td>盘盈：+1 盘亏：-1</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}

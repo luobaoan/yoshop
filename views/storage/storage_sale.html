@@ -1,0 +1,80 @@
+{% extends "../common/layout.html" %}
+{% block head %}
+  <link rel="stylesheet" href="/css/storage.css">
+{% endblock %}
+{% block operate %}
+  <div class="rg-operate">
+    <i class="icon icon-check"></i>
+    <span>新增出库</span>
+  </div>
+{% endblock %}
+{% block body %}
+  <!-- 搜索区域 -->
+  <div class="search-area">
+    <div class="search-key">
+      <label for="name">出库单号</label>
+      <input type="text" id="name" name="membername"/>
+    </div>
+    <div class="search-key">
+      <label for="name">出库单名</label>
+      <input type="text" id="name" name="membername"/>
+    </div>
+    <div class="search-key">
+      <label for="customer">客户名称</label>
+      <select id="customer" name="customer">
+        <option value="male">请选择客户名称</option>
+        <option value="female">店子乡商超</option>
+        <option value="female">梁堂乡商超</option>
+        <option value="female">桑阿镇商超</option>
+      </select>
+    </div>
+    <div class="search-key">
+      <label for="startTime">出库日期</label>
+      <input type="date" id="startTime" name="startTime"/>
+      <span>到</span>
+      <input type="date" id="endTime" name="endTime"/>
+    </div>
+    <div class="search-key">
+      <button type="button" class="btn btn-search">查询</button>
+    </div>
+  </div>
+  <!-- 数据列表 -->
+  <table class="data-lists">
+    <thead>
+      <tr>
+        <th>序号</th>
+        <th>出库单号</th>
+        <th>出库单名</th>
+        <th>客户名称</th>
+        <th>出库人</th>
+        <th>出库日期</th>
+        <th>备注</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>
+          <a href="#">XSCKD20180102001</a>
+        </td>
+        <td>2018年1月03日出库单</td>
+        <td>梁堂乡商超</td>
+        <td>王洪振</td>
+        <td>2018-01-03</td>
+        <td>新年第一次出库</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>
+          <a href="#">XSCKD20180102001</a>
+        </td>
+        <td>2018年1月04日出库单</td>
+        <td>桑阿镇商超</td>
+        <td>王洪振</td>
+        <td>2018-01-04</td>
+        <td>新年第二次出库</td>
+      </tr>
+
+    </tbody>
+  </table>
+{% endblock %}

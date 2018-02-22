@@ -1,0 +1,78 @@
+.tab-nav {
+  margin-bottom: 20px;
+  overflow: hidden;
+  height: 50px;
+}
+
+.tab-nav li {
+  float: left;
+  width: 100px;
+  padding: 6px 0;
+  text-align: center;
+  margin-right: 20px;
+}
+
+.tab-nav li.active, .tab-nav li:hover {
+  color: #333;
+  border-bottom: 2px solid #44B549
+}
+
+.tab-nav li a {
+  display: block;
+  width: 100%;
+}
+
+.add-form label {
+  display: inline-block;
+  width: 70px;
+}
+
+.add-form input {
+  width: 390px;
+}
+
+.add-form select {
+  width: 400px;
+}
+
+.add-form .btn-save {
+  margin-left: 75px;
+  border-color: #44B549;
+  background-color: #44B549;
+  color: #fff;
+  font-size: 14px;
+  margin-right: 40px;
+}
+
+.add-form .btn-quit {
+  border: 1px solid #ccc;
+}
+
+.addimgs {
+  margin-bottom: 20px;
+  width: 170px;
+  font-size: 14px;
+  color: #fff;
+  border: 1px solid #44B549;
+  background-color: #44B549;
+}
+
+.data-lists {
+  line-height: 40px;
+}
+
+.data-lists .order-num, .data-lists .sort-num {
+  width: 60px;
+}
+
+.data-lists .remark, .data-lists .operate {
+  width: 100px;
+}
+
+.data-lists .img-show img {
+  vertical-align: middle;
+}
+
+.data-lists .operate p {
+  cursor: pointer;
+}

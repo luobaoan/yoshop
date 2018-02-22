@@ -1,0 +1,143 @@
+{% extends "../common/layout.html" %}
+{% block head %}
+  <!-- <link rel="stylesheet" href="/css/dictionary.css"> -->
+{% endblock %}
+{% block body %}
+  <!-- 搜索区域 -->
+  <div class="search-area">
+    <div class="search-key">
+      <label for="name">姓名</label>
+      <input type="text" id="name" name="membername"/>
+    </div>
+    <div class="search-key">
+      <label for="sex">性别</label>
+      <select id="sex" name="sex">
+        <option value="">全部</option>
+        <option value="male">男</option>
+        <option value="female">女</option>
+        <option value="secret">保密</option>
+      </select>
+    </div>
+    <button type="button" class="btn btn-search">查询</button>
+  </div>
+  <!-- 数据列表 -->
+  <table class="data-lists">
+    <thead>
+      <tr>
+        <th>序号</th>
+        <th>头像</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>生日</th>
+        <th>手机号</th>
+        <th>邮箱</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- <tr> <td>1</td> <td><img class="member-avator" src="/img/icon-avator.png" alt="用户头像"></td> <td>王洪兴</td> <td>男</td> <td>1991-04-14</td> <td>18353364697</td> <td>cainiaozone@163.com</td> </tr> <tr> <td>2</td> <td><img class="member-avator"
+      src="/img/icon-avator.png" alt="用户头像"></td> <td>王洪兴</td> <td>男</td> <td>1991-04-14</td> <td>18353364697</td> <td>cainiaozone@163.com</td> </tr> -->
+    </tbody>
+  </table>
+{% endblock %}
+{% block js %}
+  <script type="text/javascript">
+    $(function () {
+      // 查询全部会员信息
+      findAllMembers();
+      // 列表查询
+      $('.btn-search').click(() => {
+        // 获取查询条件
+        let name = $("#name").val();
+        let sex = $("#sex").val();
+        $.ajax({
+          url: '/member/findMembersByParams',
+          data: {
+            name: name,
+            sex: sex
+          },
+          type: 'POST',
+          cache: false,
+          dataType: 'json',
+          success: function (info) {
+            if (info.status) {
+              // 成功，铺数据
+              let lists = info.data;
+              listData(lists)
+            } else {
+              $('.msg-error').text(info.msg)
+              fade('.msg-error')
+            }
+          },
+          error: function (e) {
+            console.log(e)
+          }
+        })
+      })
+    })
+    // 查询全部会员列表
+    function findAllMembers() {
+      $.ajax({
+        url: '/member/findAllMembers',
+        type: 'GET',
+        cache: false,
+        dataType: 'json',
+        success: function (info) {
+          console.log(info)
+          if (info.status) {
+            // 成功，铺数据
+            let lists = info.data;
+            listData(lists)
+          } else {
+            $('.msg-error').text(info.msg)
+            fade('.msg-error')
+          }
+        },
+        error: function (e) {
+          console.log(e)
+        }
+      })
+    }
+
+    //铺数据
+    function listData(lists) {
+      let str = '';
+      for (let i = 0; i < lists.length; i++) {
+        str += '<tr>';
+        str += '<td>' + (
+          i + 1
+        ) + '</td>';
+        str += '<td><img class="member-avator" src="/img/icon-avator.png" alt="用户头像"></td>';
+        str += '<td>' + lists[i].name + '</td>';
+        let sex = lists[i].sex;
+        let sexname = '';
+        if (sex == 'male') {
+          sexname = '男'
+        } else if (sex == 'female') {
+          sexname = '女'
+        } else {
+          sexname = '保密'
+        }
+        str += '<td>' + sexname + '</td>';
+        let strBirthday = lists[i].birthday + '';
+        let endBirthday = '';
+        if (strBirthday) {
+          endBirthday = strBirthday.slice(0, 10)
+        }
+        str += '<td>' + endBirthday + '</td>';
+        let strPhone = lists[i].phone;
+        if (!strPhone) {
+          strPhone = ''
+        }
+        str += '<td>' + strPhone + '</td>';
+        let strEmail = lists[i].email;
+        if (!strEmail) {
+          strEmail = ''
+        }
+        str += '<td>' + strEmail + '</td>';
+        str += '</tr>';
+      }
+      $(".data-lists tbody").empty();
+      $(".data-lists tbody").append(str);
+    }
+  </script>
+{% endblock %}

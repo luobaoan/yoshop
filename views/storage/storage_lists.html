@@ -1,0 +1,94 @@
+{% extends "../common/layout.html" %}
+{% block head %}
+  <link rel="stylesheet" href="/css/storage.css">
+{% endblock %}
+{% block body %}
+  <!-- 搜索区域 -->
+  <div class="search-area">
+    <div class="search-key">
+      <label for="customer">选择仓库</label>
+      <select id="customer" name="customer">
+        <option value="male">冠县总仓库</option>
+        <option value="female">店子乡商超</option>
+        <option value="female">梁堂乡商超</option>
+        <option value="female">桑阿镇商超</option>
+      </select>
+    </div>
+    <div class="search-key">
+      <label for="goodsname">商品名称</label>
+      <input type="text" id="goodsname" name="goodsname"/>
+    </div>
+    <div class="search-key">
+      <label for="customer">商品品牌</label>
+      <select id="customer" name="customer">
+        <option value="male">爱力优</option>
+        <option value="female">金装爱力优</option>
+        <option value="female">爱欣宝</option>
+      </select>
+    </div>
+    <div class="search-key">
+      <label for="customer">商品分类</label>
+      <select id="customer" name="customer">
+        <option value="male">1段</option>
+        <option value="female">2段</option>
+        <option value="female">3段</option>
+      </select>
+    </div>
+    <div class="search-key">
+      <button type="button" class="btn btn-search">查询</button>
+    </div>
+  </div>
+  <!-- 数据列表 -->
+  <table class="data-lists">
+    <thead>
+      <tr>
+        <th>序号</th>
+        <th>商品编号</th>
+        <th>商品名称</th>
+        <th>商品简称</th>
+        <th>商品品牌</th>
+        <th>商品分类</th>
+        <th>单位</th>
+        <th>采购单价(元)</th>
+        <th>数量</th>
+        <th>金额</th>
+        <th>销售单价(元)</th>
+        <th>所属仓库</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>
+          <a href="#">SP00001</a>
+        </td>
+        <td class="goods-name">爱力优3段12至36个月婴幼儿配方国产牛奶罐装900g湿法工艺清真认证1箱</td>
+        <td class="goods-abbr">爱力优3段 900g罐装一箱</td>
+        <td>爱力优</td>
+        <td>3段（12-36月幼儿）</td>
+        <td>箱</td>
+        <td>1,100.00</td>
+        <td>2</td>
+        <td>22,000.00</td>
+        <td>1,200.00</td>
+        <td>冠县总仓库</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>
+          <a href="#">SP00002</a>
+        </td>
+        <td class="goods-name">爱力优3段12至36个月婴幼儿配方国产牛奶罐装900g湿法工艺清真认证1罐</td>
+        <td class="goods-abbr">爱力优3段 900g罐装一罐</td>
+        <td>爱力优</td>
+        <td>3段（12-36月幼儿）</td>
+        <td>罐</td>
+        <td>200.00</td>
+        <td>10</td>
+        <td>2,000.00</td>
+        <td>300.00</td>
+        <td>冠县总仓库</td>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}

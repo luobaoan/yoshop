@@ -1,0 +1,28 @@
+/* 新订单开始 */
+
+.orders label {
+  display: inline-block;
+  width: 60px;
+}
+
+.orders input {
+  width: 130px;
+}
+
+.orders select {
+  width: 140px;
+}
+
+.orders .for-unit {
+  width: 30px;
+}
+
+.data-lists .category-info, .data-lists .address-info {
+  width: 100px;
+}
+
+.orders .goods-name {
+  width: 200px;
+}
+
+/* 新订单结束 */

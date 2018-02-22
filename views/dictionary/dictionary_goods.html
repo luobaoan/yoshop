@@ -1,0 +1,87 @@
+{% extends "../common/layout.html" %}
+{% block head %}
+  <link rel="stylesheet" href="/css/dictionary.css">
+{% endblock %}
+{% block operate %}
+  <div class="rg-operate">
+    <a href="/dictionary/goods/base">
+      <i class="icon icon-check"></i>
+      <span>创建商品</span>
+    </a>
+  </div>
+{% endblock %}
+{% block body %}
+  <!-- 搜索区域 -->
+  <div class="search-area">
+    <div class="search-key">
+      <label for="goodsname">商品名称</label>
+      <input type="text" id="goodsname" name="goodsname"/>
+    </div>
+    <div class="search-key">
+      <label for="customer">商品品牌</label>
+      <select id="customer" name="customer">
+        <option value="male">爱力优</option>
+        <option value="female">金装爱力优</option>
+        <option value="female">爱欣宝</option>
+      </select>
+    </div>
+    <div class="search-key">
+      <label for="customer">商品分类</label>
+      <select id="customer" name="customer">
+        <option value="male">1段</option>
+        <option value="female">2段</option>
+        <option value="female">3段</option>
+      </select>
+    </div>
+    <div class="search-key">
+      <label for="customer">单位</label>
+      <select id="customer" name="customer">
+        <option value="male">箱</option>
+        <option value="female">罐</option>
+        <option value="female">盒</option>
+      </select>
+    </div>
+    <div class="search-key">
+      <label for="customer">价格排序</label>
+      <select id="customer" name="customer">
+        <option value="male">升序</option>
+        <option value="female">降序</option>
+      </select>
+    </div>
+    <div class="search-key">
+      <button type="button" class="btn btn-search">查询</button>
+    </div>
+  </div>
+  <!-- 数据列表 -->
+  <table class="data-lists">
+    <thead>
+      <tr>
+        <td>序号</td>
+        <td>商品编号</td>
+        <td>商品名称</td>
+        <td>商品简称</td>
+        <td>品牌</td>
+        <td>分类</td>
+        <td>单位</td>
+        <td>销售单价(元)</td>
+        <td>操作</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>SP00001</td>
+        <td class="goods-name">爱力优3段12至36个月婴幼儿配方国产牛奶罐装900g湿法工艺清真认证1箱</td>
+        <td>爱力优3段 900g罐装一箱</td>
+        <td>爱力优</td>
+        <td>3段（12-36月幼儿）</td>
+        <td>箱</td>
+        <td>1100.00</td>
+        <td class="operate">
+          <p class="edit">编辑</p>
+          <p class="color-red delete">删除</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}

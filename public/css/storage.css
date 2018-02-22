@@ -1,0 +1,40 @@
+.storage .data-lists tbody {
+  line-height: 40px;
+}
+
+.operate p {
+  cursor: pointer;
+}
+
+.operate .init {
+  color: #003399;
+}
+
+.storage-sale .search-key input, .storage-sale .search-key select {
+  width: 180px;
+}
+
+/* 库存盘点 */
+
+.page-title {
+  float: left;
+  margin-right: 60px;
+}
+
+.check-lists {
+  font-size: 16px;
+  margin-right: 40px;
+}
+
+.storage-lists .data-lists tbody {
+  line-height: 1.75;
+  height: 80px;
+}
+
+.data-lists .goods-name {
+  width: 200px;
+}
+
+.data-lists .goods-abbr {
+  width: 100px;
+}

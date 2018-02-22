@@ -1,0 +1,110 @@
+{% extends "../common/layout.html" %}
+{% block head %}
+  <link rel="stylesheet" href="/css/dictionary.css">
+{% endblock %}
+{% block body %}
+  <!-- 删除确认框 -->
+  <div class="confirm" type="">
+    <i class="icon icon-close delete-quit"></i>
+    <p>是否确认删除该条记录？</p>
+    <button type="button" class="delete-confirm btn btn-save">确认</button>
+    <button type="button" class="delete-quit btn btn-quit">取消</button>
+  </div>
+  <!-- 新增分类 -->
+  <form class="category-form add-form">
+    <div class="form-title">
+      <span class="title-name" type="">新增分类</span>
+      <i class="icon icon-close category-quit"></i>
+    </div>
+    <div class="form-content">
+      <div class="form-item">
+        <label for="">分类名称</label>
+        <input type="hidden" id="categoryId" name="id">
+        <input type="text" id="categoryName" name="name" placeholder="请输入分类名称">
+      </div>
+      <div class="form-item">
+        <label for="">编码</label>
+        <input type="text" id="categoryCode" name="code" placeholder="请输入字典编码，便于查询">
+      </div>
+      <div class="form-item bottom40">
+        <label for="">排序</label>
+        <input type="text" id="categorySort" name="sort" placeholder="请输入排序数字">
+      </div>
+      <div class="form-item">
+        <button type="button" class="category-save btn btn-save">保存</button>
+        <button type="button" class="category-quit btn btn-quit">取消</button>
+      </div>
+    </div>
+  </form>
+  <!-- 新增字段 -->
+  <form class="field-form add-form">
+    <div class="form-title">
+      <span class="title-name">新增字段</span>
+      <i class="icon icon-close field-quit"></i>
+    </div>
+    <div class="form-content">
+      <div class="form-item">
+        <label for="">字段名称</label>
+        <input type="hidden" id="fieldId" name="id" value="">
+        <input type="hidden" id="parentId" name="parent_id" value="">
+        <input type="hidden" id="parentCode" name="code" value="">
+        <input type="text" id="fieldName" name="name" placeholder="请输入字段名称">
+      </div>
+      <div class="form-item bottom40">
+        <label for="">排序</label>
+        <input type="text" id="fieldSort" name="sort" placeholder="请输入字段名称">
+      </div>
+      <div class="form-item">
+        <button type="button" class="field-save btn btn-save">保存</button>
+        <button type="button" class="field-quit btn btn-quit">取消</button>
+      </div>
+    </div>
+  </form>
+  <!-- 数据列表 -->
+  <div class="category-lists">
+    <!-- 分类列表 -->
+    <div class="lf-lists fl">
+      <div class="lf-header">字典列表</div>
+      <div class="lf-main">
+        <table class="data-lists">
+          <thead>
+            <tr>
+              <th>&nbsp;</th>
+              <th>字典名称</th>
+              <th>编码</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="lf-footer">
+        <button type="button" class="btn btn-add add-category">新增</button>
+        <button type="button" class="btn btn-edit edit-category">修改</button>
+        <button type="button" class="btn btn-delete delete-category">删除</button>
+      </div>
+    </div>
+    <!-- 字段列表 -->
+    <div class="rg-lists">
+      <div class="rg-header">
+        <p class="rg-title">字段设置</p>
+        <button type="button" class="btn-add add-field">新增</button>
+      </div>
+      <table class="data-lists">
+        <thead>
+          <tr>
+            <th>序号</th>
+            <th>字段名</th>
+            <th>排序</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- <tr> <td class="code">1</td> <td>爱力优</td> <td class="sort">1</td> <td class="operate" fieldid="" fieldname="" fieldsort=""> <span class="field-edit right20">编辑</span> <span class="field-delete color-red">删除</span> </td> </tr> -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}
+{% block js %}
+  <script type="text/javascript" src="/js/dictionary_category.js"></script>
+{% endblock %}

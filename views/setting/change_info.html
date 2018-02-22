@@ -1,0 +1,97 @@
+{% extends "../common/layout.html" %}
+{% block head %}
+  <link rel="stylesheet" href="/css/setting.css">
+{% endblock %}
+{% block body %}
+  <form class="changeinfo">
+    <div class="form-item">
+      <img src="/avator.png" class="user-avator" alt="个人头像">
+    </div>
+    <div class="form-item">
+      <label for="username">姓名</label>
+      <input type="hidden" name="uid" value="{{session.id}}"/>
+      <input type="text" id="username" name="username" placeholder="请输入姓名"/>
+    </div>
+    <div class="form-item">
+      <label for="sex">性别</label>
+      <select id="sex" name="sex">
+        <option value="male">男</option>
+        <option value="female">女</option>
+        <option value="secret">保密</option>
+      </select>
+    </div>
+    <div class="form-item">
+      <label for="phone">手机号</label>
+      <input type="text" id="phone" name="phone" placeholder="请输入手机号"/>
+    </div>
+    <div class="form-item bottom40">
+      <label for="email">邮箱</label>
+      <input type="text" id="email" name="email" placeholder="请输入邮箱"/>
+    </div>
+    <button type="button" class="btn btn-save">保存</button>
+    <button type="button" class="btn btn-quit">取消</button>
+  </form>
+{% endblock %}
+{% block js %}
+  <script type="text/javascript">
+    // 查询个人资料
+    function findUserInfo() {
+      $.ajax({
+        url: '/setting/findUserInfoByUID',
+        data: {
+          uid: {{session.id}}
+        },
+        type: 'GET',
+        dataType: 'json',
+        success: function (info) {
+          console.log(info)
+          if (info.status) {
+            // 获取个人资料成功
+            let username = info.data.username
+            let sex = info.data.sex
+            let phone = info.data.phone
+            let email = info.data.email
+            $("#username").val(username)
+            $("#sex").val(sex)
+            $("#phone").val(phone)
+            $("#email").val(email)
+          }
+        }
+      })
+    }
+    $(function () {
+      // 查询个人资料
+      findUserInfo();
+      // 点击【取消】，还原表单信息
+      $('.btn-quit').click(() => {
+        findUserInfo();
+      })
+      // 点击【保存】更新个人资料
+      $('.btn-save').click(() => {
+        $.ajax({
+          url: '/setting/updateUserInfo',
+          data: $('.changeinfo').serialize(),
+          type: 'POST',
+          cache: false,
+          dataType: 'json',
+          success: function (info) {
+            console.log(info)
+            if (!info.status) {
+              $('.msg-error').text(info.msg)
+              fade('.msg-error')
+            } else {
+              $('.msg-success').text(info.msg)
+              fade('.msg-success')
+              setInterval(() => {
+                window.location.reload()
+              }, 1000)
+            }
+          },
+          error: function (e) {
+            console.log(e)
+          }
+        })
+      })
+    })
+  </script>
+{% endblock %}

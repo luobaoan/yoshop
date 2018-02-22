@@ -1,0 +1,76 @@
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>博客站</title>
+    <link rel="stylesheet" href="/css/public.css">
+  </head>
+
+  <body>
+    <div class="container account">
+      <div class="msg-error message"></div>
+      <div class="msg-success message"></div>
+      <form class="form signup" method="post">
+        <h1 class="form-title">注册</h1>
+        <div class="form-item">
+          <label>用户名：</label>
+          <input type="text" name="account" placeholder="用户名">
+        </div>
+        <div class="form-item">
+          <label>密码：</label>
+          <input type="password" name="password" class="password">
+        </div>
+        <div class="form-item">
+          <label>重复密码：</label>
+          <input type="password" name="repeatpass" class="repeatpass">
+        </div>
+        <button type="button" class="btn-submit">注册</button>
+      </form>
+    </div>
+    <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/public.js"></script>
+    <script type="text/javascript">
+      $(function () {
+        $('.repeatpass').bind('keyup', function (event) {
+          if (event.keyCode == "13") {
+            //回车执行提交
+            $('.btn-submit').click();
+          }
+        });
+        $('.btn-submit').click(() => {
+          // console.log($('.form').serialize())
+          $.ajax({
+            url: '/register',
+            data: $('.form').serialize(),
+            type: 'POST',
+            cache: false,
+            dataType: 'json',
+            success: function (info) {
+              console.log(info.msg)
+              if (info.status == '1') {
+                $('.msg-error').text(info.msg)
+                $('input').val('')
+                fade('.msg-error')
+              } else if (info.status == '2') {
+                $('.msg-error').text(info.msg)
+                fade('.msg-error')
+              } else if (info.status == '3') {
+                $('.msg-success').text(info.msg)
+                fade('.msg-success');
+                setInterval(() => {
+                  window.location.href = '/signin'
+                }, 1000)
+              }
+            },
+            error: function (e) {
+              alert('异常')
+            }
+          })
+        })
+      })
+    </script>
+  </body>
+
+</html>

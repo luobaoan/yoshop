@@ -1,0 +1,64 @@
+{% extends "../../common/layout.html" %}
+{% block head %}
+  <link rel="stylesheet" href="/css/dictionary-goods.css">
+{% endblock %}
+{% block operate %}
+  <div class="rg-operate">
+    <a href="/dictionary/goods">
+      <i class="icon icon-check"></i>
+      <span>返回</span>
+    </a>
+  </div>
+{% endblock %}
+{% block body %}
+  <!-- tab 导航 -->
+  <ul class="tab-nav">
+    <li>
+      <a href="/dictionary/goods/base">基本信息</a>
+    </li>
+    <li>
+      <a href="/dictionary/goods/slideshow">轮播图</a>
+    </li>
+    <li>
+      <a href="/dictionary/goods/info">图文介绍</a>
+    </li>
+    <li class="active">
+      <a href="/dictionary/goods/specification">规格参数</a>
+    </li>
+  </ul>
+  <form class="params-form add-form">
+    <div class="form-item">
+      <label for="">适用年龄</label>
+      <input type="text" placeholder="如：12-36个月">
+    </div>
+    <div class="form-item">
+      <label for="">保质期</label>
+      <input type="text" placeholder="如：24个月">
+    </div>
+    <div class="form-item">
+      <label for="">包装</label>
+      <input type="text" placeholder="罐装/盒装/袋装">
+    </div>
+    <div class="form-item">
+      <label for="">相关参数</label>
+      <input type="text" placeholder="如：1箱6罐">
+    </div>
+    <div class="form-item">
+      <label for="">规格</label>
+      <input type="text" placeholder="如：900g/罐">
+    </div>
+    <div class="form-item bottom40">
+      <label for="">净重量(g)</label>
+      <input type="text" placeholder=" 如：900">
+    </div>
+    <div class="form-item">
+      <button type="button" class="btn btn-save">保存</button>
+      <button type="button" class="btn btn-quit">取消</button>
+    </div>
+  </form>
+{% endblock %}
+{% block js %}
+  <script type="text/javascript">
+    $(function () {})
+  </script>
+{% endblock %}
