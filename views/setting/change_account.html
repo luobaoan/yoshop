@@ -8,9 +8,11 @@
     <div class="account">
       <a href="#"><img src="{{ session.avator }}" class="headimg"><span class="name">{{session.account}}</span></a>
     </div>
-    <div class="change"><a href="/signin">换个新账号登录</a></div>
+    <div class="change"><a href="/signin?mainid={{session.id}}" target="_self" >换个新账号登录</a></div>
   </div>
 {% endblock %}
 {% block js %}
-
+<script type="text/javascript">
+  $(function(){})
+</script>
 {% endblock %}

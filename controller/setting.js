@@ -94,5 +94,23 @@ module.exports = {
      let res = await AccountService.addLinkAccount(linkData)
      console.log(res)
      ctx.body = res
-   }
+   },
+   /**
+    * 切换关联账号
+    * main_account_id：主账号id 第一次登入的账号
+    * link_account_id:关联账号id  关联的账号
+    */
+    addLinkAccount: async(ctx,next)=>{
+      let params = ctx.request.query;
+      let linkData=[
+        params.mainId,
+        params.linkId
+      ]
+      // Step1 先登录新账号
+
+      // Step2 新增关联账号记录
+      let res = await SettingService.addLinkAccount(linkData)
+      console.log(res)
+      ctx.body = res
+    }
 }
