@@ -130,6 +130,8 @@ module.exports = (app) => {
   router.get('/setting/changepwd', SettingController.changepwd)
   // 跳转到 修改个人资料页
   router.get('/setting/changeinfo', SettingController.changeinfo)
+  // 跳转到 切换账号页
+  router.get('/setting/changeaccount', SettingController.changeaccount)
 
   // 获取个人资料
   router.get('/setting/findUserInfoByUID', AccountController.findUserInfoByUID)

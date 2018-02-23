@@ -92,5 +92,29 @@ module.exports = {
         }
       })
     return data;
-  }
+  },
+  /**
+   * 关联账号记录
+   * main_account_id：主账号id 第一次登入的账号
+   * link_account_id:关联账号id  关联的账号
+   */
+   addLinkAccount: async(linkData)=>{
+     let data;
+     await userModel.settingSql.insertLinkAccount(linkData)
+     .then(()=>{
+       data={
+         status:true,
+         data:{
+           type:'linkAccount'
+         },
+         msg:'关联成功'
+       }
+     }).catch(()=>{
+       data={
+         status:false,
+         msg:'请求失败，请稍后重试'
+       }
+     })
+     return data;
+   }
 }
