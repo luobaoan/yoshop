@@ -49,7 +49,7 @@ li {
 }
 
 .bottom20 {
-  margin-bottom: 20px;
+  margin-bottom: 20px !important;
 }
 
 .bottom40 {
@@ -70,10 +70,6 @@ input {
   font-size: 14px;
   border: 1px solid #ccc;
   vertical-align: middle;
-}
-
-/* border-radius: 4px; */
-
 }
 
 select {
@@ -275,6 +271,7 @@ header {
 
 .left-nav li {
   line-height: 36px;
+  margin-bottom: 1px;
 }
 
 .icon-order {
@@ -468,7 +465,7 @@ footer {
 .signin, .signup {
   display: block;
   position: absolute;
-  margin-top: -105px;
+  margin-top: -110px;
   left: 50%;
   margin-left: -160px;
   width: 320px;
@@ -476,12 +473,12 @@ footer {
 
 .signin {
   top: 35%;
-  height: 300px;
+  height: 306px;
 }
 
 .signup {
   top: 30%;
-  height: 384px;
+  height: 390px;
 }
 
 .form .form-title {
