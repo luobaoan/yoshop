@@ -31,7 +31,6 @@ module.exports = {
    */
   deleteDictionaryById: async (id) => {
     let data;
-    console.log(id)
     await userModel.dictionarySql.deleteDictionaryById(id)
       .then(() => {
         data = {
@@ -107,7 +106,7 @@ module.exports = {
       }).catch((err) => {
         data = {
           status: false,
-          msg: '更新失败，请稍后重试'
+          msg: '查询失败，请稍后重试'
         }
       })
     return data
@@ -179,5 +178,101 @@ module.exports = {
         }
       })
     return data;
+  },
+  /**
+   *  新增客户
+   *  code：客户编号
+   *  name：客户公司名称
+   *  contact：联系人
+   *  phone：联系电话/手机
+   *  address：地址
+   *  sort：排序
+   *  remark：备注
+   */
+  addCustomer: async (customer) => {
+    let data;
+    await userModel.dictionarySql.insertCustomer(customer)
+      .then(() => {
+        data = {
+          status: true,
+          msg: '增加成功'
+        }
+      }).catch(() => {
+        data = {
+          status: false,
+          msg: '新增失败，请稍后重试'
+        }
+      })
+    return data;
+  },
+  /**
+   * 通过 id删除客户记录
+   * id: 客户 id
+   */
+  deleteCustomerById: async (id) => {
+    let data;
+    await userModel.dictionarySql.deleteCustomerById(id)
+      .then(() => {
+        data = {
+          status: true,
+          msg: '删除成功'
+        }
+      }).catch(() => {
+        data = {
+          status: false,
+          msg: '删除失败，请稍后重试'
+        }
+      })
+    return data;
+  },
+  /**
+   * 通过 id 修改对应客户记录
+   *  code：客户编号
+   *  name：客户公司名称
+   *  contact：联系人
+   *  phone：联系电话/手机
+   *  address：地址
+   *  sort：排序
+   *  remark：备注
+   *  id: 客户 id
+   */
+  updateCustomerById: async (customer) => {
+    let data;
+    await userModel.dictionarySql.updateCustomerById(customer)
+      .then(() => {
+        data = {
+          status: true,
+          msg: '更新成功'
+        }
+      }).catch(() => {
+        data = {
+          status: false,
+          msg: '更新失败，请稍后重试'
+        }
+      })
+    return data;
+  },
+  /**
+   * 查询全部客户列表
+   */
+  findAllCustomers: async () => {
+    let data;
+    await userModel.dictionarySql.findAllCustomers()
+      .then((result) => {
+        let res = JSON.parse(JSON.stringify(result))
+        console.log(res)
+        data = {
+          status: true,
+          data: res,
+          msg: '全部客户列表'
+        }
+      }).catch((err) => {
+        data = {
+          status: false,
+          msg: '查询失败，请稍后重试'
+        }
+      })
+    return data
   }
+
 }

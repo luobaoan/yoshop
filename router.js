@@ -113,6 +113,16 @@ module.exports = (app) => {
   router.post('/dictionary/addField', DictionaryController.addField)
   // 通过 id 修改对应字段记录
   router.post('/dictionary/updateFieldById', DictionaryController.updateFieldById)
+
+  // 增加客户资料
+  router.post('/dictionary/addCustomer', DictionaryController.addCustomer)
+  // 通过客户 id 删除记录
+  router.post('/dictionary/deleteCustomerById', DictionaryController.deleteCustomerById)
+  // 通过 id 修改对应客户记录
+  router.post('/dictionary/updateCustomerById', DictionaryController.updateCustomerById)
+  // 查询全部客户列表
+  router.get('/dictionary/findAllCustomers', DictionaryController.findAllCustomers)
+
   /*-------------基础资料结束-----------*/
   /*-------------账户设置开始-----------*/
 
