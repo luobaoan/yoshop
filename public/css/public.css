@@ -151,10 +151,13 @@ textarea {
 }
 
 .icon-add {
-  width: 24px;
-  height: 24px;
   background-size: 100%;
   background-image: url('/img/icon-add.png');
+}
+
+.icon-back {
+  background-size: 100%;
+  background-image: url('/img/icon-back.png');
 }
 
 .icon-close {
@@ -339,6 +342,8 @@ header {
 }
 
 .rg-operate .icon {
+  width: 24px;
+  height: 24px;
   margin-top: -4px;
   vertical-align: middle;
   margin-right: 4px;
