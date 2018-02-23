@@ -24,6 +24,15 @@ module.exports = {
       pageclass: 'change-info'
     })
   },
+  // 跳转到切换账号页
+  changeaccount: async (ctx, next) => {
+    await ctx.render('setting/change_account', {
+      session: ctx.session,
+      title: "切换账号",
+      pagename: 'change-account',
+      pageclass: 'change-account'
+    })
+  },
   /**
    * 修改密码接口
    * uid：用户 id
@@ -70,6 +79,20 @@ module.exports = {
       ctx.session.username = user.username
     }
     ctx.body = res
-  }
-
+  },
+  /**
+   * 增加关联账号记录
+   * main_account_id：主账号id 第一次登入的账号
+   * link_account_id:关联账号id  关联的账号
+   */
+   addLinkAccount: async(ctx,next)=>{
+     let params = ctx.request.query;
+     let linkData=[
+       params.mainId,
+       params.linkId
+     ]
+     let res = await AccountService.addLinkAccount(linkData)
+     console.log(res)
+     ctx.body = res
+   }
 }
