@@ -151,15 +151,23 @@ textarea {
 }
 
 .icon-add {
+<<<<<<< HEAD
+=======
+  width: 24px;
+  height: 24px;
+>>>>>>> 5c7ae127185c4c3a6e33dce410d0f9113e49d29b
   background-size: 100%;
   background-image: url('/img/icon-add.png');
 }
 
+<<<<<<< HEAD
 .icon-back {
   background-size: 100%;
   background-image: url('/img/icon-back.png');
 }
 
+=======
+>>>>>>> 5c7ae127185c4c3a6e33dce410d0f9113e49d29b
 .icon-close {
   width: 28px;
   height: 28px;
@@ -342,8 +350,11 @@ header {
 }
 
 .rg-operate .icon {
+<<<<<<< HEAD
   width: 24px;
   height: 24px;
+=======
+>>>>>>> 5c7ae127185c4c3a6e33dce410d0f9113e49d29b
   margin-top: -4px;
   vertical-align: middle;
   margin-right: 4px;

@@ -178,5 +178,73 @@ module.exports = {
     ]
     let result = await DictionaryService.updateFieldById(field)
     ctx.body = result
+  },
+  /**
+   *  新增客户
+   *  code：客户编号
+   *  name：客户公司名称
+   *  contact：联系人
+   *  phone：联系电话/手机
+   *  address：地址
+   *  sort：排序
+   *  remark：备注
+   */
+  addCustomer: async (ctx, next) => {
+    let params = ctx.request.body;
+    let customer = [
+      params.code,
+      params.name,
+      params.contact,
+      params.phone,
+      params.address,
+      params.sort,
+      params.remark
+    ]
+    let result = await DictionaryService.addCustomer(customer)
+    ctx.body = result
+  },
+  /**
+   * 通过 id删除客户记录
+   * id: 客户 id
+   */
+  deleteCustomerById: async (ctx, next) => {
+    let params = ctx.request.body;
+    let id = params.id;
+    let result = await DictionaryService.deleteCustomerById(id)
+    console.log(result)
+    ctx.body = result
+  },
+  /**
+   * 通过 id 修改对应客户记录
+   *  code：客户编号
+   *  name：客户公司名称
+   *  contact：联系人
+   *  phone：联系电话/手机
+   *  address：地址
+   *  sort：排序
+   *  remark：备注
+   *  id: 客户 id
+   */
+  updateCustomerById: async (ctx, next) => {
+    let params = ctx.request.body;
+    let customer = [
+      params.code,
+      params.name,
+      params.contact,
+      params.phone,
+      params.address,
+      params.sort,
+      params.remark,
+      params.id
+    ]
+    let result = await DictionaryService.updateCustomerById(customer)
+    ctx.body = result
+  },
+  /**
+   * 查询全部客户列表
+   */
+  findAllCustomers: async (ctx, next) => {
+    let result = await DictionaryService.findAllCustomers()
+    ctx.body = result
   }
 }

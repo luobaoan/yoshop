@@ -4,45 +4,53 @@
 {% endblock %}
 {% block operate %}
   <div class="rg-operate">
-    <i class="icon icon-check"></i>
+    <i class="icon icon-add"></i>
     <span>新建客户</span>
   </div>
 {% endblock %}
 {% block body %}
+  <!-- 删除确认框 -->
+  <div class="confirm" type="">
+    <i class="icon icon-close delete-quit"></i>
+    <p>是否确认删除该条记录？</p>
+    <button type="button" class="delete-confirm btn btn-save">确认</button>
+    <button type="button" class="delete-quit btn btn-quit">取消</button>
+  </div>
   <!-- 新建客户 -->
   <form class="customer-form add-form">
     <div class="form-title">
-      <span class="title-name">新建客户</span>
+      <span class="title-name" type="">新建客户</span>
       <i class="icon icon-close customer-quit"></i>
     </div>
     <div class="form-content">
       <div class="form-item">
         <label for="">客户编号</label>
-        <input type="text" readonly="readonly" disabled="disabled" value="KH0001">
+        <input type="hidden" id="customerId" name="id" value="">
+        <input type="text" id="customerCode" name="code" placeholder="请输入客户编号（如：KH001）">
       </div>
       <div class="form-item">
         <label for="">客户名称</label>
-        <input type="text" placeholder="请输入客户名称">
+        <input type="text" id="customerName" name="name" placeholder="请输入客户名称">
       </div>
       <div class="form-item">
         <label for="">联系人</label>
-        <input type="text" placeholder="请输入联系人">
+        <input type="text" id="customerContact" name="contact" placeholder="请输入联系人">
       </div>
       <div class="form-item">
         <label for="">联系电话</label>
-        <input type="text" placeholder="请输入联系电话">
+        <input type="text" id="customerPhone" name="phone" placeholder="请输入联系电话">
       </div>
       <div class="form-item">
         <label for="">地址</label>
-        <input type="text" placeholder="请输入地址">
+        <input type="text" id="customerAddress" name="address" placeholder="请输入地址">
       </div>
       <div class="form-item">
         <label for="">排序</label>
-        <input type="text" placeholder="请输入排序数字">
+        <input type="text" id="customerSort" name="sort" placeholder="请输入排序数字">
       </div>
       <div class="form-item bottom40">
         <label for="">备注</label>
-        <input type="text" placeholder="请输入备注">
+        <input type="text" id="customerRemark" name="remark" placeholder="请输入备注">
       </div>
       <div class="form-item">
         <button type="button" class="customer-save btn btn-save">保存</button>
@@ -61,54 +69,13 @@
         <th>联系电话</th>
         <th>地址</th>
         <th>排序</th>
+        <th>备注</th>
         <th>操作</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>KH0001</td>
-        <td>店子镇商超</td>
-        <td>张三</td>
-        <td>13729182712</td>
-        <td>店子镇</td>
-        <td>1</td>
-        <td class="operate">
-          <p class="edit">编辑</p>
-          <p class="color-red delete">删除</p>
-        </td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>KH0002</td>
-        <td>梁堂乡商超</td>
-        <td>李四</td>
-        <td>13729182712</td>
-        <td>梁堂乡</td>
-        <td>1</td>
-        <td class="operate">
-          <p class="edit">编辑</p>
-          <p class="color-red delete">删除</p>
-        </td>
-      </tr>
-    </tbody>
+    <tbody></tbody>
   </table>
 {% endblock %}
 {% block js %}
-  <script type="text/javascript">
-    $(function () {
-      // 增加分类
-      $('.rg-operate').click(() => {
-        showOverlay()
-        $('.customer-form').show();
-      })
-      // 关闭【增加分类】弹出层
-      $('.customer-quit').click(() => {
-        hideOverlay()
-        $('.customer-form').hide();
-        $('.customer-form')[0].reset();
-      })
-
-    })
-  </script>
+  <script type="text/javascript" src="/js/dictionary_customer.js"></script>
 {% endblock %}
