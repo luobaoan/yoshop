@@ -74,9 +74,14 @@ module.exports = {
             status: '1',
             msg: '用户已存在'
           }
-        } else if (user.password !== user.repeatpass || user.password == '') {
+        } else if (user.password == ''){
           data = {
             status: '2',
+            msg: '密码输入不能为空'
+          }
+        } else if (user.password !== user.repeatpass) {
+          data = {
+            status: '3',
             msg: '两次密码输入不一致'
           }
         } else {
@@ -92,7 +97,7 @@ module.exports = {
               userModel.accountSql.insertUser([uid])
             })
           data = {
-            status: '3',
+            status: '4',
             msg: '用户注册成功'
           }
         }
