@@ -25,15 +25,12 @@ module.exports = {
   // 跳转到登录
   signin: async (ctx, next) => {
     await ctx.render('account/signin', {
-      session: ctx.session,
       mainid: ctx.request.query.mainid
     })
   },
   // 跳转注册
   signup: async (ctx, next) => {
-    await ctx.render('account/signup', {
-      session: ctx.session
-    })
+    await ctx.render('account/signup', {})
   },
   // 退出账户
   signout: async (ctx, next) => {
