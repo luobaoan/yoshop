@@ -146,6 +146,21 @@ module.exports = {
       avator: res.data.avator
     }
     ctx.body = res
+  },
+  /**
+   * 删除关联账号
+   * main_account_id：主账号id 第一次登入的账号
+   * link_account_id:关联账号id  关联的账号
+   */
+  deleteLinkAccount: async (ctx, next) => {
+    let params = ctx.request.body;
+    let linkAccount = [
+      params.mainId,
+      params.linkId
+    ]
+    let res = await SettingService.deleteLinkAccount(linkAccount)
+    console.log(res)
+    ctx.body = res
   }
 
 }

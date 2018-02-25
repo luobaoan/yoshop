@@ -167,5 +167,26 @@ module.exports = {
         }
       })
     return data;
+  },
+  /**
+   * 删除关联账号
+   * main_account_id：主账号id 第一次登入的账号
+   * link_account_id:关联账号id  关联的账号
+   */
+  deleteLinkAccount: async (linkAccount) => {
+    let data;
+    await userModel.settingSql.deleteLinkAccount(linkAccount)
+      .then(() => {
+        data = {
+          status: true,
+          msg: '删除成功'
+        }
+      }).catch(() => {
+        data = {
+          status: false,
+          msg: '请求失败，请稍后重试'
+        }
+      })
+    return data;
   }
 }

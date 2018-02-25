@@ -3,15 +3,24 @@
   <link rel="stylesheet" href="/css/setting.css">
 {% endblock %}
 {% block body %}
+  <!-- 删除确认框 -->
+  <div class="confirm" type="">
+    <i class="icon icon-close delete-quit"></i>
+    <p>是否确认删除该条记录？</p>
+    <button type="button" class="delete-confirm btn btn-save">确认</button>
+    <button type="button" class="delete-quit btn btn-quit">取消</button>
+  </div>
   <div class="warp">
     <div class="hasaccount">已有账号</div>
-    <div class="account">
-      <p>
-        <img src="{{session.avator}}" class="headimg">
-        <span class="name">{{session.username}}</span>
-        <span class="color-red">(当前账号)</span>
-      </p>
-    </div>
+    <ul class="account">
+      <li>
+        <p>
+          <img src="{{session.avator}}" class="headimg">
+          <span class="name">{{session.username}}</span>
+          <span class="color-red">(当前账号)</span>
+        </p>
+      </li>
+    </ul>
     <div class="change">
       <a href="/signin?mainid={{session.id}}" target="_self">换个新账号登录</a>
     </div>
@@ -19,7 +28,22 @@
 {% endblock %}
 {% block js %}
   <script type="text/javascript">
+    // 当前关联账号 id
+    let linkId;
     $(function () {
+      findLinkAccount();
+      // 关闭【删除确认】弹出层
+      $('.delete-quit').click(() => {
+        hideOverlay()
+        $('.confirm').hide();
+      })
+      // 【确认】删除所选字典记录
+      $('.delete-confirm').click(function () {
+        deleteLinkAccount()
+      })
+    })
+    // 查询关联账号列表
+    function findLinkAccount() {
       $.ajax({
         url: '/setting/findLinkAccountByMainId',
         data: {
@@ -35,18 +59,28 @@
             let data = info.data;
             let str = '';
             for (let i = 0; i < data.length; i++) {
-              str += '<p class="link-account"  linkid="' + data[i].id + '">';
+              str += '<li linkid="' + data[i].id + '">';
+              str += '<p class="link-account">';
               str += '<img src="' + data[i].avator + '" class="headimg">';
               str += '<span class="name">' + data[i].username + '</span>';
               str += '</p>';
+              str += '<p class="color-red delete fr">删除</p>'
+              str += '</li>';
             }
             // $('.warp .account').empty()
             $('.warp .account').append(str)
 
             $('.link-account').click(function () {
-              let linkId = $(this).attr('linkid')
+              linkId = $(this).parent().attr('linkid')
               console.log(linkId)
               linkAccountLogin(linkId)
+            })
+
+            // 删除关联账号
+            $('.delete').click(function () {
+              linkId = $(this).parent().attr('linkid')
+              showOverlay()
+              $('.confirm').show();
             })
           }
         },
@@ -54,7 +88,38 @@
           console.log(e)
         }
       })
-    })
+    }
+    // 删除关联账号
+    function deleteLinkAccount() {
+      console.log(linkId)
+      $.ajax({
+        url: '/setting/deleteLinkAccount',
+        data: {
+          mainId: {{session.id}},
+          linkId: linkId
+        },
+        type: 'POST',
+        cache: false,
+        dataType: 'json',
+        success: function (info) {
+          if (!info.status) {
+            $('.msg-error').text(info.msg)
+            fade('.msg-error')
+          } else {
+            hideOverlay()
+            $('.confirm').hide();
+            $('.msg-success').text(info.msg)
+            fade('.msg-success')
+            setInterval(() => {
+              window.location.reload()
+            }, 1000)
+          }
+        },
+        error: function (e) {
+          console.log(e)
+        }
+      })
+    }
     // 关联账号登录
     function linkAccountLogin(linkId) {
       $.ajax({

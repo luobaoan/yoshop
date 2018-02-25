@@ -17,8 +17,6 @@
 }
 
 .btn-save {
-  float: left;
-  margin-left: 70px;
   color: #fff;
   border: 1px solid #44B549;
   background-color: #44B549;
@@ -26,8 +24,15 @@
 
 .btn-quit {
   color: #666666;
-  margin-left: 100px;
   border: 1px solid #999999;
+}
+
+form .btn-save {
+  margin-left: 70px;
+}
+
+form .btn-quit {
+  margin-left: 100px;
 }
 
 /* 修改密码结束 */
@@ -64,31 +69,70 @@
 }
 
 .account {
-  padding: 10px;
+  padding: 0 10px 10px;
   border-bottom: 1px solid #ddd;
   background-color: #fff;
 }
 
-.account p {
-  padding-top: 10px;
-  padding-bottom: 6px;
+.account li {
   border-bottom: 1px solid #ddd;
   width: 100%;
+}
+
+.account p {
+  display: inline-block;
+  padding-top: 10px;
+  padding-bottom: 6px;
   cursor: pointer;
 }
 
-.headimg {
+.account .headimg {
   width: 30px;
   vertical-align: middle;
 }
 
-.name {
+.account .name {
   margin-left: 10px;
   margin-right: 6px;
 }
 
+.account .delete {
+  margin-top: 4px;
+  margin-right: 10px;
+}
+
 .change {
   padding: 10px;
+}
+
+.confirm {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 100px;
+  margin-top: -160px;
+  margin-left: -190px;
+  padding: 30px 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  z-index: 101;
+}
+
+.confirm .icon-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.confirm p {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.confirm .btn-save {
+  margin-right: 40px;
 }
 
 /* 切换账号结束 */

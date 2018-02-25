@@ -143,6 +143,8 @@ module.exports = (app) => {
   router.post('/setting/findLinkAccountByMainId', SettingController.findLinkAccountByMainId)
   // 关联账号免密登录
   router.post('/setting/linkAccountLogin', SettingController.linkAccountLogin)
+  // 删除关联账号
+  router.post('/setting/deleteLinkAccount', SettingController.deleteLinkAccount)
   /*-------------账户设置结束-----------*/
 
   app.use(router.routes())
