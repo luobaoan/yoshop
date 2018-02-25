@@ -4,7 +4,9 @@ const userModel = require('../lib/mysql')
 const md5 = require('md5')
 
 module.exports = {
-  // 用户登录
+  /**
+   *  用户登录
+   */
   login: async (account, password) => {
     let data,
       accountInfo,
@@ -64,7 +66,52 @@ module.exports = {
     }
     return data;
   },
-  // 用户注册
+  /**
+   * 关联账号登录
+   * linkId:关联账号 id
+   */
+  linkAccountLogin: async (linkId) => {
+    let data, res, username, avator;
+    await userModel.accountSql.findAccountById(linkId)
+      .then(result => {
+        res = JSON.parse(JSON.stringify(result))
+      }).catch(() => {
+        data = {
+          status: false,
+          msg: '请求失败，请稍后重试'
+        }
+      })
+
+    if (res.length > 0) {
+      await userModel.accountSql.findUserInfoByUID(linkId)
+        .then(info => {
+          let userInfo = JSON.parse(JSON.stringify(info))
+          // 获取用户的 名称和头像
+          username = userInfo[0]['username']
+          avator = userInfo[0]['avator']
+        })
+      // 存在该账户
+      data = {
+        status: true,
+        data: {
+          id: linkId,
+          username: username,
+          avator: avator
+        },
+        msg: '切换账号成功'
+      }
+    } else {
+      // 不存在该账户
+      data = {
+        status: false,
+        msg: '不存在该账户'
+      }
+    }
+    return data;
+  },
+  /**
+   * 用户注册
+   */
   register: async (user) => {
     let data;
     await userModel.accountSql.findAccountByAccount(user.account)
@@ -74,7 +121,7 @@ module.exports = {
             status: '1',
             msg: '用户已存在'
           }
-        } else if (user.password == ''){
+        } else if (user.password == '') {
           data = {
             status: '2',
             msg: '密码输入不能为空'

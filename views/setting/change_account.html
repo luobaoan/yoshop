@@ -6,11 +6,11 @@
   <div class="warp">
     <div class="hasaccount">已有账号</div>
     <div class="account">
-      <a href="/linkAccountLogin?id=">
+      <p>
         <img src="{{session.avator}}" class="headimg">
         <span class="name">{{session.username}}</span>
         <span class="color-red">(当前账号)</span>
-      </a>
+      </p>
     </div>
     <div class="change">
       <a href="/signin?mainid={{session.id}}" target="_self">换个新账号登录</a>
@@ -35,13 +35,19 @@
             let data = info.data;
             let str = '';
             for (let i = 0; i < data.length; i++) {
-              str += '<a href="/linkAccountLogin?id=">';
+              str += '<p class="link-account"  linkid="' + data[i].id + '">';
               str += '<img src="' + data[i].avator + '" class="headimg">';
               str += '<span class="name">' + data[i].username + '</span>';
-              str += '</a>';
+              str += '</p>';
             }
             // $('.warp .account').empty()
             $('.warp .account').append(str)
+
+            $('.link-account').click(function () {
+              let linkId = $(this).attr('linkid')
+              console.log(linkId)
+              linkAccountLogin(linkId)
+            })
           }
         },
         error: function (e) {
@@ -49,5 +55,33 @@
         }
       })
     })
+    // 关联账号登录
+    function linkAccountLogin(linkId) {
+      $.ajax({
+        url: '/setting/linkAccountLogin',
+        data: {
+          linkId: linkId
+        },
+        type: 'POST',
+        cache: false,
+        dataType: 'json',
+        success: function (info) {
+          if (!info.status) {
+            $('.msg-error').text(info.msg)
+            fade('.msg-error')
+          } else {
+            $('.msg-success').text(info.msg)
+            fade('.msg-success')
+            setInterval(() => {
+              window.location.reload()
+            }, 1000)
+          }
+        },
+        error: function (e) {
+          console.log(e)
+        }
+      })
+
+    }
   </script>
 {% endblock %}

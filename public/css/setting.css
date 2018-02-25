@@ -69,12 +69,12 @@
   background-color: #fff;
 }
 
-.account a {
-  display: block;
+.account p {
   padding-top: 10px;
   padding-bottom: 6px;
   border-bottom: 1px solid #ddd;
   width: 100%;
+  cursor: pointer;
 }
 
 .headimg {

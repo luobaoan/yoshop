@@ -141,6 +141,8 @@ module.exports = (app) => {
   router.post('/setting/updateUserInfo', SettingController.updateUserInfo)
   // 获取关联账号列表
   router.post('/setting/findLinkAccountByMainId', SettingController.findLinkAccountByMainId)
+  // 关联账号免密登录
+  router.post('/setting/linkAccountLogin', SettingController.linkAccountLogin)
   /*-------------账户设置结束-----------*/
 
   app.use(router.routes())

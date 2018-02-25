@@ -132,5 +132,20 @@ module.exports = {
 
     ctx.body = list
   },
+  /**
+   * 关联账号免密登录
+   * linkId：关联账号 id
+   */
+  linkAccountLogin: async (ctx, next) => {
+    let linkId = ctx.request.body.linkId;
+    let res = await AccountService.linkAccountLogin(linkId)
+    // 切换 session
+    ctx.session = {
+      id: res.data.id,
+      username: res.data.username,
+      avator: res.data.avator
+    }
+    ctx.body = res
+  }
 
 }

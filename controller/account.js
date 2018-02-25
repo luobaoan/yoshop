@@ -67,13 +67,10 @@ module.exports = {
     /**
      *  关联登录，需要判断是否插入关联账户成功
      */
-
     if (mainId && mainId != linkId) {
       let linkData = [mainId, linkId]
-      console.log(linkData)
       // 此处还需要优化，比如linkId已经在数据库中存在了，不可重复插入，稍后优化
       let flag = await SettingService.findLinkAccount(linkData)
-      console.log(flag);
       let linkRes;
       if (!flag.status) {
         // 未曾关联过
