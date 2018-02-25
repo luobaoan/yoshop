@@ -46,7 +46,7 @@
             cache: false,
             dataType: 'json',
             success: function (info) {
-              console.log(info)
+              console.log(info.status)
               if (!info.status) {
                 $('.msg-error').text(info.msg)
                 fade('.msg-error')
