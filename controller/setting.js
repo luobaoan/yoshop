@@ -3,6 +3,7 @@
  * 修改密码、修改个人资料
  */
 
+const AccountService = require('../service/account')
 const SettingService = require('../service/setting')
 
 module.exports = {
@@ -73,7 +74,7 @@ module.exports = {
       uid: params.uid
     }
     let res = await SettingService.updateUserInfo(user)
-    console.log(res)
+    // console.log(res)
     // 更新个人资料成功，同时更新 session 的名称
     if (res.status) {
       ctx.session.username = user.username
@@ -85,32 +86,51 @@ module.exports = {
    * main_account_id：主账号id 第一次登入的账号
    * link_account_id:关联账号id  关联的账号
    */
-   addLinkAccount: async(ctx,next)=>{
-     let params = ctx.request.query;
-     let linkData=[
-       params.mainId,
-       params.linkId
-     ]
-     let res = await AccountService.addLinkAccount(linkData)
-     console.log(res)
-     ctx.body = res
-   },
-   /**
-    * 切换关联账号
-    * main_account_id：主账号id 第一次登入的账号
-    * link_account_id:关联账号id  关联的账号
-    */
-    addLinkAccount: async(ctx,next)=>{
-      let params = ctx.request.query;
-      let linkData=[
-        params.mainId,
-        params.linkId
-      ]
-      // Step1 先登录新账号
-
-      // Step2 新增关联账号记录
-      let res = await SettingService.addLinkAccount(linkData)
-      console.log(res)
-      ctx.body = res
+  addLinkAccount: async (ctx, next) => {
+    let params = ctx.request.query;
+    let linkData = [
+      params.mainId,
+      params.linkId
+    ]
+    let res = await AccountService.addLinkAccount(linkData)
+    // console.log(res)
+    ctx.body = res
+  },
+  /**
+   * 根据主账号查询关联账号
+   * mainId：主账号id
+   */
+  findLinkAccountByMainId: async (ctx, next) => {
+    let mainId = ctx.request.body.mainId;
+    // console.log("mainId:" + mainId)
+    let res = await SettingService.findLinkAccountByMainId(mainId)
+    // console.log(res)
+    // 返回关联账户列表
+    let list = {
+      status: true,
+      data: [],
+      msg: '关联账户列表'
     }
+    if (res.status) {
+      // 有关联记录
+      let info = res.data;
+
+      for (let i = 0; i < info.length; i++) {
+        let linkId = info[i].link_account_id;
+        // console.log(linkId)
+        // 通过 uid 查询个人资料
+        let userInfo = await AccountService.findUserInfoByUID(linkId)
+        // console.log(userInfo.data.username)
+        // 获取账户的 username、avator
+        let currInfo = {}
+        currInfo.id = linkId
+        currInfo.username = userInfo.data.username
+        currInfo.avator = userInfo.data.avator
+        list.data[i] = currInfo
+      }
+    }
+
+    ctx.body = list
+  },
+
 }

@@ -6,13 +6,48 @@
   <div class="warp">
     <div class="hasaccount">已有账号</div>
     <div class="account">
-      <a href="#"><img src="{{ session.avator }}" class="headimg"><span class="name">{{session.account}}</span></a>
+      <a href="/linkAccountLogin?id=">
+        <img src="{{session.avator}}" class="headimg">
+        <span class="name">{{session.username}}</span>
+        <span class="color-red">(当前账号)</span>
+      </a>
     </div>
-    <div class="change"><a href="/signin?mainid={{session.id}}" target="_self" >换个新账号登录</a></div>
+    <div class="change">
+      <a href="/signin?mainid={{session.id}}" target="_self">换个新账号登录</a>
+    </div>
   </div>
 {% endblock %}
 {% block js %}
-<script type="text/javascript">
-  $(function(){})
-</script>
+  <script type="text/javascript">
+    $(function () {
+      $.ajax({
+        url: '/setting/findLinkAccountByMainId',
+        data: {
+          mainId: {{session.id}}
+        },
+        type: 'POST',
+        cache: false,
+        dataType: 'json',
+        success: function (info) {
+          console.log(info)
+          if (info.status) {
+            // 铺数据
+            let data = info.data;
+            let str = '';
+            for (let i = 0; i < data.length; i++) {
+              str += '<a href="/linkAccountLogin?id=">';
+              str += '<img src="' + data[i].avator + '" class="headimg">';
+              str += '<span class="name">' + data[i].username + '</span>';
+              str += '</a>';
+            }
+            // $('.warp .account').empty()
+            $('.warp .account').append(str)
+          }
+        },
+        error: function (e) {
+          console.log(e)
+        }
+      })
+    })
+  </script>
 {% endblock %}

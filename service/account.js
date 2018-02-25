@@ -12,6 +12,15 @@ module.exports = {
       uid,
       username,
       avator;
+
+    if (!account || !password) {
+      data = {
+        status: false,
+        msg: '用户名或密码不能空'
+      }
+      return data;
+    }
+
     // 查找用户名存在与否
     await userModel.accountSql.findAccountByAccount(account)
       .then(result => {
@@ -30,15 +39,8 @@ module.exports = {
           username = userInfo[0]['username']
           avator = userInfo[0]['avator']
         })
-      // 验证账户和密码
-      if (account != accountInfo[0]['account'] && md5(account + password) != accountInfo[0]['password']) {
-        data = {
-          status: false,
-          msg: '用户名或密码错误'
-        }
-        console.log('用户名或密码错误！')
-
-      } else {
+      // 验证密码
+      if (md5(account + password) == accountInfo[0]['password']) {
         data = {
           status: true,
           data: {
@@ -48,16 +50,18 @@ module.exports = {
           },
           msg: '登录成功'
         }
-        console.log('登录成功')
+      } else {
+        data = {
+          status: false,
+          msg: '密码错误'
+        }
       }
     } else {
       data = {
         status: false,
         msg: '用户不存在'
       }
-      console.log('用户不存在')
     }
-    console.log(data);
     return data;
   },
   // 用户注册
@@ -83,7 +87,7 @@ module.exports = {
             .then(result => {
               let res = JSON.parse(JSON.stringify(result))
               uid = res[0]['id'];
-              console.log("UID:" + uid)
+              // console.log("UID:" + uid)
               // 生成用户个人资料
               userModel.accountSql.insertUser([uid])
             })

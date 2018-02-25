@@ -17,7 +17,7 @@
         <div class="form-item">
           <label for="">
             用户名：</label>
-            <input type="hidden" name="mainid" value="{{mainid}}">
+          <input type="hidden" name="mainid" value="{{mainid}}">
           <input type="text" placeholder="用户名" name="account">
         </div>
         <div class="form-item bottom20">
@@ -55,15 +55,15 @@
                 fade('.msg-success')
                 // 判断是正常登录还是关联账号登录
                 console.log(info.data.type)
-                if(!info.data.type){
+                if (!info.data.type) {
                   //正常登录
                   setInterval(() => {
                     window.location.href = "/orders/new"
                   }, 1000)
-                }else{
+                } else {
                   // 关联账号登录
                   setInterval(() => {
-                    // window.location.href = "/setting/changeaccount"
+                    window.location.href = "/setting/changeaccount"
                   }, 1000)
                 }
 
