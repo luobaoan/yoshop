@@ -139,7 +139,8 @@ module.exports = (app) => {
   router.post('/setting/updatePwd', SettingController.updatePwd)
   // 更新个人资料
   router.post('/setting/updateUserInfo', SettingController.updateUserInfo)
-
+  // 获取关联账号列表
+  router.post('/setting/findLinkAccountByMainId', SettingController.findLinkAccountByMainId)
   /*-------------账户设置结束-----------*/
 
   app.use(router.routes())

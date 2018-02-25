@@ -98,23 +98,74 @@ module.exports = {
    * main_account_id：主账号id 第一次登入的账号
    * link_account_id:关联账号id  关联的账号
    */
-   addLinkAccount: async(linkData)=>{
-     let data;
-     await userModel.settingSql.insertLinkAccount(linkData)
-     .then(()=>{
-       data={
-         status:true,
-         data:{
-           type:'linkAccount'
-         },
-         msg:'关联成功'
-       }
-     }).catch(()=>{
-       data={
-         status:false,
-         msg:'请求失败，请稍后重试'
-       }
-     })
-     return data;
-   }
+  addLinkAccount: async (linkData) => {
+    let data;
+    await userModel.settingSql.insertLinkAccount(linkData)
+      .then(() => {
+        data = {
+          status: true,
+          data: {
+            type: 'linkAccount'
+          },
+          msg: '关联成功'
+        }
+      }).catch(() => {
+        data = {
+          status: false,
+          msg: '关联请求失败，请稍后重试'
+        }
+      })
+    return data;
+  },
+  /**
+   * 查询是否有关联记录
+   * main_account_id：主账号id 第一次登入的账号
+   * link_account_id:关联账号id  关联的账号
+   */
+  findLinkAccount: async (linkData) => {
+    let data;
+    await userModel.settingSql.findLinkAccount(linkData)
+      .then(result => {
+        let res = JSON.parse(JSON.stringify(result))
+        if (res.length > 0) {
+          data = {
+            status: true,
+            msg: '已有记录'
+          }
+        } else {
+          data = {
+            status: false,
+            msg: '没有记录'
+          }
+        }
+      }).catch(() => {
+        data = {
+          status: false,
+          msg: '请求失败，请稍后重试'
+        }
+      })
+    return data;
+  },
+  /**
+   * 根据主账号查询关联账号
+   * mainId：主账号 id
+   */
+  findLinkAccountByMainId: async (mainId) => {
+    let data;
+    await userModel.settingSql.findLinkAccountByMainId(mainId)
+      .then(result => {
+        let res = JSON.parse(JSON.stringify(result))
+        data = {
+          status: true,
+          data: res,
+          msg: '关联列表记录'
+        }
+      }).catch(() => {
+        data = {
+          status: false,
+          msg: '没有关联记录'
+        }
+      })
+    return data;
+  }
 }

@@ -1,8 +1,9 @@
-.warp{
+.warp {
   height: 100%;
   background-color: #f3f3f3;
   border: 1px solid #f3f3f3;
 }
+
 /* 修改密码开始 */
 
 .form-item label {
@@ -57,30 +58,37 @@
 /* 修改个人资料结束 */
 
 /* 切换账号开始 */
-.hasaccount{
+
+.hasaccount {
   padding: 10px;
 }
 
-.account{
+.account {
   padding: 10px;
   border-bottom: 1px solid #ddd;
   background-color: #fff;
 }
 
-.headimg{
+.account a {
+  display: block;
+  padding-top: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+}
+
+.headimg {
   width: 30px;
+  vertical-align: middle;
 }
 
-.name{
-  position: absolute;
-  height: 30px;
-  line-height: 30px;
+.name {
   margin-left: 10px;
+  margin-right: 6px;
 }
 
-.change{
+.change {
   padding: 10px;
-  margin-top: 15px;
-  background-color: #fff;
 }
+
 /* 切换账号结束 */
