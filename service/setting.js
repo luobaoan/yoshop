@@ -155,15 +155,23 @@ module.exports = {
     await userModel.settingSql.findLinkAccountByMainId(mainId)
       .then(result => {
         let res = JSON.parse(JSON.stringify(result))
-        data = {
-          status: true,
-          data: res,
-          msg: '关联列表记录'
+        if (res.length > 0) {
+          data = {
+            status: true,
+            data: res,
+            msg: '关联列表记录'
+          }
+        } else {
+          data = {
+            status: false,
+            msg: '没有关联记录'
+          }
         }
+
       }).catch(() => {
         data = {
           status: false,
-          msg: '没有关联记录'
+          msg: '请求失败，请稍后重试'
         }
       })
     return data;

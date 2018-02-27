@@ -66,7 +66,7 @@ module.exports = {
      */
     if (mainId && mainId != linkId) {
       let linkData = [mainId, linkId]
-      // 此处还需要优化，比如linkId已经在数据库中存在了，不可重复插入，稍后优化
+      // 判断是否已经有关联记录
       let flag = await SettingService.findLinkAccount(linkData)
       let linkRes;
       if (!flag.status) {
