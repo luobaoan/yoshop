@@ -25,7 +25,8 @@ module.exports = {
   // 跳转到登录
   signin: async (ctx, next) => {
     await ctx.render('account/signin', {
-      mainid: ctx.request.query.mainid
+      mainId: ctx.request.query.mainId,
+      lastId: ctx.request.query.lastId
     })
   },
   // 跳转注册
@@ -45,7 +46,9 @@ module.exports = {
     let params = ctx.request.body;
     let account = params.account;
     let password = params.password;
-    let mainId = params.mainid;
+    let mainId = params.mainId;
+    let lastId = params.lastId;
+
     // 反馈信息
     let bodyInfo;
 
@@ -56,6 +59,7 @@ module.exports = {
     if (res.status) {
       ctx.session = {
         id: res.data.uid,
+        mainId: res.data.mainId,
         username: res.data.username,
         avator: res.data.avator
       }
@@ -64,15 +68,32 @@ module.exports = {
     /**
      *  关联登录，需要判断是否插入关联账户成功
      */
-    if (mainId && mainId != linkId) {
+    if (mainId && mainId != linkId && lastId != linkId) {
       let linkData = [mainId, linkId]
       // 判断是否已经有关联记录
       let flag = await SettingService.findLinkAccount(linkData)
-      let linkRes;
+      console.log(flag)
+
       if (!flag.status) {
-        // 未曾关联过
-        linkRes = await SettingService.addLinkAccount(linkData)
-        bodyInfo = linkRes
+        // 未曾关联过，Step1增加关联记录
+        let linkRes = await SettingService.addLinkAccount(linkData)
+        // Step2 更新当前账号  main_id
+        let updateAccount = await AccountService.updateAccountMainId(linkData)
+
+        if (linkRes.status && updateAccount.status) {
+          bodyInfo = {
+            status: true,
+            data: {
+              type: 'linkAccount'
+            },
+            msg: '关联成功'
+          }
+        } else {
+          bodyInfo = {
+            status: false,
+            msg: '关联失败，请稍后重试'
+          }
+        }
       }
     }
     ctx.body = bodyInfo;

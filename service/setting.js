@@ -104,15 +104,12 @@ module.exports = {
       .then(() => {
         data = {
           status: true,
-          data: {
-            type: 'linkAccount'
-          },
           msg: '关联成功'
         }
       }).catch(() => {
         data = {
           status: false,
-          msg: '关联请求失败，请稍后重试'
+          msg: '增加关联记录失败'
         }
       })
     return data;

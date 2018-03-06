@@ -101,10 +101,10 @@ module.exports = {
    * mainId：主账号id
    */
   findLinkAccountByMainId: async (ctx, next) => {
+    let currId = ctx.request.body.currId;
     let mainId = ctx.request.body.mainId;
-    // console.log("mainId:" + mainId)
     let res = await SettingService.findLinkAccountByMainId(mainId)
-    // console.log(res)
+
     // 返回关联账户列表
     let list = {
       status: true,
@@ -117,19 +117,28 @@ module.exports = {
 
       for (let i = 0; i < info.length; i++) {
         let linkId = info[i].link_account_id;
-        // console.log(linkId)
         // 通过 uid 查询个人资料
         let userInfo = await AccountService.findUserInfoByUID(linkId)
-        // console.log(userInfo.data.username)
         // 获取账户的 username、avator
-        let currInfo = {}
-        currInfo.id = linkId
-        currInfo.username = userInfo.data.username
-        currInfo.avator = userInfo.data.avator
+        let currInfo = {
+          id: linkId,
+          username: userInfo.data.username,
+          avator: userInfo.data.avator,
+          type: 'link'
+        }
         list.data[i] = currInfo
-      }
-    }
 
+      }
+      // 添加主账号信息记录
+      let mainUser = await AccountService.findUserInfoByUID(mainId)
+      let mainInfo = {
+        id: mainId,
+        username: mainUser.data.username,
+        avator: mainUser.data.avator,
+        type: 'main'
+      }
+      list.data.unshift(mainInfo)
+    }
     ctx.body = list
   },
   /**
@@ -142,6 +151,7 @@ module.exports = {
     // 切换 session
     ctx.session = {
       id: res.data.id,
+      mainId: res.data.mainId,
       username: res.data.username,
       avator: res.data.avator
     }
@@ -159,8 +169,17 @@ module.exports = {
       params.linkId
     ]
     let res = await SettingService.deleteLinkAccount(linkAccount)
-    console.log(res)
-    ctx.body = res
+    // Step2 更新当前账号  main_id为空
+    let linkData = [null, params.linkId]
+    let updateAccount = await AccountService.updateAccountMainId(linkData)
+    if (res.status && updateAccount.status) {
+      ctx.body = res
+    } else {
+      ctx.body = {
+        status: false,
+        msg: "删除失败请稍后重试"
+      }
+    }
   }
 
 }

@@ -17,7 +17,8 @@
         <div class="form-item">
           <label for="">
             用户名：</label>
-          <input type="hidden" name="mainid" value="{{mainid}}">
+          <input type="hidden" name="mainId" value="{{mainId}}">
+          <input type="hidden" name="lastId" value="{{lastId}}">
           <input type="text" placeholder="用户名" name="account">
         </div>
         <div class="form-item bottom20">
@@ -38,7 +39,6 @@
           }
         });
         $('.btn-submit').click(() => {
-          console.log($('.form').serialize())
           $.ajax({
             url: '/login',
             data: $('.form').serialize(),

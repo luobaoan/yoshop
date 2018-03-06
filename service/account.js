@@ -47,6 +47,7 @@ module.exports = {
           status: true,
           data: {
             uid: uid,
+            mainId: accountInfo[0]['main_id'],
             username: username,
             avator: avator
           },
@@ -74,7 +75,7 @@ module.exports = {
     let data, res, username, avator;
     await userModel.accountSql.findAccountById(linkId)
       .then(result => {
-        res = JSON.parse(JSON.stringify(result))
+        accountInfo = JSON.parse(JSON.stringify(result))
       }).catch(() => {
         data = {
           status: false,
@@ -82,7 +83,7 @@ module.exports = {
         }
       })
 
-    if (res.length > 0) {
+    if (accountInfo.length > 0) {
       await userModel.accountSql.findUserInfoByUID(linkId)
         .then(info => {
           let userInfo = JSON.parse(JSON.stringify(info))
@@ -95,6 +96,7 @@ module.exports = {
         status: true,
         data: {
           id: linkId,
+          mainId: accountInfo[0]['main_id'],
           username: username,
           avator: avator
         },
@@ -147,6 +149,26 @@ module.exports = {
             status: '4',
             msg: '用户注册成功'
           }
+        }
+      })
+    return data;
+  },
+  /**
+   * 通过 id 更新账号 关联主账号
+   * main_id：关联主账号 id
+   */
+  updateAccountMainId: async (linkData) => {
+    let data;
+    await userModel.accountSql.updateAccountMainId(linkData)
+      .then(() => {
+        data = {
+          status: true,
+          msg: '更新成功'
+        }
+      }).catch(() => {
+        data = {
+          status: false,
+          msg: '更新账户mainId失败'
         }
       })
     return data;
