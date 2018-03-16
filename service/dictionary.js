@@ -10,7 +10,6 @@ module.exports = {
    */
   addDictionary: async (dictionary) => {
     let data;
-    console.log(dictionary)
     await userModel.dictionarySql.insertDictionary(dictionary)
       .then(() => {
         data = {
@@ -51,7 +50,6 @@ module.exports = {
    */
   deleteDictionaryByIds: async (ids) => {
     let data;
-    console.log(id)
     await userModel.dictionarySql.deleteDictionaryByIds(ids)
       .then(() => {
         data = {
@@ -97,7 +95,6 @@ module.exports = {
     await userModel.dictionarySql.findAllParentLists()
       .then((result) => {
         let res = JSON.parse(JSON.stringify(result))
-        console.log(res)
         data = {
           status: true,
           data: res,
@@ -111,6 +108,27 @@ module.exports = {
       })
     return data
   },
+  /** 通过字典编码 查询父字典分类对应的字段列表
+   * @param code：字典编码
+   */
+  findParentDicByCode: async (code) => {
+    let data;
+    await userModel.dictionarySql.findParentDicByCode(code)
+      .then((result) => {
+        let res = JSON.parse(JSON.stringify(result))
+        data = {
+          status: true,
+          data: res,
+          msg: '字段列表'
+        }
+      }).catch((err) => {
+        data = {
+          status: false,
+          msg: '查询失败，请稍后重试'
+        }
+      })
+    return data;
+  },
   /**
    * 根据字典 id 查询字段列表
    */
@@ -119,14 +137,12 @@ module.exports = {
     await userModel.dictionarySql.findFieldsById(id)
       .then((result) => {
         let res = JSON.parse(JSON.stringify(result))
-        console.log(res)
         data = {
           status: true,
           data: res,
           msg: '字段列表'
         }
       }).catch((error) => {
-        console.log(error)
         data = {
           status: false,
           msg: '查询失败，请稍后重试'
@@ -143,7 +159,6 @@ module.exports = {
    */
   addField: async (field) => {
     let data;
-    console.log(field)
     await userModel.dictionarySql.insertField(field)
       .then(() => {
         data = {
@@ -260,7 +275,6 @@ module.exports = {
     await userModel.dictionarySql.findAllCustomers()
       .then((result) => {
         let res = JSON.parse(JSON.stringify(result))
-        console.log(res)
         data = {
           status: true,
           data: res,
@@ -273,6 +287,31 @@ module.exports = {
         }
       })
     return data
+  },
+  /** 查询全部商品字典列表
+   * @param goodsName:商品名称
+   * @param goodsBrandId:商品品牌Id
+   * @param goodsCategoryId:商品分类Id
+   * @param goodsUnit:商品单位
+   * @param priceSort:价格排序 desc：降序，asc：升序
+   */
+  findGoodsLists: async (goods) => {
+    let data;
+    await userModel.dictionarySql.findGoodsLists(goods)
+      .then((result) => {
+        let res = JSON.parse(JSON.stringify(result))
+        data = {
+          status: true,
+          data: res,
+          msg: '全部商品字典列表'
+        }
+      }).catch((err) => {
+        data = {
+          status: false,
+          msg: '查询失败，请稍后重试'
+        }
+      })
+    return data;
   }
 
 }
