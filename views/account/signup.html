@@ -16,7 +16,7 @@
         <h1 class="form-title">注册</h1>
         <div class="form-item">
           <label>用户名：</label>
-          <input type="text" name="account" placeholder="用户名">
+          <input type="text" name="account" autofocus="autofocus" placeholder="用户名">
         </div>
         <div class="form-item">
           <label>密码：</label>
@@ -56,7 +56,7 @@
               } else if (info.status == '2') {
                 $('.msg-error').text(info.msg)
                 fade('.msg-error')
-              }else if (info.status == '3') {
+              } else if (info.status == '3') {
                 $('.msg-error').text(info.msg)
                 fade('.msg-error')
               } else if (info.status == '4') {
