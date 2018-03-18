@@ -56,24 +56,33 @@ function fade(data) {
   }
 }
 $(function() {
-  // 左侧菜单合并展开
-  $(".nav-title").click(function() {
-    let $that = $(this);
-    let flag = $that.attr("flag");
-    if (flag == "close") {
-      $(".nav-title .icon-down-arrow").removeClass("flipy")
-      $that.find('.icon-down-arrow').toggleClass("flipy")
-      $(".nav-title").next().slideUp()
-      $that.next().toggle();
-    }
-  })
   // 左侧菜单选中状态
   let activeNav = $(".container").attr("page");
   $(".left-nav li").removeClass("nav-active")
   $(".left-nav ." + activeNav).addClass("nav-active");
   let $navParent = $(".left-nav ." + activeNav).parent();
   $navParent.slideDown();
-  $navParent.prev().find('.icon-down-arrow').toggleClass("flipy")
+  $navParent.prev().attr("flag", "open").find('.icon-down-arrow').toggleClass("flipy")
+
+  // 左侧菜单合并展开
+  $(".nav-title").click(function() {
+    let $that = $(this);
+    let flag = $that.attr("flag");
+    if (flag == "close") {
+      console.log('打开');
+      $(".nav-title").attr("flag", "close")
+      $that.attr("flag", "open")
+      $(".nav-title .icon-down-arrow").removeClass("flipy")
+      $that.find('.icon-down-arrow').addClass("flipy")
+    } else {
+      console.log('合起来');
+      $that.find('.icon-down-arrow').removeClass("flipy")
+      $that.attr("flag", "close")
+    }
+    $(".nav-title").next().slideUp()
+    $that.next().toggle();
+  })
+
   // 退出登录
   $('.signout').click(() => {
     $.ajax({
