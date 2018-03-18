@@ -254,6 +254,7 @@ module.exports = {
       params.goodsUnit,
       params.priceSort
     ]
+    // console.log(goods);
     let result = await DictionaryService.findGoodsLists(goods)
     ctx.body = result
   }

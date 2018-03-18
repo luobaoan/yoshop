@@ -207,6 +207,7 @@ header {
   font-style: normal;
   font-size: 28px;
   color: #797979;
+  margin-left: 10px;
 }
 
 .logo:hover, .logo:active {

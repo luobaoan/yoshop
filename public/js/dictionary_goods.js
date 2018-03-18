@@ -29,7 +29,7 @@ function findParentDicByCode(code) {
         let data = info.data;
         let str = '<option value="">请选择</option>';
         for (let i in data) {
-          console.log(data[i].id + ' ' + data[i].name);
+          // console.log(data[i].id + ' ' + data[i].name);
           str += '<option value="' + data[i].id + '">' + data[i].name + '</option>';
         }
         if (code == 'brand') {

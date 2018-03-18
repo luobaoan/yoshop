@@ -297,6 +297,7 @@ module.exports = {
    */
   findGoodsLists: async (goods) => {
     let data;
+    // console.log(goods);
     await userModel.dictionarySql.findGoodsLists(goods)
       .then((result) => {
         let res = JSON.parse(JSON.stringify(result))
