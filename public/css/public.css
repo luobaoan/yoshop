@@ -6,6 +6,7 @@ body, header, ul, li, p, div, html, span, h3, a {
   margin: 0;
   padding: 0;
   color: #333;
+  font-family: "Open Sans", "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 body {
@@ -187,31 +188,39 @@ textarea {
 
 /* 公共头部开始 */
 
-header {
-  width: 100%;
-  height: 79px;
-  line-height: 79px;
-  border-bottom: 1px solid #ddd;
-  overflow: hidden;
-  background-color: #fff;
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
-.center-area {
-  width: 1200px;
-  margin: 0 auto;
+header {
+  width: 100%;
+  height: 65px;
+  line-height: 68px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 1px 2px #359AFB;
 }
 
 .logo {
+  position: absolute;
+  top: 0;
+  left: 0;
   display: block;
-  font-weight: 200;
   font-style: normal;
-  font-size: 28px;
-  color: #797979;
-  margin-left: 10px;
+  font-size: 22px;
+  width: 180px;
+  text-align: center;
+  color: #fff;
+  background-color: #373D57;
+  border-top-right-radius: 10px;
 }
 
-.logo:hover, .logo:active {
-  color: #797979
+header .user-right {
+  margin-right: 24px;
 }
 
 .user-right a, .user-right span {
@@ -227,7 +236,7 @@ header {
 
 .user-right .txt-center {
   position: relative;
-  top: 4px;
+  top: 2px;
 }
 
 /* 公共头部结束 */
@@ -235,21 +244,26 @@ header {
 /* 中间部分开始 */
 
 .main {
-  margin: 12px auto 12px;
-  width: 1200px;
-  height: 640px;
-  border: 1px solid #ddd;
-  background-color: #fff;
+  position: absolute;
+  top: 68px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #EFF2F7;
   overflow: hidden;
 }
 
-.left-nav {
-  float: left;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  width: 210px;
+.main .left-nav {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  padding-top: 8px;
+  width: 180px;
   text-align: center;
-  line-height: 36px;
+  line-height: 48px;
+  background-color: #373D57;
+  border-bottom-right-radius: 10px;
 }
 
 .left-nav ul {
@@ -260,31 +274,38 @@ header {
   position: relative;
   width: 100%;
   font-size: 16px;
-  font-weight: bold;
   cursor: pointer;
+}
+
+.left-nav span, .left-nav a {
+  color: #fff;
 }
 
 .left-nav .icon {
   position: absolute;
-  top: 8px;
+  top: 15px;
   vertical-align: middle;
   background-size: 100%;
 }
 
 .left-nav .icon-logo {
-  left: 30px;
+  left: 18px;
   margin-right: 8px;
   width: 20px;
   height: 20px;
 }
 
 .left-nav .icon-down-arrow {
-  right: 32px;
+  right: 20px;
 }
 
 .left-nav li {
-  line-height: 36px;
+  line-height: 48px;
   margin-bottom: 1px;
+}
+
+.left-nav li a {
+  padding-left: 2px;
 }
 
 .icon-order {
@@ -311,18 +332,22 @@ header {
   background-image: url('/img/icon-setting.png');
 }
 
-.left-nav ul li a:hover, .nav-active a {
+.left-nav ul li:hover a, .nav-active a {
   display: block;
-  width: 100%;
-  height: 36px;
+  height: 48px;
   color: #fff;
-  background-color: #44B549;
+  background-color: #1A2030;
+  border-left: 2px solid #359AFB;
 }
 
 .right-content {
-  margin-left: 210px;
-  height: 100%;
-  border-left: 1px solid #ddd;
+  position: absolute;
+  top: 20px;
+  left: 200px;
+  right: 20px;
+  bottom: 20px;
+  background-color: #fff;
+  border-radius: 6px;
 }
 
 .right-content .content-header {
@@ -446,6 +471,9 @@ header {
 /* 公共底部开始 */
 
 footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
   width: 100%;
   height: 100px;
   line-height: 100px;

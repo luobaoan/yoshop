@@ -19,7 +19,6 @@
   "license": "",
   "dependencies": {
     "config-lite": "^2.1.0",
-    "ejs": "^2.5.7",
     "ip": "^1.1.5",
     "koa": "^2.4.1",
     "koa-bodyparser": "^4.2.0",

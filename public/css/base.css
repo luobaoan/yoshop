@@ -1,0 +1,150 @@
+html {
+  /* 防止横屏时的文字缩放 */
+  -webkit-text-size-adjust: 100%;
+}
+
+input[type=text], button, select, textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 0px;
+}
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  box-sizing: border-box;
+  font-family: "Open Sans", "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
+
+body {
+  line-height: 1;
+}
+
+:focus {
+  outline: 1;
+}
+
+article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+nav ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted #000;
+  cursor: help;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+input, select {
+  vertical-align: middle;
+}
+
+/*水平翻转*/
+
+.flipx {
+  -moz-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  transform: scaleX(-1);
+  /*IE*/
+  filter: FlipH;
+}
+
+/*垂直翻转*/
+
+.flipy {
+  -moz-transform: scaleY(-1);
+  -webkit-transform: scaleY(-1);
+  -o-transform: scaleY(-1);
+  transform: scaleY(-1);
+  /*IE*/
+  filter: FlipV;
+}
+
+#overlay {
+  background: #000;
+  filter: alpha(opacity=90);
+  opacity: .9;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100
+}
+
+#tipbox {
+  display: none;
+  position: absolute;
+  padding: 4px 8px;
+  left: 50%;
+  top: 50%;
+  width: 160px;
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.75;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 162;
+}
+
+.fr {
+  float: right;
+}

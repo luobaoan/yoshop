@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{title}}</title>
-    <link rel="stylesheet" href="/css/public.css">
-    {% block head %}{% endblock %}
-  </head>
-  <body>
-    <div class="container {{pageclass}}" page="{{pagename}}">
-      {% include "./header.html" %}
-      <div class="center-area main">
-        {% include "./left_nav.html" %}
-        <div class="right-content">
-          <div class="content-header">
-            <p class="page-title">{{title}}</p>
-            {% block operate %}{% endblock %}
-          </div>
-          <div class="content-main">
-            {% block body %}{% endblock %}
-          </div>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/public.css"> {% block head %}{% endblock %}
+</head>
+
+<body>
+  <div class="container {{pageclass}}" page="{{pagename}}">
+    {% include "./header.html" %}
+    <div class="center-area main">
+      {% include "./left_nav.html" %}
+      <div class="right-content">
+        <div class="content-header">
+          <p class="page-title">{{title}}</p>
+          {% block operate %}{% endblock %}
+        </div>
+        <div class="content-main">
+          {% block body %}{% endblock %}
         </div>
       </div>
-      {% include "./footer.html" %}
     </div>
-    <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="../../js/public.js"></script>
-    {% block js %}{% endblock %}
-  </body>
+    <!-- {% include "./footer.html" %} -->
+  </div>
+  <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="../../js/public.js"></script>
+  {% block js %}{% endblock %}
+</body>
+
 </html>
