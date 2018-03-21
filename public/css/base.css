@@ -3,13 +3,6 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-/* 
-input[type=text], button, select, textarea {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  border-radius: 0px;
-} */
-
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -21,19 +14,23 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
   font-family: "Open Sans", "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
-body {
-  line-height: 1;
+body, button input, select, textarea {
+  font: 14px/1.5 "Microsoft YaHei", sans-serif
 }
 
-:focus {
-  outline: 1;
+button:focus, input:focus, select:focus, textarea:focus {
+  outline-width: 0
+}
+
+input:focus, textarea:focus {
+  border-color: #009DDA
 }
 
 article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
 
-nav ul {
+li {
   list-style: none;
 }
 
@@ -53,6 +50,7 @@ a {
   font-size: 100%;
   vertical-align: baseline;
   background: transparent;
+  text-decoration: none;
 }
 
 ins {
@@ -93,6 +91,27 @@ hr {
 
 input, select {
   vertical-align: middle;
+}
+
+select {
+  /*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
+  height: 30px;
+  border-radius: 0;
+  border: 1px solid #ddd;
+  /*很关键：将默认的select选择框样式清除*/
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  /*在选择框的最右侧中间显示小箭头图片*/
+  background: url("/img/select-arrow.png") no-repeat scroll right center transparent;
+  /*为下拉小箭头留出一点位置，避免被文字覆盖*/
+  padding-right: 14px;
+}
+
+/*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+
+select::-ms-expand {
+  display: none;
 }
 
 /*水平翻转*/
@@ -143,6 +162,10 @@ input, select {
   color: #fff;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 162;
+}
+
+.fl {
+  float: left;
 }
 
 .fr {

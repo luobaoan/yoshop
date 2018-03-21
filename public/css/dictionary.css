@@ -34,11 +34,16 @@
 
 .dictionary-category .content-main {
   margin: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 60px;
 }
 
 .dictionary-category .category-lists {
   overflow: hidden;
-  height: 580px;
+  height: 100%;
 }
 
 .dictionary-category .lf-lists {

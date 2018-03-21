@@ -1,27 +1,3 @@
-body, button input, select, textarea {
-  font: 14px/1.5 "Microsoft YaHei", sans-serif
-}
-
-body {
-  background-color: #F2F2F2;
-}
-
-a {
-  text-decoration: none;
-}
-
-li {
-  list-style: none;
-}
-
-.fl {
-  float: left;
-}
-
-.fr {
-  float: right;
-}
-
 .color-green {
   color: #44B549;
 }
@@ -63,22 +39,6 @@ input {
   height: 24px;
   font-size: 14px;
   border: 1px solid #ccc;
-  vertical-align: middle;
-}
-
-select {
-  padding: 2px 4px;
-  height: 30px;
-  border-radius: 0;
-  border: 1px solid #ddd;
-}
-
-button:focus, input:focus, select:focus, textarea:focus {
-  outline-width: 0
-}
-
-input:focus, textarea:focus {
-  border-color: #009DDA
 }
 
 textarea {
@@ -86,31 +46,8 @@ textarea {
   height: 200px;
   padding: 6px;
   font-size: 14px;
-  /* border-radius: 4px; */
   border: 1px solid #ccc;
   resize: none;
-}
-
-/*水平翻转*/
-
-.flipx {
-  -moz-transform: scaleX(-1);
-  -webkit-transform: scaleX(-1);
-  -o-transform: scaleX(-1);
-  transform: scaleX(-1);
-  /*IE*/
-  filter: FlipH;
-}
-
-/*垂直翻转*/
-
-.flipy {
-  -moz-transform: scaleY(-1);
-  -webkit-transform: scaleY(-1);
-  -o-transform: scaleY(-1);
-  transform: scaleY(-1);
-  /*IE*/
-  filter: FlipV;
 }
 
 .btn-submit {
@@ -221,6 +158,7 @@ header {
   position: absolute;
   top: 30px;
   left: 104px;
+  line-height: normal;
 }
 
 header .user-right {
@@ -355,15 +293,20 @@ header .user-right {
 }
 
 .right-content .content-header {
-  height: 60px;
-  line-height: 60px;
-  border-bottom: 1px solid #ddd;
+  height: 54px;
+  line-height: 54px;
+  border-bottom: 1px solid #F1F1F1;
+  background-color: #F8F8F8;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+  border-left: 4px solid #4EE29A;
 }
 
 .content-header .page-title {
   float: left;
-  margin-left: 20px;
+  margin-left: 18px;
   font-size: 18px;
+  letter-spacing: 2px;
 }
 
 .content-header .rg-operate {
@@ -402,7 +345,7 @@ header .user-right {
 }
 
 .search-area label {
-  margin-right: 10px;
+  /* margin-right: 10px; */
 }
 
 .btn {
@@ -450,11 +393,23 @@ header .user-right {
 }
 
 .data-lists tr {
-  border-bottom: 1px solid #ccc;
+  height: 50px;
+}
+
+.data-lists th {
+  font-weight: normal;
 }
 
 .data-lists th, .data-lists td {
   border-right: 1px solid #ccc;
+}
+
+.data-lists td {
+  color: #555;
+}
+
+.data-lists tr:nth-child(2n) {
+  background-color: #E7E7EB;
 }
 
 .data-lists a {

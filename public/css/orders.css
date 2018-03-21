@@ -13,16 +13,4 @@
   width: 140px;
 }
 
-.orders .for-unit {
-  width: 30px;
-}
-
-.data-lists .category-info, .data-lists .address-info {
-  width: 100px;
-}
-
-.orders .goods-name {
-  width: 200px;
-}
-
 /* 新订单结束 */
