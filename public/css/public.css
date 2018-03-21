@@ -2,13 +2,6 @@ body, button input, select, textarea {
   font: 14px/1.5 "Microsoft YaHei", sans-serif
 }
 
-body, header, ul, li, p, div, html, span, h3, a {
-  margin: 0;
-  padding: 0;
-  color: #333;
-  font-family: "Open Sans", "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
-}
-
 body {
   background-color: #F2F2F2;
 }
@@ -77,6 +70,7 @@ select {
   padding: 2px 4px;
   height: 30px;
   border-radius: 0;
+  border: 1px solid #ddd;
 }
 
 button:focus, input:focus, select:focus, textarea:focus {
@@ -136,7 +130,7 @@ textarea {
   width: 2px;
   height: 20px;
   vertical-align: middle;
-  background-color: #666;
+  background-color: #fff;
 }
 
 .icon {
@@ -198,11 +192,10 @@ textarea {
 
 header {
   width: 100%;
-  height: 65px;
+  height: 68px;
   line-height: 68px;
   overflow: hidden;
-  background-color: #fff;
-  box-shadow: 0 1px 2px #359AFB;
+  background-color: #373B41;
 }
 
 .logo {
@@ -210,13 +203,24 @@ header {
   top: 0;
   left: 0;
   display: block;
-  font-style: normal;
-  font-size: 22px;
   width: 180px;
+  height: 68px;
   text-align: center;
   color: #fff;
-  background-color: #373D57;
-  border-top-right-radius: 10px;
+  background-color: #4EE29A;
+}
+
+.logo img {
+  float: left;
+  width: 50%;
+  margin-top: 12px;
+  margin-left: 12px;
+}
+
+.logo sub {
+  position: absolute;
+  top: 30px;
+  left: 104px;
 }
 
 header .user-right {
@@ -225,7 +229,7 @@ header .user-right {
 
 .user-right a, .user-right span {
   display: inline-block;
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
 }
 
@@ -237,6 +241,7 @@ header .user-right {
 .user-right .txt-center {
   position: relative;
   top: 2px;
+  color: #fff;
 }
 
 /* 公共头部结束 */
@@ -249,7 +254,7 @@ header .user-right {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #EFF2F7;
+  background-color: #F1F1F1;
   overflow: hidden;
 }
 
@@ -262,8 +267,7 @@ header .user-right {
   width: 180px;
   text-align: center;
   line-height: 48px;
-  background-color: #373D57;
-  border-bottom-right-radius: 10px;
+  background-color: #353942;
 }
 
 .left-nav ul {
@@ -337,7 +341,7 @@ header .user-right {
   height: 48px;
   color: #fff;
   background-color: #1A2030;
-  border-left: 2px solid #359AFB;
+  border-left: 2px solid #4EE29A;
 }
 
 .right-content {
@@ -487,32 +491,103 @@ footer {
 
 /* 登录/注册开始 */
 
+.account {
+  background: url("/img/bg.jpg") center 0 no-repeat #fff;
+  background-attachment: scroll;
+  background-size: auto auto;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+#canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}
+
 .account input, .account button {
   height: 40px;
   width: 100%;
 }
 
-.account label {
+.account .icon {
+  position: absolute;
   display: block;
+  top: 8px;
+  left: 8px;
+  width: 24px;
+  height: 24px;
   font-size: 16px;
   margin-bottom: 8px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.icon-user {
+  background-image: url('/img/icon-user.png');
+}
+
+.icon-pwd {
+  background-image: url('/img/icon-pwd.png');
+}
+
+.account input {
+  padding-left: 42px;
+  color: #fff;
+  background-color: transparent;
+}
+
+.account input::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #fff;
+}
+
+.account input:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #fff;
+}
+
+.account input::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #fff;
+}
+
+.account input:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #fff;
 }
 
 .account .form-item {
-  margin-bottom: 12px;
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.account .logo {
+  position: absolute;
+  top: 6%;
+  left: 4%;
+  background-color: transparent
 }
 
 .signin, .signup {
   display: block;
   position: absolute;
-  margin-top: -110px;
+  margin-top: -60px;
   left: 50%;
-  margin-left: -160px;
+  margin-left: -190px;
   width: 320px;
+  padding: 30px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  color: #fff;
+  z-index: 2;
 }
 
 .signin {
-  top: 35%;
+  top: 40%;
   height: 306px;
 }
 
