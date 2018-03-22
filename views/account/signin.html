@@ -1,81 +1,85 @@
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>登录</title>
-    <link rel="stylesheet" href="/css/public.css">
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>登录</title>
+  <link rel="stylesheet" href="/css/public.css">
+</head>
 
-  <body>
-    <div class="container account">
-      <div class="msg-error message"></div>
-      <div class="msg-success message"></div>
-      <form class="form signin" method="post">
-        <h1 class="form-title">优商城后台管理系统</h1>
-        <div class="form-item">
-          <label for="">
-            用户名：</label>
-          <input type="hidden" name="mainId" value="{{mainId}}">
-          <input type="hidden" name="lastId" value="{{lastId}}">
-          <input type="text" placeholder="用户名" autofocus="autofocus" name="account">
-        </div>
-        <div class="form-item bottom20">
-          <label for="">密码：</label>
-          <input placeholder="密码" class="password" type="password" name="password">
-        </div>
-        <button type="button" class="btn-submit">登录</button>
-      </form>
-    </div>
-    <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/public.js"></script>
-    <script>
-      $(function () {
-        $('.password').bind('keyup', function (event) {
-          if (event.keyCode == "13") {
-            //回车执行提交
-            $('.btn-submit').click();
-          }
-        });
-        $('.btn-submit').click(() => {
-          $.ajax({
-            url: '/login',
-            data: $('.form').serialize(),
-            type: 'POST',
-            cache: false,
-            dataType: 'json',
-            success: function (info) {
-              console.log(info.status)
-              if (!info.status) {
-                $('.msg-error').text(info.msg)
-                fade('.msg-error')
+<body>
+  <div class="container account">
+    <!-- 炫彩效果开始 -->
+    <canvas id="canvas"></canvas>
+    <!-- 炫彩效果结束 -->
+    <img src="/logo-green.png" class="logo" alt="">
+    <div class="msg-error message"></div>
+    <div class="msg-success message"></div>
+    <form class="form signin" method="post">
+      <h1 class="form-title">优商城管理平台</h1>
+      <div class="form-item">
+        <input type="hidden" name="mainId" value="{{mainId}}">
+        <input type="hidden" name="lastId" value="{{lastId}}">
+        <i class="icon icon-user"></i>
+        <input type="text" placeholder="用户名" autofocus="autofocus" name="account">
+      </div>
+      <div class="form-item">
+        <i class="icon icon-pwd"></i>
+        <input placeholder="密码" class="password" type="password" name="password">
+      </div>
+      <button type="button" class="btn-submit">登录</button>
+    </form>
+  </div>
+  <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/public.js"></script>
+  <script type="text/javascript" src="/js/canvas.js"></script>
+  <script>
+    $(function() {
+      $('.password').bind('keyup', function(event) {
+        if (event.keyCode == "13") {
+          //回车执行提交
+          $('.btn-submit').click();
+        }
+      });
+      $('.btn-submit').click(() => {
+        $.ajax({
+          url: '/login',
+          data: $('.form').serialize(),
+          type: 'POST',
+          cache: false,
+          dataType: 'json',
+          success: function(info) {
+            console.log(info.status)
+            if (!info.status) {
+              $('.msg-error').text(info.msg)
+              utils.fade('.msg-error')
+            } else {
+              $('.msg-success').text(info.msg)
+              utils.fade('.msg-success')
+              // 判断是正常登录还是关联账号登录
+              console.log(info.data.type)
+              if (!info.data.type) {
+                //正常登录
+                setInterval(() => {
+                  window.location.href = "/orders/new"
+                }, 1000)
               } else {
-                $('.msg-success').text(info.msg)
-                fade('.msg-success')
-                // 判断是正常登录还是关联账号登录
-                console.log(info.data.type)
-                if (!info.data.type) {
-                  //正常登录
-                  setInterval(() => {
-                    window.location.href = "/orders/new"
-                  }, 1000)
-                } else {
-                  // 关联账号登录
-                  setInterval(() => {
-                    window.location.href = "/setting/changeaccount"
-                  }, 1000)
-                }
-
+                // 关联账号登录
+                setInterval(() => {
+                  window.location.href = "/setting/changeaccount"
+                }, 1000)
               }
-            },
-            error: function (e) {
-              console.log(e)
+
             }
-          })
+          },
+          error: function(e) {
+            console.log(e)
+          }
         })
       })
-    </script>
-  </body>
+    })
+  </script>
+</body>
 
 </html>

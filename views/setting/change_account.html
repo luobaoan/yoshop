@@ -12,8 +12,8 @@
   </div>
   <div class="warp">
     <div class="hasaccount">已有账号</div>
-    <ul class="account">
-      <li>
+    <ul class="account-list">
+      <li linkid="{{session.id}}">
         <p class="link-account"><img src="/avator.png" class="headimg">
           <span class="name">{{session.username}}</span>
           <span class="color-red curr-account">(当前账号)</span>
@@ -34,7 +34,7 @@
       findLinkAccount();
       // 关闭【删除确认】弹出层
       $('.delete-quit').click(() => {
-        hideOverlay()
+        utils.hideOverlay()
         $('.confirm').hide();
       })
       // 【确认】删除所选字典记录
@@ -44,7 +44,7 @@
 
       // 添加新账号
       $('.add-account').click(function () {
-        window.location.href = "/signin?mainId=" + mainId + "&lastId=" + {{session.id}}
+        window.location.href = `/signin?mainId=` + mainId + `&lastId={{session.id}}`
       })
     })
     // 查询关联账号列表
@@ -53,7 +53,7 @@
         url: '/setting/findLinkAccountByMainId',
         data: {
           mainId: mainId,
-          currId: {{session.id}}
+          currId: '{{session.id}}'
         },
         type: 'POST',
         cache: false,
@@ -62,10 +62,10 @@
           if (info.status) {
             // 铺数据
             let data = info.data;
-            console.log(data)
+            // console.log(data)
             let str = '';
             for (let i = 0; i < data.length; i++) {
-              if (data[i].id != {{session.id}}) {
+              if (data[i].id != '{{session.id}}') {
                 str += '<li linkid="' + data[i].id + '">';
                 str += '<p class="link-account">';
                 str += '<img src="' + data[i].avator + '" class="headimg">';
@@ -74,7 +74,7 @@
                   str += ' <span class="color-red">(主账号)</span>';
                 }
                 str += '</p>';
-                if (data[i].type == "link" && data[i].id != {{session.id}}) {
+                if (data[i].type == "link" && data[i].id != '{{session.id}}') {
                   str += '<p class="color-red delete fr">删除</p>'
                 }
                 str += '</li>';
@@ -82,14 +82,13 @@
 
             }
             // $('.warp .account').empty()
-            $('.warp .account').append(str)
+            $('.warp .account-list').append(str)
 
             $('.link-account').click(function () {
               linkId = $(this).parent().attr('linkid')
-              console.log(linkId)
-              if (linkId == {{session.id}}) {
+              if (linkId == '{{session.id}}') {
                 $('.msg-success').text('该账号已登录')
-                fade('.msg-success')
+                utils.fade('.msg-success')
               } else {
                 linkAccountLogin(linkId)
               }
@@ -98,7 +97,7 @@
             // 删除关联账号
             $('.delete').click(function () {
               linkId = $(this).parent().attr('linkid')
-              showOverlay()
+              utils.showOverlay()
               $('.confirm').show();
             })
           }
@@ -122,12 +121,12 @@
         success: function (info) {
           if (!info.status) {
             $('.msg-error').text(info.msg)
-            fade('.msg-error')
+            utils.fade('.msg-error')
           } else {
-            hideOverlay()
+            utils.hideOverlay()
             $('.confirm').hide();
             $('.msg-success').text(info.msg)
-            fade('.msg-success')
+            utils.fade('.msg-success')
             setInterval(() => {
               window.location.reload()
             }, 1000)
@@ -151,10 +150,10 @@
         success: function (info) {
           if (!info.status) {
             $('.msg-error').text(info.msg)
-            fade('.msg-error')
+            utils.fade('.msg-error')
           } else {
             $('.msg-success').text(info.msg)
-            fade('.msg-success')
+            utils.fade('.msg-success')
             setInterval(() => {
               window.location.reload()
             }, 1000)

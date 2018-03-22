@@ -1,99 +1,132 @@
-{% extends "../common/layout.html" %}
-{% block head %}
-  <link rel="stylesheet" href="/css/orders.css">
-{% endblock %}
-{% block body %}
-  <!-- 搜索区域 -->
-  <div class="search-area">
-    <div class="search-key">
-      <label for="ordercode">订单号</label>
-      <input type="text" id="ordercode" name="ordercode"/>
-    </div>
-    <div class="search-key">
-      <label for="brand">商品品牌</label>
-      <select id="brand" name="brand">
+{% extends "../common/layout.html" %} {% block head %}
+<link rel="stylesheet" href="/css/orders.css"> {% endblock %} {% block body %}
+<!-- 搜索区域 -->
+<div class="search-area">
+  <div class="search-key">
+    <label for="ordercode">订单号</label>
+    <input type="text" id="ordercode" name="ordercode" />
+  </div>
+  <div class="search-key">
+    <label for="brand">商品品牌</label>
+    <select id="brand" name="brand">
         <option value="male">爱力优</option>
         <option value="female">爱育聪</option>
         <option value="secret">爱欣宝</option>
       </select>
-    </div>
-    <div class="search-key">
-      <label for="category">商品分类</label>
-      <select id="category" name="category">
+  </div>
+  <div class="search-key">
+    <label for="category">商品分类</label>
+    <select id="category" name="category">
         <option value="male">1段</option>
         <option value="female">2段</option>
         <option value="secret">3段</option>
       </select>
-    </div>
-    <div class="search-key">
-      <label for="unit" class="for-unit">单位</label>
-      <select id="unit" name="unit">
+  </div>
+  <div class="search-key">
+    <label for="unit" class="for-unit">单位</label>
+    <select id="unit" name="unit">
         <option value="male">箱</option>
         <option value="female">罐</option>
         <option value="secret">盒</option>
         <option value="secret">袋</option>
       </select>
-    </div>
-    <div class="search-key">
-      <label for="receiver">收货人</label>
-      <input type="text" id="receiver" name="receiver"/>
-    </div>
-    <div class="search-key">
-      <label for="phone">手机号码</label>
-      <input type="text" id="phone" name="phone"/>
-    </div>
-    <div class="search-key">
-      <label for="address">收货地址</label>
-      <input type="text" id="address" name="address"/>
-    </div>
-    <div class="search-key">
-      <label for="startTime">下单时间</label>
-      <input type="text" id="startTime" name="startTime"/>
-      <span>到</span>
-      <input type="text" id="endTime" name="endTime"/>
-    </div>
-    <div class="search-key">
-      <button type="button" class="btn btn-search">查询</button>
-    </div>
   </div>
-  <!-- 数据列表 -->
-  <table class="data-lists">
-    <thead>
-      <tr>
-        <th>序号</th>
-        <th>订单号</th>
-        <th>下单时间</th>
-        <th>商品品牌</th>
-        <th>分类</th>
-        <th>单位</th>
-        <th>销售单价(元)</th>
-        <th>数量</th>
-        <th>订单金额(元)</th>
-        <th>收货人</th>
-        <th>手机号</th>
-        <th>收货地址</th>
-        <th>操作</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>
-          <a href="#" class="order-code">DD00001</a>
-        </td>
-        <td>2018-01-09 12:04</td>
-        <td>爱力优</td>
-        <td class="category-info">3段(12-36月幼儿)</td>
-        <td>罐</td>
-        <td>300.00</td>
-        <td>
-          <span class="color-red">4</span></td>
-        <td>1,200.00</td>
-        <td>王洪兴</td>
-        <td>18353364697</td>
-        <td class="address-info">山东省聊城市冠县梁堂乡前何仲村077号</td>
-        <td>开始配送</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="search-key">
+    <label for="receiver">收货人</label>
+    <input type="text" id="receiver" name="receiver" />
+  </div>
+  <div class="search-key">
+    <label for="phone">手机号码</label>
+    <input type="text" id="phone" name="phone" />
+  </div>
+  <div class="search-key">
+    <label for="address">收货地址</label>
+    <input type="text" id="address" name="address" />
+  </div>
+  <div class="search-key">
+    <label for="startTime">下单时间</label>
+    <input type="text" id="startTime" name="startTime" />
+    <span>到</span>
+    <input type="text" id="endTime" name="endTime" />
+  </div>
+  <div class="search-key">
+    <button type="button" class="btn btn-search">查询</button>
+  </div>
+</div>
+<!-- 数据列表 -->
+<table class="data-lists">
+  <thead>
+    <tr>
+      <th>序号</th>
+      <th>订单号</th>
+      <th>下单时间</th>
+      <th>商品品牌</th>
+      <th>分类</th>
+      <th>单位</th>
+      <th>销售单价(元)</th>
+      <th>数量</th>
+      <th>订单金额(元)</th>
+      <th>收货人</th>
+      <th>手机号</th>
+      <th>收货地址</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>
+        <a href="#" class="order-code">DD00001</a>
+      </td>
+      <td>2018-01-09 12:04</td>
+      <td>爱力优</td>
+      <td class="category-info">3段(12-36月幼儿)</td>
+      <td>罐</td>
+      <td>300.00</td>
+      <td>
+        <span class="color-red">4</span></td>
+      <td>1,200.00</td>
+      <td>王洪兴</td>
+      <td>18353364697</td>
+      <td class="address-info">山东省聊城市冠县梁堂乡前何仲村077号</td>
+      <td>开始配送</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>
+        <a href="#" class="order-code">DD00001</a>
+      </td>
+      <td>2018-01-09 12:04</td>
+      <td>爱力优</td>
+      <td class="category-info">3段(12-36月幼儿)</td>
+      <td>罐</td>
+      <td>300.00</td>
+      <td>
+        <span class="color-red">4</span></td>
+      <td>1,200.00</td>
+      <td>王洪兴</td>
+      <td>18353364697</td>
+      <td class="address-info">山东省聊城市冠县梁堂乡前何仲村077号</td>
+      <td>开始配送</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>
+        <a href="#" class="order-code">DD00001</a>
+      </td>
+      <td>2018-01-09 12:04</td>
+      <td>爱力优</td>
+      <td class="category-info">3段(12-36月幼儿)</td>
+      <td>罐</td>
+      <td>300.00</td>
+      <td>
+        <span class="color-red">4</span></td>
+      <td>1,200.00</td>
+      <td>王洪兴</td>
+      <td>18353364697</td>
+      <td class="address-info">山东省聊城市冠县梁堂乡前何仲村077号</td>
+      <td>开始配送</td>
+    </tr>
+  </tbody>
+</table>
 {% endblock %}

@@ -21,10 +21,6 @@
   width: 180px;
 }
 
-.dictionary-goods .goods-name {
-  width: 300px;
-}
-
 .dictionary-goods .data-lists .operate {
   width: 80px;
   line-height: 40px;
@@ -34,11 +30,16 @@
 
 .dictionary-category .content-main {
   margin: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 60px;
 }
 
 .dictionary-category .category-lists {
   overflow: hidden;
-  height: 580px;
+  height: 100%;
 }
 
 .dictionary-category .lf-lists {
@@ -49,8 +50,11 @@
 }
 
 .dictionary-category .lf-lists .active {
-  color: #fff;
   background-color: #44B549;
+}
+
+.dictionary-category .lf-lists .active td {
+  color: #fff;
 }
 
 .dictionary-category .lf-header {
@@ -133,16 +137,12 @@
   line-height: 40px;
 }
 
-.data-lists thead {
-  background-color: #fff;
-}
-
 .dictionary-category .code, .dictionary-category .sort {
-  width: 60px;
+  max-width: 60px;
 }
 
 .dictionary-category .operate {
-  width: 140px;
+  max-width: 140px;
 }
 
 .dictionary-category .operate span {

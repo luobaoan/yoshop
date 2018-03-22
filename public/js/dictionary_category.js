@@ -10,7 +10,7 @@ $(function() {
 
   // 关闭【删除确认】弹出层
   $('.delete-quit').click(() => {
-    hideOverlay()
+    utils.hideOverlay()
     $('.confirm').hide();
   })
   // 增加分类
@@ -18,7 +18,7 @@ $(function() {
     // 初始化数值
     dictionary = {}
     $('.category-form .title-name').text('新增分类').attr('type', 'category-add')
-    showOverlay()
+    utils.showOverlay()
     $('.category-form').show();
   })
   // 修改分类
@@ -26,7 +26,7 @@ $(function() {
     let id = dictionary.id
     if (!id) {
       $('.msg-error').text("请先选择一条记录")
-      fade('.msg-error')
+      utils.fade('.msg-error')
       return;
     }
     $('.category-form .title-name').text('修改分类').attr('type', 'category-edit')
@@ -35,25 +35,25 @@ $(function() {
     $("#categoryName").val(dictionary.name)
     $("#categoryCode").val(dictionary.code)
     $("#categorySort").val(dictionary.sort)
-    showOverlay()
+    utils.showOverlay()
     $('.category-form').show();
   })
 
   // 关闭【增加分类】弹出层
   $('.category-quit').click(() => {
-    hideOverlay()
+    utils.hideOverlay()
     $('.category-form').hide();
     $('.category-form')[0].reset();
   })
   // 增加字段
   $('.add-field').click(() => {
     $('.field-form .title-name').text('新增字段').attr('type', 'field-add')
-    showOverlay()
+    utils.showOverlay()
     $('.field-form').show();
   })
   // 关闭【增加字段】弹出层
   $('.field-quit').click(() => {
-    hideOverlay()
+    utils.hideOverlay()
     $('.field-form').hide();
     $('.field-form')[0].reset();
   })
@@ -79,15 +79,15 @@ $(function() {
         // console.log(info)
         if (info.status) {
           $('.msg-success').text(info.msg)
-          fade('.msg-success')
-          hideOverlay()
+          utils.fade('.msg-success')
+          utils.hideOverlay()
           $('.category-form').hide();
           $('.category-form')[0].reset();
           // 重新查询字典列表
           findAllParentLists()
         } else {
           $('.msg-error').text(info.msg)
-          fade('.msg-error')
+          utils.fade('.msg-error')
         }
       }
     })
@@ -113,15 +113,15 @@ $(function() {
         console.log(info)
         if (info.status) {
           $('.msg-success').text(info.msg)
-          fade('.msg-success')
-          hideOverlay()
+          utils.fade('.msg-success')
+          utils.hideOverlay()
           $('.field-form').hide();
           $('.field-form')[0].reset();
           // 重新查询字段列表
           findFieldsById(dictionary.id)
         } else {
           $('.msg-error').text(info.msg)
-          fade('.msg-error')
+          utils.fade('.msg-error')
         }
       }
     })
@@ -132,12 +132,12 @@ $(function() {
     let id = dictionary.id
     if (!id) {
       $('.msg-error').text("请先选择一条记录")
-      fade('.msg-error')
+      utils.fade('.msg-error')
       return
     } else {
       // 给删除弹出层添加类别  delete-category
       deleteType = 'delete-category'
-      showOverlay()
+      utils.showOverlay()
       $('.confirm').show();
     }
   })
@@ -220,7 +220,7 @@ function findFieldsById(id) {
       console.log(info)
       if (info.status) {
         // $('.msg-success').text(info.msg)
-        // fade('.msg-success')
+        // utils.fade('.msg-success')
         // 铺数据
         let data = info.data;
         // console.log(data)
@@ -254,7 +254,7 @@ function findFieldsById(id) {
           $('#fieldSort').val(sort)
 
           $('.field-form .title-name').text('编辑字段').attr('type', 'field-edit')
-          showOverlay()
+          utils.showOverlay()
           $('.field-form').show();
         })
         $('.field-delete').click(function() {
@@ -263,12 +263,12 @@ function findFieldsById(id) {
           field.id = id;
           // 给删除弹出层添加类别  delete-field
           deleteType = 'delete-field'
-          showOverlay()
+          utils.showOverlay()
           $('.confirm').show();
         })
       } else {
         $('.msg-error').text(info.msg)
-        fade('.msg-error')
+        utils.fade('.msg-error')
       }
     }
   })
@@ -286,8 +286,8 @@ function deleteIt(id) {
     success: function(info) {
       if (info.status) {
         $('.msg-success').text(info.msg)
-        fade('.msg-success')
-        hideOverlay()
+        utils.fade('.msg-success')
+        utils.hideOverlay()
         $('.confirm').hide();
         // 判断删除类别
         if (deleteType == 'delete-category') {
@@ -300,7 +300,7 @@ function deleteIt(id) {
 
       } else {
         $('.msg-error').text(info.msg)
-        fade('.msg-error')
+        utils.fade('.msg-error')
       }
     }
   })

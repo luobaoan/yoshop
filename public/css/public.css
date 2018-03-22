@@ -1,34 +1,3 @@
-body, button input, select, textarea {
-  font: 14px/1.5 "Microsoft YaHei", sans-serif
-}
-
-body, header, ul, li, p, div, html, span, h3, a {
-  margin: 0;
-  padding: 0;
-  color: #333;
-  font-family: "Open Sans", "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
-}
-
-body {
-  background-color: #F2F2F2;
-}
-
-a {
-  text-decoration: none;
-}
-
-li {
-  list-style: none;
-}
-
-.fl {
-  float: left;
-}
-
-.fr {
-  float: right;
-}
-
 .color-green {
   color: #44B549;
 }
@@ -70,21 +39,6 @@ input {
   height: 24px;
   font-size: 14px;
   border: 1px solid #ccc;
-  vertical-align: middle;
-}
-
-select {
-  padding: 2px 4px;
-  height: 30px;
-  border-radius: 0;
-}
-
-button:focus, input:focus, select:focus, textarea:focus {
-  outline-width: 0
-}
-
-input:focus, textarea:focus {
-  border-color: #009DDA
 }
 
 textarea {
@@ -92,31 +46,8 @@ textarea {
   height: 200px;
   padding: 6px;
   font-size: 14px;
-  /* border-radius: 4px; */
   border: 1px solid #ccc;
   resize: none;
-}
-
-/*水平翻转*/
-
-.flipx {
-  -moz-transform: scaleX(-1);
-  -webkit-transform: scaleX(-1);
-  -o-transform: scaleX(-1);
-  transform: scaleX(-1);
-  /*IE*/
-  filter: FlipH;
-}
-
-/*垂直翻转*/
-
-.flipy {
-  -moz-transform: scaleY(-1);
-  -webkit-transform: scaleY(-1);
-  -o-transform: scaleY(-1);
-  transform: scaleY(-1);
-  /*IE*/
-  filter: FlipV;
 }
 
 .btn-submit {
@@ -136,7 +67,7 @@ textarea {
   width: 2px;
   height: 20px;
   vertical-align: middle;
-  background-color: #666;
+  background-color: #fff;
 }
 
 .icon {
@@ -198,11 +129,10 @@ textarea {
 
 header {
   width: 100%;
-  height: 65px;
+  height: 68px;
   line-height: 68px;
   overflow: hidden;
-  background-color: #fff;
-  box-shadow: 0 1px 2px #359AFB;
+  background-color: #373B41;
 }
 
 .logo {
@@ -210,13 +140,25 @@ header {
   top: 0;
   left: 0;
   display: block;
-  font-style: normal;
-  font-size: 22px;
   width: 180px;
+  height: 68px;
   text-align: center;
   color: #fff;
-  background-color: #373D57;
-  border-top-right-radius: 10px;
+  background-color: #4EE29A;
+}
+
+.logo img {
+  float: left;
+  width: 50%;
+  margin-top: 12px;
+  margin-left: 12px;
+}
+
+.logo sub {
+  position: absolute;
+  top: 30px;
+  left: 104px;
+  line-height: normal;
 }
 
 header .user-right {
@@ -225,7 +167,7 @@ header .user-right {
 
 .user-right a, .user-right span {
   display: inline-block;
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
 }
 
@@ -237,6 +179,7 @@ header .user-right {
 .user-right .txt-center {
   position: relative;
   top: 2px;
+  color: #fff;
 }
 
 /* 公共头部结束 */
@@ -249,7 +192,7 @@ header .user-right {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #EFF2F7;
+  background-color: #F1F1F1;
   overflow: hidden;
 }
 
@@ -262,8 +205,7 @@ header .user-right {
   width: 180px;
   text-align: center;
   line-height: 48px;
-  background-color: #373D57;
-  border-bottom-right-radius: 10px;
+  background-color: #353942;
 }
 
 .left-nav ul {
@@ -306,6 +248,7 @@ header .user-right {
 
 .left-nav li a {
   padding-left: 2px;
+  border-left: 2px solid #353942;
 }
 
 .icon-order {
@@ -332,12 +275,12 @@ header .user-right {
   background-image: url('/img/icon-setting.png');
 }
 
-.left-nav ul li:hover a, .nav-active a {
+.left-nav ul li:hover a, .left-nav .nav-active a {
   display: block;
   height: 48px;
   color: #fff;
   background-color: #1A2030;
-  border-left: 2px solid #359AFB;
+  border-left: 2px solid #4EE29A;
 }
 
 .right-content {
@@ -351,15 +294,20 @@ header .user-right {
 }
 
 .right-content .content-header {
-  height: 60px;
-  line-height: 60px;
-  border-bottom: 1px solid #ddd;
+  height: 54px;
+  line-height: 54px;
+  border-bottom: 1px solid #F1F1F1;
+  background-color: #F8F8F8;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+  border-left: 4px solid #4EE29A;
 }
 
 .content-header .page-title {
   float: left;
-  margin-left: 20px;
+  margin-left: 18px;
   font-size: 18px;
+  letter-spacing: 2px;
 }
 
 .content-header .rg-operate {
@@ -398,7 +346,7 @@ header .user-right {
 }
 
 .search-area label {
-  margin-right: 10px;
+  /* margin-right: 10px; */
 }
 
 .btn {
@@ -446,11 +394,24 @@ header .user-right {
 }
 
 .data-lists tr {
-  border-bottom: 1px solid #ccc;
+  height: 50px;
+}
+
+.data-lists th {
+  font-weight: normal;
 }
 
 .data-lists th, .data-lists td {
   border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.data-lists td {
+  color: #555;
+}
+
+.data-lists tr:nth-child(2n) {
+  background-color: #E7E7EB;
 }
 
 .data-lists a {
@@ -487,32 +448,103 @@ footer {
 
 /* 登录/注册开始 */
 
+.account {
+  background: url("/img/bg.jpg") center 0 no-repeat #fff;
+  background-attachment: scroll;
+  background-size: auto auto;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+#canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}
+
 .account input, .account button {
   height: 40px;
   width: 100%;
 }
 
-.account label {
+.account .icon {
+  position: absolute;
   display: block;
+  top: 8px;
+  left: 8px;
+  width: 24px;
+  height: 24px;
   font-size: 16px;
   margin-bottom: 8px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.icon-user {
+  background-image: url('/img/icon-user.png');
+}
+
+.icon-pwd {
+  background-image: url('/img/icon-pwd.png');
+}
+
+.account input {
+  padding-left: 42px;
+  color: #fff;
+  background-color: transparent;
+}
+
+.account input::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #fff;
+}
+
+.account input:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #fff;
+}
+
+.account input::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #fff;
+}
+
+.account input:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #fff;
 }
 
 .account .form-item {
-  margin-bottom: 12px;
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.account .logo {
+  position: absolute;
+  top: 6%;
+  left: 4%;
+  background-color: transparent
 }
 
 .signin, .signup {
   display: block;
   position: absolute;
-  margin-top: -110px;
+  margin-top: -60px;
   left: 50%;
-  margin-left: -160px;
+  margin-left: -190px;
   width: 320px;
+  padding: 30px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  color: #fff;
+  z-index: 2;
 }
 
 .signin {
-  top: 35%;
+  top: 40%;
   height: 306px;
 }
 
@@ -537,7 +569,7 @@ footer {
   left: 50%;
   top: 50%;
   padding: 6px 20px;
-  width: 120px;
+  width: 130px;
   margin-left: -80px;
   color: #fff;
   text-align: center;
@@ -587,18 +619,6 @@ footer {
 .goods-shelf .goods-num input {
   width: 100%;
   text-align: center;
-}
-
-.goods-shelf .goods-name {
-  width: 180px;
-}
-
-.goods-shelf .goods-abbr {
-  width: 120px;
-}
-
-.goods-shelf .goods-category {
-  width: 100px;
 }
 
 .goods-shelf .operate {
