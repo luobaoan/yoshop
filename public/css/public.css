@@ -248,6 +248,7 @@ header .user-right {
 
 .left-nav li a {
   padding-left: 2px;
+  border-left: 2px solid #353942;
 }
 
 .icon-order {
@@ -274,7 +275,7 @@ header .user-right {
   background-image: url('/img/icon-setting.png');
 }
 
-.left-nav ul li:hover a, .nav-active a {
+.left-nav ul li:hover a, .left-nav .nav-active a {
   display: block;
   height: 48px;
   color: #fff;
