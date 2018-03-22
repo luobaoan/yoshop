@@ -53,10 +53,10 @@
             console.log(info.status)
             if (!info.status) {
               $('.msg-error').text(info.msg)
-              fade('.msg-error')
+              utils.fade('.msg-error')
             } else {
               $('.msg-success').text(info.msg)
-              fade('.msg-success')
+              utils.fade('.msg-success')
               // 判断是正常登录还是关联账号登录
               console.log(info.data.type)
               if (!info.data.type) {

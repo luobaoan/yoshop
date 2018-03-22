@@ -45,25 +45,19 @@
     </div>
     <div class="form-item">
       <label for="">商品品牌</label>
-      <select name="" id="">
-        <option value="">请选择商品品牌</option>
-      </select>
+      <select id="goodsBrandId" name="goodsBrandId"></select>
     </div>
     <div class="form-item">
       <label for="">商品分类</label>
-      <select name="" id="">
-        <option value="">请选择商品分类</option>
-      </select>
+      <select id="goodsCategoryId" name="goodsCategoryId"></select>
     </div>
     <div class="form-item">
       <label for="">商品单位</label>
-      <select name="" id="">
-        <option value="">请选择商品单位</option>
-      </select>
+      <select id="goodsUnit" name="goodsUnit"></select>
     </div>
     <div class="form-item bottom40">
       <label for="">商品排序</label>
-      <input type="text" placeholder="请输入排序数字">
+      <input type="number" placeholder="请输入排序数字">
     </div>
     <div class="form-item">
       <button type="button" class="btn btn-save">保存</button>
@@ -72,6 +66,7 @@
   </form>
 {% endblock %}
 {% block js %}
+  <script type="text/javascript" src="/js/dictionary_query.js"></script>
   <script type="text/javascript">
     $(function () {})
   </script>

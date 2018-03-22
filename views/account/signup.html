@@ -57,16 +57,16 @@
             if (info.status == '1') {
               $('.msg-error').text(info.msg)
               $('input').val('')
-              fade('.msg-error')
+              utils.fade('.msg-error')
             } else if (info.status == '2') {
               $('.msg-error').text(info.msg)
-              fade('.msg-error')
+              utils.fade('.msg-error')
             } else if (info.status == '3') {
               $('.msg-error').text(info.msg)
-              fade('.msg-error')
+              utils.fade('.msg-error')
             } else if (info.status == '4') {
               $('.msg-success').text(info.msg)
-              fade('.msg-success');
+              utils.fade('.msg-success');
               setInterval(() => {
                 window.location.href = '/signin'
               }, 1000)

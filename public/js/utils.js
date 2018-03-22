@@ -52,8 +52,8 @@ var utils = {
   },
   // 显示遮罩层
   showOverlay: function() {
-    // $("#overlay").remove();
-    // $("body").prepend('<div id="overlay"></div>');
+    $("#overlay").remove();
+    $("body").prepend('<div id="overlay"></div>');
     if (utils.pageHeight() > utils.windowHeight()) {
       $("#overlay").height(utils.pageHeight());
     } else {

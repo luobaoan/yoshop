@@ -34,7 +34,7 @@
       findLinkAccount();
       // 关闭【删除确认】弹出层
       $('.delete-quit').click(() => {
-        hideOverlay()
+        utils.hideOverlay()
         $('.confirm').hide();
       })
       // 【确认】删除所选字典记录
@@ -88,7 +88,7 @@
               linkId = $(this).parent().attr('linkid')
               if (linkId == '{{session.id}}') {
                 $('.msg-success').text('该账号已登录')
-                fade('.msg-success')
+                utils.fade('.msg-success')
               } else {
                 linkAccountLogin(linkId)
               }
@@ -97,7 +97,7 @@
             // 删除关联账号
             $('.delete').click(function () {
               linkId = $(this).parent().attr('linkid')
-              showOverlay()
+              utils.showOverlay()
               $('.confirm').show();
             })
           }
@@ -121,12 +121,12 @@
         success: function (info) {
           if (!info.status) {
             $('.msg-error').text(info.msg)
-            fade('.msg-error')
+            utils.fade('.msg-error')
           } else {
-            hideOverlay()
+            utils.hideOverlay()
             $('.confirm').hide();
             $('.msg-success').text(info.msg)
-            fade('.msg-success')
+            utils.fade('.msg-success')
             setInterval(() => {
               window.location.reload()
             }, 1000)
@@ -150,10 +150,10 @@
         success: function (info) {
           if (!info.status) {
             $('.msg-error').text(info.msg)
-            fade('.msg-error')
+            utils.fade('.msg-error')
           } else {
             $('.msg-success').text(info.msg)
-            fade('.msg-success')
+            utils.fade('.msg-success')
             setInterval(() => {
               window.location.reload()
             }, 1000)

@@ -9,12 +9,12 @@ $(function() {
     // 初始化数值
     customer = {}
     $('.customer-form .title-name').text('新增客户').attr('type', 'add')
-    showOverlay()
+    utils.showOverlay()
     $('.customer-form').show();
   })
   // 关闭弹出层
   $('.customer-quit').click(() => {
-    hideOverlay()
+    utils.hideOverlay()
     $('.customer-form').hide();
     $('.customer-form')[0].reset();
   })
@@ -40,15 +40,15 @@ $(function() {
       success: function(info) {
         if (info.status) {
           $('.msg-success').text(info.msg)
-          fade('.msg-success')
-          hideOverlay()
+          utils.fade('.msg-success')
+          utils.hideOverlay()
           $('.customer-form').hide();
           $('.customer-form')[0].reset();
           // 重新查询字典列表
           findAllCustomers()
         } else {
           $('.msg-error').text(info.msg)
-          fade('.msg-error')
+          utils.fade('.msg-error')
         }
       }
     })
@@ -120,13 +120,13 @@ function findAllCustomers() {
           $('#customerRemark').val(remark)
 
           $('.customer-form .title-name').text('编辑客户资料').attr('type', 'edit')
-          showOverlay()
+          utils.showOverlay()
           $('.customer-form').show();
         })
         $('.customer-delete').click(function() {
           let id = $(this).parent().attr("id")
           customer.id = id;
-          showOverlay()
+          utils.showOverlay()
           $('.confirm').show();
         })
 
@@ -150,15 +150,15 @@ function deleteIt(id) {
     success: function(info) {
       if (info.status) {
         $('.msg-success').text(info.msg)
-        fade('.msg-success')
-        hideOverlay()
+        utils.fade('.msg-success')
+        utils.hideOverlay()
         $('.confirm').hide();
 
         // 重新查询客户列表
         findAllCustomers()
       } else {
         $('.msg-error').text(info.msg)
-        fade('.msg-error')
+        utils.fade('.msg-error')
       }
     }
   })
