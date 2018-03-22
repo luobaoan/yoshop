@@ -68,35 +68,35 @@ form .btn-quit {
   padding: 10px;
 }
 
-.account {
+.account-list {
   padding: 0 10px 10px;
   border-bottom: 1px solid #ddd;
   background-color: #fff;
 }
 
-.account li {
+.account-list li {
   border-bottom: 1px solid #ddd;
   width: 100%;
 }
 
-.account p {
+.account-list p {
   display: inline-block;
   padding-top: 10px;
   padding-bottom: 6px;
   cursor: pointer;
 }
 
-.account .headimg {
+.account-list .headimg {
   width: 30px;
   vertical-align: middle;
 }
 
-.account .name {
+.account-list .name {
   margin-left: 10px;
   margin-right: 6px;
 }
 
-.account .delete {
+.account-list .delete {
   margin-top: 4px;
   margin-right: 10px;
 }

@@ -402,6 +402,7 @@ header .user-right {
 
 .data-lists th, .data-lists td {
   border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
 
 .data-lists td {
@@ -567,7 +568,7 @@ footer {
   left: 50%;
   top: 50%;
   padding: 6px 20px;
-  width: 120px;
+  width: 130px;
   margin-left: -80px;
   color: #fff;
   text-align: center;
@@ -617,18 +618,6 @@ footer {
 .goods-shelf .goods-num input {
   width: 100%;
   text-align: center;
-}
-
-.goods-shelf .goods-name {
-  width: 180px;
-}
-
-.goods-shelf .goods-abbr {
-  width: 120px;
-}
-
-.goods-shelf .goods-category {
-  width: 100px;
 }
 
 .goods-shelf .operate {
