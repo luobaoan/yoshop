@@ -46,7 +46,7 @@ function findGoodsLists() {
         $('.data-lists tbody').empty().append(str)
       } else {
         $('.msg-error').text(info.msg)
-        utils.fade('.msg-error')
+        utils.fadeTip('.msg-error')
       }
     }
   })

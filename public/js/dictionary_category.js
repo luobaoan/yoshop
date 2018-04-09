@@ -26,7 +26,7 @@ $(function() {
     let id = dictionary.id
     if (!id) {
       $('.msg-error').text("请先选择一条记录")
-      utils.fade('.msg-error')
+      utils.fadeTip('.msg-error')
       return;
     }
     $('.category-form .title-name').text('修改分类').attr('type', 'category-edit')
@@ -79,7 +79,7 @@ $(function() {
         // console.log(info)
         if (info.status) {
           $('.msg-success').text(info.msg)
-          utils.fade('.msg-success')
+          utils.fadeTip('.msg-success')
           utils.hideOverlay()
           $('.category-form').hide();
           $('.category-form')[0].reset();
@@ -87,7 +87,7 @@ $(function() {
           findAllParentLists()
         } else {
           $('.msg-error').text(info.msg)
-          utils.fade('.msg-error')
+          utils.fadeTip('.msg-error')
         }
       }
     })
@@ -113,7 +113,7 @@ $(function() {
         console.log(info)
         if (info.status) {
           $('.msg-success').text(info.msg)
-          utils.fade('.msg-success')
+          utils.fadeTip('.msg-success')
           utils.hideOverlay()
           $('.field-form').hide();
           $('.field-form')[0].reset();
@@ -121,7 +121,7 @@ $(function() {
           findFieldsById(dictionary.id)
         } else {
           $('.msg-error').text(info.msg)
-          utils.fade('.msg-error')
+          utils.fadeTip('.msg-error')
         }
       }
     })
@@ -132,7 +132,7 @@ $(function() {
     let id = dictionary.id
     if (!id) {
       $('.msg-error').text("请先选择一条记录")
-      utils.fade('.msg-error')
+      utils.fadeTip('.msg-error')
       return
     } else {
       // 给删除弹出层添加类别  delete-category
@@ -220,7 +220,7 @@ function findFieldsById(id) {
       console.log(info)
       if (info.status) {
         // $('.msg-success').text(info.msg)
-        // utils.fade('.msg-success')
+        // utils.fadeTip('.msg-success')
         // 铺数据
         let data = info.data;
         // console.log(data)
@@ -268,7 +268,7 @@ function findFieldsById(id) {
         })
       } else {
         $('.msg-error').text(info.msg)
-        utils.fade('.msg-error')
+        utils.fadeTip('.msg-error')
       }
     }
   })
@@ -286,7 +286,7 @@ function deleteIt(id) {
     success: function(info) {
       if (info.status) {
         $('.msg-success').text(info.msg)
-        utils.fade('.msg-success')
+        utils.fadeTip('.msg-success')
         utils.hideOverlay()
         $('.confirm').hide();
         // 判断删除类别
@@ -300,7 +300,7 @@ function deleteIt(id) {
 
       } else {
         $('.msg-error').text(info.msg)
-        utils.fade('.msg-error')
+        utils.fadeTip('.msg-error')
       }
     }
   })

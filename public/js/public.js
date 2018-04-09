@@ -35,7 +35,7 @@ $(function() {
         console.log(msg)
         if (msg) {
           $('.msg-success').text('退出成功')
-          utils.fade('.msg-success')
+          utils.fadeTip('.msg-success')
           setInterval(() => {
             window.location.href = '/signin'
           }, 1000)
