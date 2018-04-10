@@ -120,6 +120,7 @@ function addGoods() {
         $('.msg-success').text(info.msg)
         utils.fadeTip('.msg-success')
         // $('.add-form')[0].reset();
+        window.location.reload();
       } else {
         $('.msg-error').text(info.msg)
         utils.fadeTip('.msg-error')
