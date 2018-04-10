@@ -27,8 +27,8 @@ function findGoodsLists() {
         let str = '';
         for (let i in data) {
           let list = data[i];
-          str += '<tr>';
-          str += '<td>' + (i + 1) + '</td>';
+          str += '<tr id="' + list.id + '">';
+          str += '<td>' + (Number(i) + 1) + '</td>';
           str += '<td>' + list.code + '</td>';
           str += '<td class="goods-name">' + list.title + '</td>';
           str += '<td>' + list.abbr + '</td>';

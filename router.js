@@ -125,8 +125,12 @@ module.exports = (app) => {
     // 查询全部客户列表
     .get('/dictionary/findAllCustomers', DictionaryController.findAllCustomers)
 
+    // 添加商品字典记录
+    .post('/dictionary/addGoods', DictionaryController.addGoods)
     // 查询商品字典列表
     .post('/dictionary/findGoodsLists', DictionaryController.findGoodsLists)
+    // 查询商品字典最后一条记录Id
+    .get('/dictionary/findLastGoodsId', DictionaryController.findLastGoodsId)
 
     /*-------------基础资料结束-----------*/
     /*-------------账户设置开始-----------*/

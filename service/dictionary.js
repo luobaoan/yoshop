@@ -288,6 +288,35 @@ module.exports = {
       })
     return data
   },
+  /**   新增商品字典记录
+   *  code: 商品编号
+   *  title: 商品名称
+   *  abbr: 商品简称
+   *  brand_id: 品牌id
+   *  brand_name: 品牌名称
+   *  category_id: 分类id
+   *  category_name: 分类名称
+   *  unit_id: 计量单位id
+   *  unit_name: 计量单位名
+   *  sale_price:  销售单价
+   *  sort: 排序 
+   */
+  addGoods: async (goods) => {
+    let data;
+    await userModel.dictionarySql.insertGoods(goods)
+      .then(() => {
+        data = {
+          status: true,
+          msg: '增加成功'
+        }
+      }).catch(() => {
+        data = {
+          status: false,
+          msg: '新增失败，请稍后重试'
+        }
+      })
+    return data;
+  },
   /** 查询全部商品字典列表
    * @param goodsName:商品名称
    * @param goodsBrandId:商品品牌Id
@@ -310,6 +339,35 @@ module.exports = {
         data = {
           status: false,
           msg: '查询失败，请稍后重试'
+        }
+      })
+    return data;
+  },
+  /** 查询商品字典的最后一条记录的id
+   *
+   */
+  findLastGoodsId: async () => {
+    let data;
+    await userModel.dictionarySql.findLastGoodsId()
+      .then((result) => {
+        let res = JSON.parse(JSON.stringify(result))
+        console.log(res);
+        if (res.length != 0) {
+          data = {
+            status: true,
+            data: res[0].id,
+            msg: '商品字典id'
+          }
+        } else {
+          data = {
+            status: true,
+            data: 0,
+            msg: '商品字典最新记录id'
+          }
+        }
+      }).catch((err) => {
+        data = {
+          status: false
         }
       })
     return data;

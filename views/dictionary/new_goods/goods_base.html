@@ -29,35 +29,35 @@
   <form class="base-form add-form">
     <div class="form-item">
       <label for="">商品编号</label>
-      <input type="text" readonly="readonly" disabled="disabled" value="SP0001">
+      <input type="text" id="goodsCode" name="code" readonly="readonly" disabled="disabled" value="">
     </div>
     <div class="form-item">
       <label for="">商品名称</label>
-      <input type="text" placeholder="请输入商品全称（包含品牌、阶段、包装等）">
+      <input type="text" id="goodsTitle" placeholder="请输入商品全称（包含品牌、阶段、包装等）">
     </div>
     <div class="form-item">
       <label for="">商品简称</label>
-      <input type="text" placeholder="请输入商品简称方便检索">
+      <input type="text" id="goodsAddr" placeholder="请输入商品简称方便检索">
     </div>
     <div class="form-item">
       <label for="">销售单价</label>
-      <input type="text" placeholder="请输入商品销售单价（单位：元）">
+      <input type="text" id="salePrice" placeholder="请输入商品销售单价（单位：元）">
     </div>
     <div class="form-item">
       <label for="">商品品牌</label>
-      <select id="goodsBrandId" name="goodsBrandId"></select>
+      <select id="goodsBrand" selectname="" name="goodsBrandId"></select>
     </div>
     <div class="form-item">
       <label for="">商品分类</label>
-      <select id="goodsCategoryId" name="goodsCategoryId"></select>
+      <select id="goodsCategory" selectname="" name="goodsCategoryId"></select>
     </div>
     <div class="form-item">
       <label for="">商品单位</label>
-      <select id="goodsUnit" name="goodsUnit"></select>
+      <select id="goodsUnit" selectname="" name="goodsUnit"></select>
     </div>
     <div class="form-item bottom40">
       <label for="">商品排序</label>
-      <input type="number" placeholder="请输入排序数字">
+      <input type="number" id="sortNum" placeholder="请输入排序数字">
     </div>
     <div class="form-item">
       <button type="button" class="btn btn-save">保存</button>
@@ -68,6 +68,18 @@
 {% block js %}
   <script type="text/javascript" src="/js/dictionary_query.js"></script>
   <script type="text/javascript">
-    $(function () {})
+    $(function () {
+      // 查询最新商品字典idz
+      let num = findLastGoodsId();
+      let newCodeNum = 'SP000' + (
+        ++num
+      );
+      $('#goodsCode').val(newCodeNum)
+
+      // 保存商品
+      $('.btn-save').click(function () {
+        addGoods();
+      })
+    })
   </script>
 {% endblock %}
