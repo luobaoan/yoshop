@@ -1,4 +1,5 @@
 // 数据库
+const StringDecoder = require('string_decoder').StringDecoder;
 const userModel = require('../lib/mysql')
 
 module.exports = {
@@ -333,6 +334,34 @@ module.exports = {
         data = {
           status: false,
           msg: '删除失败，请稍后重试'
+        }
+      })
+    return data;
+  },
+  /** 通过id查找对应商品字典记录
+   * @param  id:商品id
+   */
+  findGoodsById: async (id) => {
+    let data;
+    await userModel.dictionarySql.findGoodsById(id)
+      .then((result) => {
+        let res = JSON.parse(JSON.stringify(result))
+        // console.log(res);
+
+        const decoder = new StringDecoder('utf8');
+        console.log(res[0].goods_desc.data);
+        // Buffer.from('你') => <Buffer e4 bd a0>
+        const str = decoder.write(Buffer.from([0xe4, 0xbd, 0xa0]));
+        console.log(str); // 你
+        data = {
+          status: true,
+          data: res,
+          msg: '商品字典记录'
+        }
+      }).catch((err) => {
+        data = {
+          status: false,
+          msg: '查询失败，请稍后重试'
         }
       })
     return data;

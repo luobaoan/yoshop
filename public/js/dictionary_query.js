@@ -65,6 +65,21 @@ function findLastGoodsId() {
   })
   return codeNum;
 }
+// 通过id查询商品字典记录
+function findGoodsById(id) {
+  let codeNum;
+  $.ajax({
+    url: '/dictionary/findGoodsById?id=' + id,
+    type: 'GET',
+    catche: false,
+    dataType: 'json',
+    async: false,
+    success: function(info) {
+      console.log(info);
+    }
+  })
+  return codeNum;
+}
 // 增加商品字典记录
 function addGoods() {
   // *  code: 商品编号
@@ -78,6 +93,7 @@ function addGoods() {
   // *  unit_name: 计量单位名
   // *  sale_price:  销售单价
   // *  sort: 排序
+  // *  desc: 图文详情
   $.ajax({
     url: '/dictionary/addGoods',
     type: 'POST',
@@ -92,7 +108,8 @@ function addGoods() {
       'category_name': $('#goodsCategory').attr('selectname'),
       'unit_id': $('#goodsUnit').val(),
       'unit_name': $('#goodsUnit').attr('selectname'),
-      'sort': $('#sortNum').val()
+      'sort': $('#sortNum').val(),
+      'goods_desc': ue.getPlainTxt()
     },
     catche: false,
     dataType: 'json',

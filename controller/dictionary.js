@@ -250,7 +250,7 @@ module.exports = {
    *  unit_name: 计量单位名
    *  sale_price:  销售单价
    *  sort: 排序
-   *  desc: 图文详情
+   *  goods_desc: 图文详情
    */
   addGoods: async (ctx, next) => {
     let params = ctx.request.body;
@@ -265,7 +265,8 @@ module.exports = {
       params.unit_id,
       params.unit_name,
       params.sale_price,
-      params.sort
+      params.sort,
+      params.goods_desc
     ]
     let result = await DictionaryService.addGoods(goods)
     ctx.body = result
@@ -297,6 +298,15 @@ module.exports = {
     ]
     // console.log(goods);
     let result = await DictionaryService.findGoodsLists(goods)
+    ctx.body = result
+  },
+  /** 通过id查找对应商品字典记录
+   * @param  id:商品id
+   */
+  findGoodsById: async (ctx, next) => {
+    let id = ctx.request.query.id;
+    console.log(id);
+    let result = await DictionaryService.findGoodsById(id)
     ctx.body = result
   },
   /** 查询商品字典的最后一条记录的id

@@ -133,6 +133,8 @@ module.exports = (app) => {
     .post('/dictionary/findGoodsLists', DictionaryController.findGoodsLists)
     // 查询商品字典最后一条记录Id
     .get('/dictionary/findLastGoodsId', DictionaryController.findLastGoodsId)
+    // 通过id查询商品字典记录
+    .get('/dictionary/findGoodsById', DictionaryController.findGoodsById)
 
     /*-------------基础资料结束-----------*/
     /*-------------账户设置开始-----------*/

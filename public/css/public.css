@@ -66,6 +66,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 
 .form-item {
   margin-bottom: 20px;
+  overflow: hidden;
 }
 
 input {
@@ -325,6 +326,7 @@ header .user-right {
   bottom: 20px;
   background-color: #fff;
   border-radius: 6px;
+  overflow-y: auto;
 }
 
 .right-content .content-header {
@@ -608,7 +610,7 @@ footer {
   color: #fff;
   text-align: center;
   border-radius: 4px;
-  z-index: 102
+  z-index: 1002
 }
 
 .msg-error {

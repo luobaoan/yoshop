@@ -30,7 +30,7 @@ function findGoodsLists() {
     data: $('#searchGoods').serialize(),
     type: 'POST',
     cache: false,
-    dataType: 'json',
+    dataType: 'blob',
     success: function(info) {
       // console.log(info)
       if (info.status) {
@@ -51,6 +51,13 @@ function findGoodsLists() {
             purchasePrice = list.purchase_price
           }
           str += '<td>' + purchasePrice + '</td>';
+          if (list.goods_desc) {
+            var builder = new BolbBuilder();
+            builder.append("Hello World!");
+            var blob = builder.getBlob("text/plain");
+            console.log(blog);
+            // str += '<td>' + builder.getBlob("text/plain"); + '</td>';
+          }
           str += '<td class="operate" goodsid="' + list.id + '">';
           str += '<p class="edit">编辑</p>';
           str += '<p class="color-red delete">删除</p>';
