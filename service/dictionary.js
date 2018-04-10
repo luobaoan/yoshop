@@ -299,7 +299,7 @@ module.exports = {
    *  unit_id: 计量单位id
    *  unit_name: 计量单位名
    *  sale_price:  销售单价
-   *  sort: 排序 
+   *  sort: 排序
    */
   addGoods: async (goods) => {
     let data;
@@ -313,6 +313,26 @@ module.exports = {
         data = {
           status: false,
           msg: '新增失败，请稍后重试'
+        }
+      })
+    return data;
+  },
+  /**
+   * 通过 id删除商品字典记录
+   * id：商品字典 id
+   */
+  deleteGoodsById: async (id) => {
+    let data;
+    await userModel.dictionarySql.deleteGoodsById(id)
+      .then(() => {
+        data = {
+          status: true,
+          msg: '删除成功'
+        }
+      }).catch(() => {
+        data = {
+          status: false,
+          msg: '删除失败，请稍后重试'
         }
       })
     return data;

@@ -117,7 +117,4 @@ $(function() {
   findParentDicByCode('category')
   // 查询计量单位
   findParentDicByCode('unit')
-
-
-
 })
