@@ -39,7 +39,7 @@
     </div>
     <div class="form-item">
       <label for="">商品简称</label>
-      <input type="text" id="goodsAddr" placeholder="请输入商品简称方便检索">
+      <input type="text" id="goodsAbbr" placeholder="请输入商品简称方便检索">
     </div>
     <div class="form-item">
       <label for="">销售单价</label>
@@ -107,19 +107,36 @@
       autoFloatEnabled: true
     });
     $(function () {
-      findGoodsById('12')
-
-      // 查询最新商品字典id
-      let num = findLastGoodsId();
-      let newCodeNum = 'SP000' + (
-        ++num
-      );
-      $('#goodsCode').val(newCodeNum)
-
-      // 保存商品
+      let goodsId = '{{goodsId}}'
+      if (!goodsId) {
+        /** 没有商品 id，表示创建商品 **/
+        $('.page-title').text('商品字典——创建商品')
+        // Step1 清空当前商品字典记录
+        currGoods = {}
+        // Step2 查询最新商品字典id
+        let num = findLastGoodsId();
+        let newCodeNum = 'SP000' + (
+          ++num
+        );
+        $('#goodsCode').val(newCodeNum)
+      } else {
+        /** 编辑商品 **/
+        $('.page-title').text('商品字典——编辑商品')
+        currGoods.goods_id = goodsId;
+        // Step1 查看该商品信息
+        findGoodsById(goodsId)
+        // 查询商品品牌
+        findParentDicByCode('brand')
+        // 查询商品分类
+        findParentDicByCode('category')
+        // 查询计量单位
+        findParentDicByCode('unit')
+      }
+      // 保存修改的信息
       $('.save-info').click(function () {
-        addGoods();
+        saveGoodsInfo();
       })
+
     })
   </script>
 {% endblock %}

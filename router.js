@@ -129,6 +129,8 @@ module.exports = (app) => {
     .post('/dictionary/addGoods', DictionaryController.addGoods)
     // 通过id删除商品字典记录
     .post('/dictionary/deleteGoodsById', DictionaryController.deleteGoodsById)
+    // 通过 id 更新商品字典记录信息
+    .post('/dictionary/updateGoodsById', DictionaryController.updateGoodsById)
     // 查询商品字典列表
     .post('/dictionary/findGoodsLists', DictionaryController.findGoodsLists)
     // 查询商品字典最后一条记录Id

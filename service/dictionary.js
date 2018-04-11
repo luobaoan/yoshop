@@ -338,6 +338,25 @@ module.exports = {
       })
     return data;
   },
+  /** 通过 id更新商品字典记录
+   *
+   */
+  updateGoodsById: async (goods) => {
+    let data;
+    await userModel.dictionarySql.updateGoodsById(goods)
+      .then(() => {
+        data = {
+          status: true,
+          msg: '更新成功'
+        }
+      }).catch(() => {
+        data = {
+          status: false,
+          msg: '更新失败，请稍后重试'
+        }
+      })
+    return data;
+  },
   /** 通过id查找对应商品字典记录
    * @param  id:商品id
    */
@@ -346,16 +365,11 @@ module.exports = {
     await userModel.dictionarySql.findGoodsById(id)
       .then((result) => {
         let res = JSON.parse(JSON.stringify(result))
-        // console.log(res);
+        console.log(res);
 
-        const decoder = new StringDecoder('utf8');
-        console.log(res[0].goods_desc.data);
-        // Buffer.from('你') => <Buffer e4 bd a0>
-        const str = decoder.write(Buffer.from([0xe4, 0xbd, 0xa0]));
-        console.log(str); // 你
         data = {
           status: true,
-          data: res,
+          data: res[0],
           msg: '商品字典记录'
         }
       }).catch((err) => {

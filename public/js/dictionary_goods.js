@@ -3,6 +3,12 @@
  */
 let goods = {};
 $(function() {
+  // 查询商品品牌
+  findParentDicByCode('brand')
+  // 查询商品分类
+  findParentDicByCode('category')
+  // 查询计量单位
+  findParentDicByCode('unit')
   // 查询商品字典类表
   findGoodsLists();
   // 点击查询
@@ -46,11 +52,11 @@ function findGoodsLists() {
           str += '<td>' + list.brand_name + '</td>';
           str += '<td>' + list.category_name + '</td>';
           str += '<td>' + list.unit_name + '</td>';
-          let purchasePrice = '0';
-          if (list.purchase_price) {
-            purchasePrice = list.purchase_price
+          let salePrice = '0';
+          if (list.sale_price) {
+            salePrice = list.sale_price
           }
-          str += '<td>' + purchasePrice + '</td>';
+          str += '<td>' + salePrice + '</td>';
           str += '<td class="operate" goodsid="' + list.id + '">';
           str += '<p class="edit">编辑</p>';
           str += '<p class="color-red delete">删除</p>';
@@ -65,6 +71,12 @@ function findGoodsLists() {
           goods.id = $(this).parent().attr('goodsid');
           utils.showOverlay();
           $('.confirm').show();
+        })
+
+        // 编辑操作
+        $('.edit').click(function() {
+          goods.id = $(this).parent().attr('goodsid');
+          window.location.href = '/dictionary/goods/base?goodsId=' + goods.id
         })
 
       } else {

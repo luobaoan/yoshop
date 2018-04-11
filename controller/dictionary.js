@@ -25,7 +25,9 @@ module.exports = {
   },
   // 跳转到创建商品——基本信息页
   goodsBase: async (ctx, next) => {
+    let goodsId = ctx.request.query.goodsId;
     await ctx.render('dictionary/new_goods/goods_base', {
+      goodsId: goodsId,
       session: ctx.session,
       title: "商品字典——创建商品",
       pagename: 'dictionary-goods',
@@ -280,6 +282,26 @@ module.exports = {
     let result = await DictionaryService.deleteGoodsById(id)
     ctx.body = result
   },
+  updateGoodsById: async (ctx, next) => {
+    let params = ctx.request.body;
+    let goods = [
+      params.code,
+      params.title,
+      params.abbr,
+      params.brand_id,
+      params.brand_name,
+      params.category_id,
+      params.category_name,
+      params.unit_id,
+      params.unit_name,
+      params.sale_price,
+      params.sort,
+      params.goods_desc,
+      params.goods_id
+    ]
+    let result = await DictionaryService.updateGoodsById(goods)
+    ctx.body = result
+  },
   /** 查询全部商品字典列表
    * @param goodsName:商品名称
    * @param goodsBrandId:商品品牌Id
@@ -305,7 +327,6 @@ module.exports = {
    */
   findGoodsById: async (ctx, next) => {
     let id = ctx.request.query.id;
-    console.log(id);
     let result = await DictionaryService.findGoodsById(id)
     ctx.body = result
   },
