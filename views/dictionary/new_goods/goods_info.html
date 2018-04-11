@@ -21,17 +21,23 @@
     <li>
       <a href="/dictionary/goods/base">基本信息</a>
     </li>
-    <li>
-      <a href="/dictionary/goods/slideshow">轮播图</a>
-    </li>
     <li class="active">
       <a href="/dictionary/goods/info">图文介绍</a>
+    </li>
+    <li>
+      <a href="/dictionary/goods/slideshow">轮播图</a>
     </li>
     <li>
       <a href="/dictionary/goods/specification">规格参数</a>
     </li>
   </ul>
-  <script id="editor" type="text/plain" style="width:800px;height:300px;"></script>
+  <form class="desc-form base-form">
+    <script id="editor" type="text/plain" style="width:800px;height:300px;margin-bottom:30px;"></script>
+    <div class="form-item">
+      <button type="button" class="btn btn-save save-info">保存</button>
+      <button type="button" class="btn btn-quit">取消</button>
+    </div>
+  </form>
 {% endblock %}
 {% block js %}
   <script type="text/javascript">

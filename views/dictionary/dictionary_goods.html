@@ -11,6 +11,13 @@
   </div>
 {% endblock %}
 {% block body %}
+  <!-- 删除确认框 -->
+  <div class="confirm" type="">
+    <i class="icon icon-close delete-quit"></i>
+    <p>是否确认删除该条记录？</p>
+    <button type="button" class="delete-confirm btn btn-save">确认</button>
+    <button type="button" class="delete-quit btn btn-quit">取消</button>
+  </div>
   <!-- 搜索区域 -->
   <div class="search-area">
     <form id="searchGoods">
@@ -20,11 +27,11 @@
       </div>
       <div class="search-key">
         <label for="customer">商品品牌</label>
-        <select id="goodsBrandId" name="goodsBrandId"></select>
+        <select id="goodsBrand" name="goodsBrandId"></select>
       </div>
       <div class="search-key">
         <label for="customer">商品分类</label>
-        <select id="goodsCategoryId" name="goodsCategoryId"></select>
+        <select id="goodsCategory" name="goodsCategoryId"></select>
       </div>
       <div class="search-key">
         <label for="customer">单位</label>

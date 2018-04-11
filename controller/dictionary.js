@@ -238,6 +238,48 @@ module.exports = {
     let result = await DictionaryService.findAllCustomers()
     ctx.body = result
   },
+  /**   新增商品字典记录
+   *  code: 商品编号
+   *  title: 商品名称
+   *  abbr: 商品简称
+   *  brand_id: 品牌id
+   *  brand_name: 品牌名称
+   *  category_id: 分类id
+   *  category_name: 分类名称
+   *  unit_id: 计量单位id
+   *  unit_name: 计量单位名
+   *  sale_price:  销售单价
+   *  sort: 排序
+   *  goods_desc: 图文详情
+   */
+  addGoods: async (ctx, next) => {
+    let params = ctx.request.body;
+    let goods = [
+      params.code,
+      params.title,
+      params.abbr,
+      params.brand_id,
+      params.brand_name,
+      params.category_id,
+      params.category_name,
+      params.unit_id,
+      params.unit_name,
+      params.sale_price,
+      params.sort,
+      params.goods_desc
+    ]
+    let result = await DictionaryService.addGoods(goods)
+    ctx.body = result
+  },
+  /**  通过 id删除商品字典记录
+   * @param id: 商品字典 id
+   */
+  deleteGoodsById: async (ctx, next) => {
+    let params = ctx.request.body;
+    let id = params.id;
+    let result = await DictionaryService.deleteGoodsById(id)
+    ctx.body = result
+  },
   /** 查询全部商品字典列表
    * @param goodsName:商品名称
    * @param goodsBrandId:商品品牌Id
@@ -256,6 +298,22 @@ module.exports = {
     ]
     // console.log(goods);
     let result = await DictionaryService.findGoodsLists(goods)
+    ctx.body = result
+  },
+  /** 通过id查找对应商品字典记录
+   * @param  id:商品id
+   */
+  findGoodsById: async (ctx, next) => {
+    let id = ctx.request.query.id;
+    console.log(id);
+    let result = await DictionaryService.findGoodsById(id)
+    ctx.body = result
+  },
+  /** 查询商品字典的最后一条记录的id
+   *
+   */
+  findLastGoodsId: async (ctx, next) => {
+    let result = await DictionaryService.findLastGoodsId()
     ctx.body = result
   }
 }
