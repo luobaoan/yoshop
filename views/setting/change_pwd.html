@@ -49,10 +49,10 @@
           success: function (info) {
             if (!info.status) {
               $('.msg-error').text(info.msg)
-              utils.fade('.msg-error')
+              utils.fadeTip('.msg-error')
             } else {
               $('.msg-success').text(info.msg)
-              utils.fade('.msg-success')
+              utils.fadeTip('.msg-success')
               setInterval(() => {
                 window.location.href = "/signin"
               }, 1000)

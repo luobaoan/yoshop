@@ -40,7 +40,7 @@ $(function() {
       success: function(info) {
         if (info.status) {
           $('.msg-success').text(info.msg)
-          utils.fade('.msg-success')
+          utils.fadeTip('.msg-success')
           utils.hideOverlay()
           $('.customer-form').hide();
           $('.customer-form')[0].reset();
@@ -48,7 +48,7 @@ $(function() {
           findAllCustomers()
         } else {
           $('.msg-error').text(info.msg)
-          utils.fade('.msg-error')
+          utils.fadeTip('.msg-error')
         }
       }
     })
@@ -150,7 +150,7 @@ function deleteIt(id) {
     success: function(info) {
       if (info.status) {
         $('.msg-success').text(info.msg)
-        utils.fade('.msg-success')
+        utils.fadeTip('.msg-success')
         utils.hideOverlay()
         $('.confirm').hide();
 
@@ -158,7 +158,7 @@ function deleteIt(id) {
         findAllCustomers()
       } else {
         $('.msg-error').text(info.msg)
-        utils.fade('.msg-error')
+        utils.fadeTip('.msg-error')
       }
     }
   })

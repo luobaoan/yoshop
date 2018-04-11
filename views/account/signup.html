@@ -1,84 +1,84 @@
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>博客站</title>
-  <link rel="stylesheet" href="/css/public.css">
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>博客站</title>
+    <link rel="stylesheet" href="/css/public.css">
+  </head>
 
-<body>
-  <div class="container account">
-    <!-- 炫彩效果开始 -->
-    <canvas id="canvas"></canvas>
-    <!-- 炫彩效果结束 -->
-    <img src="/logo-green.png" class="logo" alt="">
-    <div class="msg-error message"></div>
-    <div class="msg-success message"></div>
-    <form class="form signup" method="post">
-      <h1 class="form-title">注册</h1>
-      <div class="form-item">
-        <i class="icon icon-user"></i>
-        <input type="text" name="account" autofocus="autofocus" placeholder="用户名">
-      </div>
-      <div class="form-item">
-        <i class="icon icon-pwd"></i>
-        <input type="password" name="password" class="password" placeholder="密码">
-      </div>
-      <div class="form-item">
-        <i class="icon icon-pwd"></i>
-        <input type="password" name="repeatpass" class="repeatpass" placeholder="确认密码">
-      </div>
-      <button type="button" class="btn-submit">注册</button>
-    </form>
-  </div>
-  <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="/js/public.js"></script>
-  <script type="text/javascript" src="/js/canvas.js"></script>
-  <script type="text/javascript">
-    $(function() {
-      $('.repeatpass').bind('keyup', function(event) {
-        if (event.keyCode == "13") {
-          //回车执行提交
-          $('.btn-submit').click();
-        }
-      });
-      $('.btn-submit').click(() => {
-        // console.log($('.form').serialize())
-        $.ajax({
-          url: '/register',
-          data: $('.form').serialize(),
-          type: 'POST',
-          cache: false,
-          dataType: 'json',
-          success: function(info) {
-            console.log(info.msg)
-            if (info.status == '1') {
-              $('.msg-error').text(info.msg)
-              $('input').val('')
-              utils.fade('.msg-error')
-            } else if (info.status == '2') {
-              $('.msg-error').text(info.msg)
-              utils.fade('.msg-error')
-            } else if (info.status == '3') {
-              $('.msg-error').text(info.msg)
-              utils.fade('.msg-error')
-            } else if (info.status == '4') {
-              $('.msg-success').text(info.msg)
-              utils.fade('.msg-success');
-              setInterval(() => {
-                window.location.href = '/signin'
-              }, 1000)
-            }
-          },
-          error: function(e) {
-            alert('异常')
+  <body>
+    <div class="container account">
+      <!-- 炫彩效果开始 -->
+      <canvas id="canvas"></canvas>
+      <!-- 炫彩效果结束 -->
+      <img src="/logo-green.png" class="logo" alt="">
+      <div class="msg-error message"></div>
+      <div class="msg-success message"></div>
+      <form class="form signup" method="post">
+        <h1 class="form-title">注册</h1>
+        <div class="form-item">
+          <i class="icon icon-user"></i>
+          <input type="text" name="account" autofocus="autofocus" placeholder="用户名">
+        </div>
+        <div class="form-item">
+          <i class="icon icon-pwd"></i>
+          <input type="password" name="password" class="password" placeholder="密码">
+        </div>
+        <div class="form-item">
+          <i class="icon icon-pwd"></i>
+          <input type="password" name="repeatpass" class="repeatpass" placeholder="确认密码">
+        </div>
+        <button type="button" class="btn-submit">注册</button>
+      </form>
+    </div>
+    <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/utils.js"></script>
+    <script type="text/javascript" src="/js/canvas.js"></script>
+    <script type="text/javascript">
+      $(function () {
+        $('.repeatpass').bind('keyup', function (event) {
+          if (event.keyCode == "13") {
+            //回车执行提交
+            $('.btn-submit').click();
           }
+        });
+        $('.btn-submit').click(() => {
+          // console.log($('.form').serialize())
+          $.ajax({
+            url: '/register',
+            data: $('.form').serialize(),
+            type: 'POST',
+            cache: false,
+            dataType: 'json',
+            success: function (info) {
+              console.log(info.msg)
+              if (info.status == '1') {
+                $('.msg-error').text(info.msg)
+                $('input').val('')
+                utils.fadeTip('.msg-error')
+              } else if (info.status == '2') {
+                $('.msg-error').text(info.msg)
+                utils.fadeTip('.msg-error')
+              } else if (info.status == '3') {
+                $('.msg-error').text(info.msg)
+                utils.fadeTip('.msg-error')
+              } else if (info.status == '4') {
+                $('.msg-success').text(info.msg)
+                utils.fadeTip('.msg-success');
+                setInterval(() => {
+                  window.location.href = '/signin'
+                }, 1000)
+              }
+            },
+            error: function (e) {
+              alert('异常')
+            }
+          })
         })
       })
-    })
-  </script>
-</body>
+    </script>
+  </body>
 
 </html>
