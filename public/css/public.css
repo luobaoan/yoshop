@@ -1,33 +1,27 @@
-input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+input:-webkit-autofill,
+select:-webkit-autofill,
+textarea:-webkit-autofill {
   -webkit-text-fill-color: #ededed !important;
-  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
   background-color: transparent;
   background-image: none;
   transition: background-color 50000s ease-in-out 0s; //背景色透明  生效时长  过渡效果  启用时延迟的时间
 }
-
 /*Webkit browsers*/
-
 ::-webkit-input-placeholder {
   color: #ececec;
 }
-
 /*Mozilla Firefox 4 to 18*/
-
 :-moz-placeholder {
   color: #ececec;
   opacity: 1;
 }
-
 /*Mozilla Firefox 19 +*/
-
 ::-moz-placeholder {
   color: #ececec;
   opacity: 1;
 }
-
 /*Internet Explorer 10 +*/
-
 :-ms-input-placeholder {
   color: #ececec;
 }
@@ -114,33 +108,33 @@ textarea {
   width: 34px;
   height: 34px;
   background-size: 100%;
-  background-image: url('/img/icon-avator.png');
+  background-image: url("/img/icon-avator.png");
 }
 
 .icon-add {
   width: 24px;
   height: 24px;
   background-size: 100%;
-  background-image: url('/img/icon-add.png');
+  background-image: url("/img/icon-add.png");
 }
 
 .icon-back {
   background-size: 100%;
-  background-image: url('/img/icon-back.png');
+  background-image: url("/img/icon-back.png");
 }
 
 .icon-close {
   width: 28px;
   height: 28px;
   background-size: 100%;
-  background-image: url('/img/icon-close.png');
+  background-image: url("/img/icon-close.png");
 }
 
 .icon-down-arrow {
   width: 20px;
   height: 20px;
   background-size: 100%;
-  background-image: url('/img/icon-down-arrow.png');
+  background-image: url("/img/icon-down-arrow.png");
 }
 
 .avator {
@@ -151,9 +145,7 @@ textarea {
   border-radius: 50%;
   vertical-align: middle;
 }
-
 /* 公共头部开始 */
-
 .container {
   position: absolute;
   top: 0;
@@ -200,7 +192,8 @@ header .user-right {
   margin-right: 24px;
 }
 
-.user-right a, .user-right span {
+.user-right a,
+.user-right span {
   display: inline-block;
   font-size: 16px;
   cursor: pointer;
@@ -216,11 +209,8 @@ header .user-right {
   top: 2px;
   color: #fff;
 }
-
 /* 公共头部结束 */
-
 /* 中间部分开始 */
-
 .main {
   position: absolute;
   top: 68px;
@@ -254,7 +244,8 @@ header .user-right {
   cursor: pointer;
 }
 
-.left-nav span, .left-nav a {
+.left-nav a,
+.left-nav span {
   color: #fff;
 }
 
@@ -287,30 +278,31 @@ header .user-right {
 }
 
 .icon-order {
-  background-image: url('/img/icon-order.png');
+  background-image: url("/img/icon-order.png");
 }
 
 .icon-goods {
-  background-image: url('/img/icon-goods.png');
+  background-image: url("/img/icon-goods.png");
 }
 
 .icon-warehouse {
-  background-image: url('/img/icon-warehouse.png');
+  background-image: url("/img/icon-warehouse.png");
 }
 
 .icon-member {
-  background-image: url('/img/icon-member.png');
+  background-image: url("/img/icon-member.png");
 }
 
 .icon-dictionary {
-  background-image: url('/img/icon-dictionary.png');
+  background-image: url("/img/icon-dictionary.png");
 }
 
 .icon-setting {
-  background-image: url('/img/icon-setting.png');
+  background-image: url("/img/icon-setting.png");
 }
 
-.left-nav ul li:hover a, .left-nav .nav-active a {
+.left-nav .nav-active a,
+.left-nav ul li:hover a {
   display: block;
   height: 48px;
   color: #fff;
@@ -330,6 +322,10 @@ header .user-right {
 }
 
 .right-content .content-header {
+  position: fixed;
+  left: 200px;
+  right: 20px;
+  z-index: 1000;
   height: 54px;
   line-height: 54px;
   border-bottom: 1px solid #F1F1F1;
@@ -362,11 +358,9 @@ header .user-right {
 }
 
 .content-main {
-  margin: 20px 20px;
+  margin: 80px 20px;
 }
-
 /* 搜索区域开始 */
-
 .search-area {
   overflow: hidden;
 }
@@ -404,14 +398,12 @@ header .user-right {
   width: 130px;
 }
 
-.goods-shelf .search-area input, .goods-shelf .search-area select {
+.goods-shelf .search-area input,
+.goods-shelf .search-area select {
   width: 180px;
 }
-
 /* 搜索区域结束 */
-
 /* 数据列表开始 */
-
 .data-lists {
   width: 100%;
   font-size: 14px;
@@ -437,7 +429,8 @@ header .user-right {
   font-weight: normal;
 }
 
-.data-lists th, .data-lists td {
+.data-lists td,
+.data-lists th {
   border-right: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
 }
@@ -460,13 +453,9 @@ header .user-right {
   height: 32px;
   vertical-align: middle;
 }
-
 /* 数据列表结束 */
-
 /* 中间部分结束 */
-
 /* 公共底部开始 */
-
 footer {
   position: absolute;
   left: 0;
@@ -479,11 +468,8 @@ footer {
   color: #fff;
   background-color: #515151;
 }
-
 /* 公共底部结束 */
-
 /* 登录/注册开始 */
-
 .account {
   background: url("/img/bg.jpg") center 0 no-repeat #fff;
   background-attachment: scroll;
@@ -501,7 +487,8 @@ footer {
   z-index: 1;
 }
 
-.account input, .account button {
+.account button,
+.account input {
   height: 40px;
   width: 100%;
 }
@@ -520,11 +507,11 @@ footer {
 }
 
 .icon-user {
-  background-image: url('/img/icon-user.png');
+  background-image: url("/img/icon-user.png");
 }
 
 .icon-pwd {
-  background-image: url('/img/icon-pwd.png');
+  background-image: url("/img/icon-pwd.png");
 }
 
 .account input {
@@ -562,10 +549,11 @@ footer {
   position: absolute;
   top: 6%;
   left: 4%;
-  background-color: transparent
+  background-color: transparent;
 }
 
-.signin, .signup {
+.signin,
+.signup {
   display: block;
   position: absolute;
   margin-top: -60px;
@@ -592,13 +580,10 @@ footer {
 .form .form-title {
   margin-bottom: 30px;
   text-align: center;
-  letter-spacing: 2px
+  letter-spacing: 2px;
 }
-
 /* 登录/注册结束 */
-
 /* 弹出层提示开始 */
-
 .message {
   display: none;
   position: fixed;
@@ -610,7 +595,7 @@ footer {
   color: #fff;
   text-align: center;
   border-radius: 4px;
-  z-index: 1002
+  z-index: 1002;
 }
 
 .msg-error {
@@ -620,12 +605,10 @@ footer {
 .msg-success {
   background-color: #44B549;
 }
-
 /* 弹出层提示结束 */
-
 /* 商品上下架开始 */
-
-.member-lists tbody, .member-address tbody {
+.member-address tbody,
+.member-lists tbody {
   line-height: 60px;
 }
 
@@ -665,26 +648,21 @@ footer {
 .goods-shelf .operate p {
   cursor: pointer;
 }
-
 /* 商品上下架结束 */
-
 /* 错误页面开始 */
-
 #error {
   margin: 20px 40px;
 }
-
 /* 错误页面结束 */
-
 #overlay {
   background: #383838;
   filter: alpha(opacity=50);
-  opacity: .5;
+  opacity: 0.5;
   display: none;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 100
+  z-index: 100;
 }
