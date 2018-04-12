@@ -6,21 +6,21 @@
   <div class="rg-operate">
     <a href="/dictionary/goods">
       <i class="icon icon-back"></i>
-      <span>返回</span>
+      <span>返回列表</span>
     </a>
   </div>
 {% endblock %}
 {% block body %}
   <!-- tab 导航 -->
   <ul class="tab-nav">
-    <li>
-      <a href="/dictionary/goods/base">基本信息</a>
+    <li class="base-info">
+      <a href="javascript:void(0);">1.基本信息</a>
     </li>
-    <li>
-      <a href="/dictionary/goods/slideshow">轮播图</a>
+    <li class="goods-spec active">
+      <a href="javascript:void(0);">2.规格参数</a>
     </li>
-    <li class="active">
-      <a href="/dictionary/goods/specification">规格参数</a>
+    <li class="goods-slides">
+      <a href="javascript:void(0);">3.轮播图</a>
     </li>
   </ul>
   <form class="params-form add-form">
@@ -49,12 +49,13 @@
       <input type="text" placeholder=" 如：900">
     </div>
     <div class="form-item">
-      <button type="button" class="btn btn-save">保存</button>
-      <button type="button" class="btn btn-quit">取消</button>
+      <button type="button" class="btn btn-save">下一步</button>
+      <button type="button" class="btn btn-quit">上一步</button>
     </div>
   </form>
 {% endblock %}
 {% block js %}
+  <script type="text/javascript" src="/js/dictionary_query.js"></script>
   <script type="text/javascript">
     $(function () {})
   </script>

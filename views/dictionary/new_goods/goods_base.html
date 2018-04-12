@@ -11,21 +11,21 @@
   <div class="rg-operate">
     <a href="/dictionary/goods">
       <i class="icon icon-back"></i>
-      <span>返回</span>
+      <span>返回列表</span>
     </a>
   </div>
 {% endblock %}
 {% block body %}
   <!-- tab 导航 -->
   <ul class="tab-nav">
-    <li class="active">
-      <a href="/dictionary/goods/base">基本信息</a>
+    <li class="base-info active">
+      <a href="javascript:void(0);">1.基本信息</a>
     </li>
-    <li>
-      <a href="/dictionary/goods/slideshow">轮播图</a>
+    <li class="goods-spec">
+      <a href="javascript:void(0);">2.规格参数</a>
     </li>
-    <li>
-      <a href="/dictionary/goods/specification">规格参数</a>
+    <li class="goods-slides">
+      <a href="javascript:void(0);">3.轮播图</a>
     </li>
   </ul>
   <form class="base-form add-form">
@@ -43,7 +43,7 @@
     </div>
     <div class="form-item">
       <label for="">销售单价</label>
-      <input type="text" id="salePrice" placeholder="请输入商品销售单价（单位：元）">
+      <input type="number" id="salePrice" placeholder="请输入商品销售单价（单位：元）">
     </div>
     <div class="form-item">
       <label for="">商品品牌</label>
@@ -61,13 +61,13 @@
       <label for="">商品排序</label>
       <input type="number" id="sortNum" placeholder="请输入排序数字">
     </div>
-    <div class="form-item bottom40">
+    <div class="form-item">
       <label for="" class="fl">商品详情</label>
       <script id="editor" class="fl" type="text/plain" style="width:800px;height:300px;margin-left:4px;"></script>
     </div>
     <div class="form-item">
-      <button type="button" class="btn btn-save save-info">保存</button>
-      <button type="button" class="btn btn-quit">取消</button>
+      <button type="button" class="btn btn-save save-info">下一步</button>
+      <!-- <button type="button" class="btn btn-quit">取消</button> -->
     </div>
   </form>
 {% endblock %}
@@ -107,6 +107,7 @@
       autoFloatEnabled: true
     });
     $(function () {
+      // 判断创建商品还是编辑商品
       let goodsId = '{{goodsId}}'
       if (!goodsId) {
         /** 没有商品 id，表示创建商品 **/
@@ -125,18 +126,88 @@
         currGoods.goods_id = goodsId;
         // Step1 查看该商品信息
         findGoodsById(goodsId)
-        // 查询商品品牌
-        findParentDicByCode('brand')
-        // 查询商品分类
-        findParentDicByCode('category')
-        // 查询计量单位
-        findParentDicByCode('unit')
       }
+      // 查询商品品牌
+      findParentDicByCode('brand')
+      // 查询商品分类
+      findParentDicByCode('category')
+      // 查询计量单位
+      findParentDicByCode('unit')
       // 保存修改的信息
       $('.save-info').click(function () {
         saveGoodsInfo();
       })
 
     })
+    // 查询商品字典最后一个记录Id
+    function findLastGoodsId() {
+      let codeNum;
+      $.ajax({
+        url: '/dictionary/findLastGoodsId',
+        type: 'GET',
+        catche: false,
+        dataType: 'json',
+        async: false,
+        success: function (info) {
+          codeNum = info.data;
+        }
+      })
+      return codeNum;
+    }
+    // 保存商品字典记录
+    function saveGoodsInfo() {
+      /**
+       *  code: 商品编号
+       *  title: 商品名称
+       *  abbr: 商品简称
+       *  brand_id: 品牌id
+       *  brand_name: 品牌名称
+       *  category_id: 分类id
+       *  category_name: 分类名称
+       *  unit_id: 计量单位id
+       *  unit_name: 计量单位名
+       *  sale_price:  销售单价
+       *  sort: 排序
+       */
+      let url = '/dictionary/addGoods'
+      if (currGoods.goods_id) {
+        url = '/dictionary/updateGoodsById'
+      }
+      $.ajax({
+        url: url,
+        type: 'POST',
+        data: {
+          'code': $('#goodsCode').val(),
+          'title': $('#goodsTitle').val(),
+          'abbr': $('#goodsAbbr').val(),
+          'sale_price': $('#salePrice').val(),
+          'brand_id': $('#goodsBrand').val(),
+          'brand_name': $('#goodsBrand').attr('selectname'),
+          'category_id': $('#goodsCategory').val(),
+          'category_name': $('#goodsCategory').attr('selectname'),
+          'unit_id': $('#goodsUnit').val(),
+          'unit_name': $('#goodsUnit').attr('selectname'),
+          'sort': $('#sortNum').val(),
+          'goods_desc': ue.getPlainTxt(),
+          'goods_id': currGoods.goods_id
+        },
+        catche: false,
+        dataType: 'json',
+        success: function (info) {
+          console.log(info);
+          if (info.status) {
+            //成功
+            $('.msg-success').text(info.msg)
+            utils.fadeTip('.msg-success')
+            setInterval(() => {
+              location.href = '/dictionary/goods/specification?goodsId=' + goodsId
+            }, 1000)
+          } else {
+            $('.msg-error').text(info.msg)
+            utils.fadeTip('.msg-error')
+          }
+        }
+      })
+    }
   </script>
 {% endblock %}
