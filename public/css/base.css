@@ -205,3 +205,19 @@ input:-ms-input-placeholder {
   /* Internet Explorer 10+ */
   color: white;
 }
+
+/* 清理浮动 */
+
+.yo-clear:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+.yo-clear {
+  zoom: 1;
+  /* for IE6 IE7 */
+}

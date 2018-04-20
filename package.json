@@ -9,12 +9,7 @@
   "scripts": {
     "dev": "supervisor --harmony app"
   },
-  "keywords": [
-    "nodejs",
-    "koa2",
-    "mysql",
-    "shop"
-  ],
+  "keywords": ["nodejs", "koa2", "mysql", "shop"],
   "author": "bruce",
   "license": "",
   "dependencies": {

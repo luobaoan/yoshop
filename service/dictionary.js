@@ -316,6 +316,25 @@ module.exports = {
           msg: '新增失败，请稍后重试'
         }
       })
+    // 根据当前的商品编码查询该记录id
+    await userModel.dictionarySql.findGoodsIdByCode(goods[0])
+      .then((result) => {
+        let res = JSON.parse(JSON.stringify(result))
+        if (res.length != 0) {
+          data = {
+            status: true,
+            data: {
+              "goodsId": res[0].id
+            },
+            msg: '增加成功'
+          }
+        }
+      }).catch(() => {
+        data = {
+          status: false,
+          msg: '新增失败，请稍后重试'
+        }
+      })
     return data;
   },
   /**
@@ -411,6 +430,11 @@ module.exports = {
    */
   findLastGoodsId: async () => {
     let data;
+    await userModel.dictionarySql.findGoodsIdByCode('SP00018')
+      .then((result) => {
+        let res = result;
+        console.log(res);
+      })
     await userModel.dictionarySql.findLastGoodsId()
       .then((result) => {
         let res = JSON.parse(JSON.stringify(result))
@@ -434,6 +458,27 @@ module.exports = {
         }
       })
     return data;
-  }
+  },
+  /** 增加对应商品字典的规格参数信息
+   * name：名称
+   * sort：排序数字
+   * code：字典编码（方便查询）
+   */
+  addGoodsSpecification: async (specification) => {
+    let data;
+    await userModel.dictionarySql.insertGoodsSpecification(specification)
+      .then(() => {
+        data = {
+          status: true,
+          msg: '增加成功'
+        }
+      }).catch(() => {
+        data = {
+          status: false,
+          msg: '新增失败，请稍后重试'
+        }
+      })
+    return data;
+  },
 
 }

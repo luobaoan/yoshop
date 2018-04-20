@@ -1,27 +1,33 @@
-input:-webkit-autofill,
-select:-webkit-autofill,
-textarea:-webkit-autofill {
+select:-webkit-autofill, input:-webkit-autofill, textarea:-webkit-autofill {
   -webkit-text-fill-color: #ededed !important;
   -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
   background-color: transparent;
   background-image: none;
   transition: background-color 50000s ease-in-out 0s; //背景色透明  生效时长  过渡效果  启用时延迟的时间
 }
+
 /*Webkit browsers*/
+
 ::-webkit-input-placeholder {
   color: #ececec;
 }
+
 /*Mozilla Firefox 4 to 18*/
+
 :-moz-placeholder {
   color: #ececec;
   opacity: 1;
 }
+
 /*Mozilla Firefox 19 +*/
+
 ::-moz-placeholder {
   color: #ececec;
   opacity: 1;
 }
+
 /*Internet Explorer 10 +*/
+
 :-ms-input-placeholder {
   color: #ececec;
 }
@@ -145,7 +151,9 @@ textarea {
   border-radius: 50%;
   vertical-align: middle;
 }
+
 /* 公共头部开始 */
+
 .container {
   position: absolute;
   top: 0;
@@ -192,8 +200,7 @@ header .user-right {
   margin-right: 24px;
 }
 
-.user-right a,
-.user-right span {
+.user-right a, .user-right span {
   display: inline-block;
   font-size: 16px;
   cursor: pointer;
@@ -209,8 +216,11 @@ header .user-right {
   top: 2px;
   color: #fff;
 }
+
 /* 公共头部结束 */
+
 /* 中间部分开始 */
+
 .main {
   position: absolute;
   top: 68px;
@@ -244,8 +254,7 @@ header .user-right {
   cursor: pointer;
 }
 
-.left-nav a,
-.left-nav span {
+.left-nav a, .left-nav span {
   color: #fff;
 }
 
@@ -301,8 +310,7 @@ header .user-right {
   background-image: url("/img/icon-setting.png");
 }
 
-.left-nav .nav-active a,
-.left-nav ul li:hover a {
+.left-nav .nav-active a, .left-nav ul li:hover a {
   display: block;
   height: 48px;
   color: #fff;
@@ -360,7 +368,9 @@ header .user-right {
 .content-main {
   margin: 80px 20px;
 }
+
 /* 搜索区域开始 */
+
 .search-area {
   overflow: hidden;
 }
@@ -398,12 +408,14 @@ header .user-right {
   width: 130px;
 }
 
-.goods-shelf .search-area input,
-.goods-shelf .search-area select {
+.goods-shelf .search-area input, .goods-shelf .search-area select {
   width: 180px;
 }
+
 /* 搜索区域结束 */
+
 /* 数据列表开始 */
+
 .data-lists {
   width: 100%;
   font-size: 14px;
@@ -429,8 +441,7 @@ header .user-right {
   font-weight: normal;
 }
 
-.data-lists td,
-.data-lists th {
+.data-lists td, .data-lists th {
   border-right: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
 }
@@ -453,9 +464,13 @@ header .user-right {
   height: 32px;
   vertical-align: middle;
 }
+
 /* 数据列表结束 */
+
 /* 中间部分结束 */
+
 /* 公共底部开始 */
+
 footer {
   position: absolute;
   left: 0;
@@ -468,8 +483,11 @@ footer {
   color: #fff;
   background-color: #515151;
 }
+
 /* 公共底部结束 */
+
 /* 登录/注册开始 */
+
 .account {
   background: url("/img/bg.jpg") center 0 no-repeat #fff;
   background-attachment: scroll;
@@ -487,8 +505,7 @@ footer {
   z-index: 1;
 }
 
-.account button,
-.account input {
+.account button, .account input {
   height: 40px;
   width: 100%;
 }
@@ -552,8 +569,7 @@ footer {
   background-color: transparent;
 }
 
-.signin,
-.signup {
+.signin, .signup {
   display: block;
   position: absolute;
   margin-top: -60px;
@@ -582,15 +598,18 @@ footer {
   text-align: center;
   letter-spacing: 2px;
 }
+
 /* 登录/注册结束 */
+
 /* 弹出层提示开始 */
+
 .message {
   display: none;
   position: fixed;
   left: 50%;
   top: 50%;
   padding: 6px 20px;
-  width: 130px;
+  min-width: 160px;
   margin-left: -80px;
   color: #fff;
   text-align: center;
@@ -605,10 +624,12 @@ footer {
 .msg-success {
   background-color: #44B549;
 }
+
 /* 弹出层提示结束 */
+
 /* 商品上下架开始 */
-.member-address tbody,
-.member-lists tbody {
+
+.member-address tbody, .member-lists tbody {
   line-height: 60px;
 }
 
@@ -648,12 +669,17 @@ footer {
 .goods-shelf .operate p {
   cursor: pointer;
 }
+
 /* 商品上下架结束 */
+
 /* 错误页面开始 */
+
 #error {
   margin: 20px 40px;
 }
+
 /* 错误页面结束 */
+
 #overlay {
   background: #383838;
   filter: alpha(opacity=50);

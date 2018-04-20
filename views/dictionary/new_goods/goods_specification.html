@@ -26,27 +26,28 @@
   <form class="params-form add-form">
     <div class="form-item">
       <label for="">适用年龄</label>
-      <input type="text" placeholder="如：12-36个月">
+      <input id="goodsId" name="goods_id" type="hidden" value="{{goodsId}}">
+      <input id="suitableAge" name="suitable_age" type="text" placeholder="如：12-36个月">
     </div>
     <div class="form-item">
       <label for="">保质期</label>
-      <input type="text" placeholder="如：24个月">
+      <input id="shelfLife" name="shelf_life" type="text" placeholder="如：24个月">
     </div>
     <div class="form-item">
       <label for="">包装</label>
-      <input type="text" placeholder="罐装/盒装/袋装">
+      <input id="unit" name="unit" type="text" placeholder="罐装/盒装/袋装">
     </div>
     <div class="form-item">
       <label for="">相关参数</label>
-      <input type="text" placeholder="如：1箱6罐">
+      <input id="params" name="related_parameters" type="text" placeholder="如：1箱6罐">
     </div>
     <div class="form-item">
       <label for="">规格</label>
-      <input type="text" placeholder="如：900g/罐">
+      <input id="specification" name="specification" type="text" placeholder="如：900g/罐">
     </div>
     <div class="form-item bottom40">
       <label for="">净重量(g)</label>
-      <input type="text" placeholder=" 如：900">
+      <input id="netWeight" name="net_weight" type="text" placeholder=" 如：900">
     </div>
     <div class="form-item">
       <button type="button" class="btn btn-save">下一步</button>
@@ -56,7 +57,5 @@
 {% endblock %}
 {% block js %}
   <script type="text/javascript" src="/js/dictionary_query.js"></script>
-  <script type="text/javascript">
-    $(function () {})
-  </script>
+  <script type="text/javascript" src="/js/dictionary/goods_specification.js"></script>
 {% endblock %}
