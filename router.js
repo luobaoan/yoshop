@@ -138,6 +138,9 @@ module.exports = (app) => {
     // 通过id查询商品字典记录
     .get('/dictionary/findGoodsById', DictionaryController.findGoodsById)
 
+    // 增加商品字典对应的规格参数信息
+    .post('/dictionary/addGoodsSpecification', DictionaryController.addGoodsSpecification)
+
     /*-------------基础资料结束-----------*/
     /*-------------账户设置开始-----------*/
 

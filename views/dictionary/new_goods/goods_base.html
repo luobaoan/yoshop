@@ -11,26 +11,27 @@
   <div class="rg-operate">
     <a href="/dictionary/goods">
       <i class="icon icon-back"></i>
-      <span>返回</span>
+      <span>返回列表</span>
     </a>
   </div>
 {% endblock %}
 {% block body %}
   <!-- tab 导航 -->
   <ul class="tab-nav">
-    <li class="active">
-      <a href="/dictionary/goods/base">基本信息</a>
+    <li class="base-info active">
+      <a href="javascript:void(0);">1.基本信息</a>
     </li>
-    <li>
-      <a href="/dictionary/goods/slideshow">轮播图</a>
+    <li class="goods-spec">
+      <a href="javascript:void(0);">2.规格参数</a>
     </li>
-    <li>
-      <a href="/dictionary/goods/specification">规格参数</a>
+    <li class="goods-slides">
+      <a href="javascript:void(0);">3.轮播图</a>
     </li>
   </ul>
   <form class="base-form add-form">
     <div class="form-item">
       <label for="">商品编号</label>
+      <input type="hidden" id="goodsId" value="{{goodsId}}">
       <input type="text" id="goodsCode" name="code" readonly="readonly" disabled="disabled" value="">
     </div>
     <div class="form-item">
@@ -43,7 +44,7 @@
     </div>
     <div class="form-item">
       <label for="">销售单价</label>
-      <input type="text" id="salePrice" placeholder="请输入商品销售单价（单位：元）">
+      <input type="number" id="salePrice" placeholder="请输入商品销售单价（单位：元）">
     </div>
     <div class="form-item">
       <label for="">商品品牌</label>
@@ -61,82 +62,18 @@
       <label for="">商品排序</label>
       <input type="number" id="sortNum" placeholder="请输入排序数字">
     </div>
-    <div class="form-item bottom40">
+    <div class="form-item">
       <label for="" class="fl">商品详情</label>
       <script id="editor" class="fl" type="text/plain" style="width:800px;height:300px;margin-left:4px;"></script>
     </div>
     <div class="form-item">
-      <button type="button" class="btn btn-save save-info">保存</button>
-      <button type="button" class="btn btn-quit">取消</button>
+      <button type="button" class="btn btn-save save-info">下一步</button>
+      <!-- <button type="button" class="btn btn-quit">取消</button> -->
     </div>
   </form>
 {% endblock %}
 {% block js %}
   <script type="text/javascript" src="/js/dictionary_query.js"></script>
-  <script type="text/javascript">
-    //实例化编辑器 建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
-    var ue = UE.getEditor('editor', {
-      toolbars: [
-        [
-          'undo', //撤销
-          'redo', //重做
-          'bold', //加粗
-          'italic', //斜体
-          'underline', //下划线
-          'indent', //首行缩进
-          'forecolor', //字体颜色
-          'insertorderedlist', //有序列表
-          'insertunorderedlist', //无序列表
-          'fontfamily', //字体
-          'fontsize', //字号
-          'paragraph', //段落格式
-          'subscript', //下标
-          'superscript', //上标
-          'horizontal', //分隔线
-          'removeformat', //清除格式
-
-          'link', //超链接
-          'unlink', //取消链接
-          'formatmatch', //格式刷
-          'cleardoc', //清空文档
-          'preview', //预览
-          'fullscreen', //全屏
-        ]
-      ],
-      autoHeightEnabled: true,
-      autoFloatEnabled: true
-    });
-    $(function () {
-      let goodsId = '{{goodsId}}'
-      if (!goodsId) {
-        /** 没有商品 id，表示创建商品 **/
-        $('.page-title').text('商品字典——创建商品')
-        // Step1 清空当前商品字典记录
-        currGoods = {}
-        // Step2 查询最新商品字典id
-        let num = findLastGoodsId();
-        let newCodeNum = 'SP000' + (
-          ++num
-        );
-        $('#goodsCode').val(newCodeNum)
-      } else {
-        /** 编辑商品 **/
-        $('.page-title').text('商品字典——编辑商品')
-        currGoods.goods_id = goodsId;
-        // Step1 查看该商品信息
-        findGoodsById(goodsId)
-        // 查询商品品牌
-        findParentDicByCode('brand')
-        // 查询商品分类
-        findParentDicByCode('category')
-        // 查询计量单位
-        findParentDicByCode('unit')
-      }
-      // 保存修改的信息
-      $('.save-info').click(function () {
-        saveGoodsInfo();
-      })
-
-    })
-  </script>
+  <script type="text/javascript" src="/js/dictionary/goods_base.js"></script>
+  <script type="text/javascript"></script>
 {% endblock %}

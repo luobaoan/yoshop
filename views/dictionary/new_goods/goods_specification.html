@@ -6,56 +6,56 @@
   <div class="rg-operate">
     <a href="/dictionary/goods">
       <i class="icon icon-back"></i>
-      <span>返回</span>
+      <span>返回列表</span>
     </a>
   </div>
 {% endblock %}
 {% block body %}
   <!-- tab 导航 -->
   <ul class="tab-nav">
-    <li>
-      <a href="/dictionary/goods/base">基本信息</a>
+    <li class="base-info">
+      <a href="javascript:void(0);">1.基本信息</a>
     </li>
-    <li>
-      <a href="/dictionary/goods/slideshow">轮播图</a>
+    <li class="goods-spec active">
+      <a href="javascript:void(0);">2.规格参数</a>
     </li>
-    <li class="active">
-      <a href="/dictionary/goods/specification">规格参数</a>
+    <li class="goods-slides">
+      <a href="javascript:void(0);">3.轮播图</a>
     </li>
   </ul>
   <form class="params-form add-form">
     <div class="form-item">
       <label for="">适用年龄</label>
-      <input type="text" placeholder="如：12-36个月">
+      <input id="goodsId" name="goods_id" type="hidden" value="{{goodsId}}">
+      <input id="suitableAge" name="suitable_age" type="text" placeholder="如：12-36个月">
     </div>
     <div class="form-item">
       <label for="">保质期</label>
-      <input type="text" placeholder="如：24个月">
+      <input id="shelfLife" name="shelf_life" type="text" placeholder="如：24个月">
     </div>
     <div class="form-item">
       <label for="">包装</label>
-      <input type="text" placeholder="罐装/盒装/袋装">
+      <input id="unit" name="unit" type="text" placeholder="罐装/盒装/袋装">
     </div>
     <div class="form-item">
       <label for="">相关参数</label>
-      <input type="text" placeholder="如：1箱6罐">
+      <input id="params" name="related_parameters" type="text" placeholder="如：1箱6罐">
     </div>
     <div class="form-item">
       <label for="">规格</label>
-      <input type="text" placeholder="如：900g/罐">
+      <input id="specification" name="specification" type="text" placeholder="如：900g/罐">
     </div>
     <div class="form-item bottom40">
       <label for="">净重量(g)</label>
-      <input type="text" placeholder=" 如：900">
+      <input id="netWeight" name="net_weight" type="text" placeholder=" 如：900">
     </div>
     <div class="form-item">
-      <button type="button" class="btn btn-save">保存</button>
-      <button type="button" class="btn btn-quit">取消</button>
+      <button type="button" class="btn btn-save">下一步</button>
+      <button type="button" class="btn btn-quit">上一步</button>
     </div>
   </form>
 {% endblock %}
 {% block js %}
-  <script type="text/javascript">
-    $(function () {})
-  </script>
+  <script type="text/javascript" src="/js/dictionary_query.js"></script>
+  <script type="text/javascript" src="/js/dictionary/goods_specification.js"></script>
 {% endblock %}

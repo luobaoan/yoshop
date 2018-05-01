@@ -3,6 +3,14 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+@font-face {
+  font-family: 'Open Sans';
+  src: url("../fonts/opensans-webfont.eot");
+  src: url("../fonts/opensans-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/opensans-webfont.woff2") format("woff2"), url("../fonts/opensans-webfont.woff") format("woff"), url("/wp-content/themes/honor/us/fonts/opensans-webfont.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -196,4 +204,20 @@ input::-moz-placeholder {
 input:-ms-input-placeholder {
   /* Internet Explorer 10+ */
   color: white;
+}
+
+/* 清理浮动 */
+
+.yo-clear:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+.yo-clear {
+  zoom: 1;
+  /* for IE6 IE7 */
 }

@@ -9,12 +9,7 @@
   "scripts": {
     "dev": "supervisor --harmony app"
   },
-  "keywords": [
-    "nodejs",
-    "koa2",
-    "mysql",
-    "shop"
-  ],
+  "keywords": ["nodejs", "koa2", "mysql", "shop"],
   "author": "bruce",
   "license": "",
   "dependencies": {
@@ -32,7 +27,7 @@
     "md5": "^2.2.1",
     "moment": "^2.19.4",
     "mysql": "^2.15.0",
-    "npm": "^5.7.1",
+    "npm": "^5.8.0",
     "nunjucks": "^3.0.1"
   },
   "devDependencies": {

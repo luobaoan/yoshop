@@ -1,20 +1,22 @@
 // 当前商品字典记录
 let currGoods = {};
-// 查询商品字典最后一个记录Id
-function findLastGoodsId() {
-  let codeNum;
-  $.ajax({
-    url: '/dictionary/findLastGoodsId',
-    type: 'GET',
-    catche: false,
-    dataType: 'json',
-    async: false,
-    success: function(info) {
-      codeNum = info.data;
-    }
+$(function() {
+  /** 创建商品步骤 **/
+  // Step1 基本信息
+  $('.tab-nav .base-info').click(() => {
+    location.href = '/dictionary/goods/base'
   })
-  return codeNum;
-}
+  // Step2 规格参数
+  $('.tab-nav .goods-spec').click(() => {
+    location.href = '/dictionary/goods/specification'
+  })
+  // Step3 轮播图
+  $('.tab-nav .goods-slides').click(() => {
+    location.href = '/dictionary/goods/slideshow'
+  })
+
+})
+
 // 通过id查询商品字典记录
 function findGoodsById(id) {
   // console.log(currGoods.goods_id);
@@ -50,61 +52,8 @@ function findGoodsById(id) {
     }
   })
 }
-// 保存商品字典记录
-function saveGoodsInfo() {
-  /**
-   *  code: 商品编号
-   *  title: 商品名称
-   *  abbr: 商品简称
-   *  brand_id: 品牌id
-   *  brand_name: 品牌名称
-   *  category_id: 分类id
-   *  category_name: 分类名称
-   *  unit_id: 计量单位id
-   *  unit_name: 计量单位名
-   *  sale_price:  销售单价
-   *  sort: 排序
-   *  goods_desc: 图文详情
-   */
-  let url = '/dictionary/addGoods'
-  if (currGoods.goods_id) {
-    url = '/dictionary/updateGoodsById'
-  }
-  $.ajax({
-    url: url,
-    type: 'POST',
-    data: {
-      'code': $('#goodsCode').val(),
-      'title': $('#goodsTitle').val(),
-      'abbr': $('#goodsAbbr').val(),
-      'sale_price': $('#salePrice').val(),
-      'brand_id': $('#goodsBrand').val(),
-      'brand_name': $('#goodsBrand').attr('selectname'),
-      'category_id': $('#goodsCategory').val(),
-      'category_name': $('#goodsCategory').attr('selectname'),
-      'unit_id': $('#goodsUnit').val(),
-      'unit_name': $('#goodsUnit').attr('selectname'),
-      'sort': $('#sortNum').val(),
-      'goods_desc': ue.getPlainTxt(),
-      'goods_id': currGoods.goods_id
-    },
-    catche: false,
-    dataType: 'json',
-    success: function(info) {
-      console.log(info);
-      if (info.status) {
-        //添加成功
-        $('.msg-success').text(info.msg)
-        utils.fadeTip('.msg-success')
-        // $('.add-form')[0].reset();
-        window.location.reload();
-      } else {
-        $('.msg-error').text(info.msg)
-        utils.fadeTip('.msg-error')
-      }
-    }
-  })
-} //通过字典编码查询父字典分类对应的字段列表
+
+//通过字典编码查询父字典分类对应的字段列表
 function findParentDicByCode(code) {
   $.ajax({
     url: '/dictionary/findParentDicByCode?code=' + code,

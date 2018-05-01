@@ -36,7 +36,9 @@ module.exports = {
   },
   // 跳转到创建商品——轮播图
   goodsSlideshow: async (ctx, next) => {
+    let goodsId = ctx.request.query.goodsId;
     await ctx.render('dictionary/new_goods/goods_slideshow', {
+      goodsId: goodsId,
       session: ctx.session,
       title: "商品字典——创建商品",
       pagename: 'dictionary-goods',
@@ -54,7 +56,9 @@ module.exports = {
   },
   // 跳转到创建商品——规格参数
   goodsSpecification: async (ctx, next) => {
+    let goodsId = ctx.request.query.goodsId;
     await ctx.render('dictionary/new_goods/goods_specification', {
+      goodsId: goodsId,
       session: ctx.session,
       title: "商品字典——创建商品",
       pagename: 'dictionary-goods',
@@ -282,6 +286,9 @@ module.exports = {
     let result = await DictionaryService.deleteGoodsById(id)
     ctx.body = result
   },
+  /** 通过商品id 更新商品记录
+   *
+   */
   updateGoodsById: async (ctx, next) => {
     let params = ctx.request.body;
     let goods = [
@@ -336,5 +343,28 @@ module.exports = {
   findLastGoodsId: async (ctx, next) => {
     let result = await DictionaryService.findLastGoodsId()
     ctx.body = result
-  }
+  },
+  /**   增加对应商品字典的规格参数信息
+   *  goods_id: 关联商品id
+   *  suitable_age: 适用年龄
+   *  shelf_life: 保质期
+   *  unit: 单位/包装
+   *  related_parameters: 相关参数
+   *  specification: 规格
+   *  net_weight: 净重量
+   */
+  addGoodsSpecification: async (ctx, next) => {
+    let params = ctx.request.body;
+    let specification = [
+      params.goods_id,
+      params.suitable_age,
+      params.shelf_life,
+      params.unit,
+      params.related_parameters,
+      params.specification,
+      params.net_weight
+    ]
+    let result = await DictionaryService.addGoodsSpecification(specification)
+    ctx.body = result
+  },
 }

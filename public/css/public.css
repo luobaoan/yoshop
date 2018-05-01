@@ -1,6 +1,6 @@
-input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+select:-webkit-autofill, input:-webkit-autofill, textarea:-webkit-autofill {
   -webkit-text-fill-color: #ededed !important;
-  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
   background-color: transparent;
   background-image: none;
   transition: background-color 50000s ease-in-out 0s; //背景色透明  生效时长  过渡效果  启用时延迟的时间
@@ -114,33 +114,33 @@ textarea {
   width: 34px;
   height: 34px;
   background-size: 100%;
-  background-image: url('/img/icon-avator.png');
+  background-image: url("/img/icon-avator.png");
 }
 
 .icon-add {
   width: 24px;
   height: 24px;
   background-size: 100%;
-  background-image: url('/img/icon-add.png');
+  background-image: url("/img/icon-add.png");
 }
 
 .icon-back {
   background-size: 100%;
-  background-image: url('/img/icon-back.png');
+  background-image: url("/img/icon-back.png");
 }
 
 .icon-close {
   width: 28px;
   height: 28px;
   background-size: 100%;
-  background-image: url('/img/icon-close.png');
+  background-image: url("/img/icon-close.png");
 }
 
 .icon-down-arrow {
   width: 20px;
   height: 20px;
   background-size: 100%;
-  background-image: url('/img/icon-down-arrow.png');
+  background-image: url("/img/icon-down-arrow.png");
 }
 
 .avator {
@@ -254,7 +254,7 @@ header .user-right {
   cursor: pointer;
 }
 
-.left-nav span, .left-nav a {
+.left-nav a, .left-nav span {
   color: #fff;
 }
 
@@ -287,30 +287,30 @@ header .user-right {
 }
 
 .icon-order {
-  background-image: url('/img/icon-order.png');
+  background-image: url("/img/icon-order.png");
 }
 
 .icon-goods {
-  background-image: url('/img/icon-goods.png');
+  background-image: url("/img/icon-goods.png");
 }
 
 .icon-warehouse {
-  background-image: url('/img/icon-warehouse.png');
+  background-image: url("/img/icon-warehouse.png");
 }
 
 .icon-member {
-  background-image: url('/img/icon-member.png');
+  background-image: url("/img/icon-member.png");
 }
 
 .icon-dictionary {
-  background-image: url('/img/icon-dictionary.png');
+  background-image: url("/img/icon-dictionary.png");
 }
 
 .icon-setting {
-  background-image: url('/img/icon-setting.png');
+  background-image: url("/img/icon-setting.png");
 }
 
-.left-nav ul li:hover a, .left-nav .nav-active a {
+.left-nav .nav-active a, .left-nav ul li:hover a {
   display: block;
   height: 48px;
   color: #fff;
@@ -330,6 +330,10 @@ header .user-right {
 }
 
 .right-content .content-header {
+  position: fixed;
+  left: 200px;
+  right: 20px;
+  z-index: 1000;
   height: 54px;
   line-height: 54px;
   border-bottom: 1px solid #F1F1F1;
@@ -362,7 +366,7 @@ header .user-right {
 }
 
 .content-main {
-  margin: 20px 20px;
+  margin: 80px 20px;
 }
 
 /* 搜索区域开始 */
@@ -437,7 +441,7 @@ header .user-right {
   font-weight: normal;
 }
 
-.data-lists th, .data-lists td {
+.data-lists td, .data-lists th {
   border-right: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
 }
@@ -501,7 +505,7 @@ footer {
   z-index: 1;
 }
 
-.account input, .account button {
+.account button, .account input {
   height: 40px;
   width: 100%;
 }
@@ -520,11 +524,11 @@ footer {
 }
 
 .icon-user {
-  background-image: url('/img/icon-user.png');
+  background-image: url("/img/icon-user.png");
 }
 
 .icon-pwd {
-  background-image: url('/img/icon-pwd.png');
+  background-image: url("/img/icon-pwd.png");
 }
 
 .account input {
@@ -562,7 +566,7 @@ footer {
   position: absolute;
   top: 6%;
   left: 4%;
-  background-color: transparent
+  background-color: transparent;
 }
 
 .signin, .signup {
@@ -592,7 +596,7 @@ footer {
 .form .form-title {
   margin-bottom: 30px;
   text-align: center;
-  letter-spacing: 2px
+  letter-spacing: 2px;
 }
 
 /* 登录/注册结束 */
@@ -605,12 +609,12 @@ footer {
   left: 50%;
   top: 50%;
   padding: 6px 20px;
-  width: 130px;
+  min-width: 160px;
   margin-left: -80px;
   color: #fff;
   text-align: center;
   border-radius: 4px;
-  z-index: 1002
+  z-index: 1002;
 }
 
 .msg-error {
@@ -625,7 +629,7 @@ footer {
 
 /* 商品上下架开始 */
 
-.member-lists tbody, .member-address tbody {
+.member-address tbody, .member-lists tbody {
   line-height: 60px;
 }
 
@@ -679,12 +683,12 @@ footer {
 #overlay {
   background: #383838;
   filter: alpha(opacity=50);
-  opacity: .5;
+  opacity: 0.5;
   display: none;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 100
+  z-index: 100;
 }
