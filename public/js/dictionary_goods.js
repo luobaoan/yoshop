@@ -58,8 +58,8 @@ function findGoodsLists() {
           }
           str += '<td>' + salePrice + '</td>';
           str += '<td class="operate" goodsid="' + list.id + '">';
-          str += '<p class="edit">编辑</p>';
-          str += '<p class="color-red delete">删除</p>';
+          str += '<span class="edit right10">编辑</span>';
+          str += '<span class="color-red delete">删除</span>';
           str += '</td>';
           str += '</tr>';
         }

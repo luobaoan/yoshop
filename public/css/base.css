@@ -19,7 +19,7 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
   font-size: 100%;
   background: transparent;
   box-sizing: border-box;
-  font-family: "Open Sans", "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  /* font-family: "Microsoft Yahei", "Open Sans", "Century Gothic", CenturyGothic, AppleGothic, sans-serif; */
 }
 
 body, button input, select, textarea {
