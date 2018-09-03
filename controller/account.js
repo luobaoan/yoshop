@@ -61,7 +61,7 @@ module.exports = {
         id: res.data.uid,
         mainId: res.data.mainId,
         username: res.data.username,
-        avator: res.data.avator
+        avatar: res.data.avatar
       }
       linkId = res.data.uid + "";
     }

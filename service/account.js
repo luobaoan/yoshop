@@ -13,7 +13,7 @@ module.exports = {
       userInfo,
       uid,
       username,
-      avator;
+      avatar;
 
     if (!account || !password) {
       data = {
@@ -39,7 +39,7 @@ module.exports = {
           userInfo = JSON.parse(JSON.stringify(info))
           // 获取用户的 名称和头像
           username = userInfo[0]['username']
-          avator = userInfo[0]['avator']
+          avatar = userInfo[0]['avatar']
         })
       // 验证密码
       if (md5(account + password) == accountInfo[0]['password']) {
@@ -49,7 +49,7 @@ module.exports = {
             uid: uid,
             mainId: accountInfo[0]['main_id'],
             username: username,
-            avator: avator
+            avatar: avatar
           },
           msg: '登录成功'
         }
@@ -72,7 +72,7 @@ module.exports = {
    * linkId:关联账号 id
    */
   linkAccountLogin: async (linkId) => {
-    let data, res, username, avator;
+    let data, res, username, avatar;
     await userModel.accountSql.findAccountById(linkId)
       .then(result => {
         accountInfo = JSON.parse(JSON.stringify(result))
@@ -89,7 +89,7 @@ module.exports = {
           let userInfo = JSON.parse(JSON.stringify(info))
           // 获取用户的 名称和头像
           username = userInfo[0]['username']
-          avator = userInfo[0]['avator']
+          avatar = userInfo[0]['avatar']
         })
       // 存在该账户
       data = {
@@ -98,7 +98,7 @@ module.exports = {
           id: linkId,
           mainId: accountInfo[0]['main_id'],
           username: username,
-          avator: avator
+          avatar: avatar
         },
         msg: '切换账号成功'
       }

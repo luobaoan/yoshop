@@ -14,7 +14,7 @@
     <div class="hasaccount">已有账号</div>
     <ul class="account-list">
       <li linkid="{{session.id}}">
-        <p class="link-account"><img src="/avator.png" class="headimg">
+        <p class="link-account"><img src="/avatar.png" class="headimg">
           <span class="name">{{session.username}}</span>
           <span class="color-red curr-account">(当前账号)</span>
         </p>
@@ -68,7 +68,7 @@
               if (data[i].id != '{{session.id}}') {
                 str += '<li linkid="' + data[i].id + '">';
                 str += '<p class="link-account">';
-                str += '<img src="' + data[i].avator + '" class="headimg">';
+                str += '<img src="' + data[i].avatar + '" class="headimg">';
                 str += ' <span class="name">' + data[i].username + '</span>';
                 if (data[i].type == "main") {
                   str += ' <span class="color-red">(主账号)</span>';

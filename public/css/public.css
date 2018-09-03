@@ -110,11 +110,11 @@ textarea {
   display: inline-block;
 }
 
-.icon-avator {
+.icon-avatar {
   width: 34px;
   height: 34px;
   background-size: 100%;
-  background-image: url("/img/icon-avator.png");
+  background-image: url("/img/icon-avatar.png");
 }
 
 .icon-add {
@@ -143,7 +143,7 @@ textarea {
   background-image: url("/img/icon-down-arrow.png");
 }
 
-.avator {
+.avatar {
   display: inline-block;
   margin-right: 8px;
   width: 34px;
@@ -206,7 +206,7 @@ header .user-right {
   cursor: pointer;
 }
 
-.user-right .icon-avator {
+.user-right .icon-avatar {
   margin-right: 8px;
   vertical-align: middle;
 }
@@ -459,7 +459,7 @@ header .user-right {
   text-decoration: underline;
 }
 
-.member-avator {
+.member-avatar {
   width: 32px;
   height: 32px;
   vertical-align: middle;

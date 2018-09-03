@@ -119,11 +119,11 @@ module.exports = {
         let linkId = info[i].link_account_id;
         // 通过 uid 查询个人资料
         let userInfo = await AccountService.findUserInfoByUID(linkId)
-        // 获取账户的 username、avator
+        // 获取账户的 username、avatar
         let currInfo = {
           id: linkId,
           username: userInfo.data.username,
-          avator: userInfo.data.avator,
+          avatar: userInfo.data.avatar,
           type: 'link'
         }
         list.data[i] = currInfo
@@ -134,7 +134,7 @@ module.exports = {
       let mainInfo = {
         id: mainId,
         username: mainUser.data.username,
-        avator: mainUser.data.avator,
+        avatar: mainUser.data.avatar,
         type: 'main'
       }
       list.data.unshift(mainInfo)
@@ -153,7 +153,7 @@ module.exports = {
       id: res.data.id,
       mainId: res.data.mainId,
       username: res.data.username,
-      avator: res.data.avator
+      avatar: res.data.avatar
     }
     ctx.body = res
   },
