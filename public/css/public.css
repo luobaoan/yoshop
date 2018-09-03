@@ -333,7 +333,7 @@ header .user-right {
   position: fixed;
   left: 200px;
   right: 20px;
-  z-index: 1000;
+  z-index: 10;
   height: 54px;
   line-height: 54px;
   border-bottom: 1px solid #F1F1F1;

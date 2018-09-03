@@ -13,7 +13,7 @@ const StorageController = require('./controller/storage')
 module.exports = (app) => {
 
   // 中间件测试返回JSON数据
-  router.get('/api', AccountController.responseJson)
+  router.get('/api', AccountController.responseJson) 
     .get('/home', AccountController.home)
 
     /*-------------账户管理开始-----------*/
